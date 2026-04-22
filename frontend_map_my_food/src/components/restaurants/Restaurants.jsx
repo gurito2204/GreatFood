@@ -32,10 +32,7 @@ const Restaurants = () => {
     };
     availableRestaurants();
   }, [pincode]);
-  const now = new Date();
-  const options = { timeZone: "Asia/Kolkata", hour12: false };
-  const hour = parseInt(now.toLocaleTimeString("en-US", options).slice(0, 2));
-  const [unserveiceable, setUnServeiceable] = useState(hour > 22 || hour <= 9);
+  const [unserveiceable, setUnServeiceable] = useState(false);
   return (
     <div className={classes.box}>
       {isLoading && <Loading />}

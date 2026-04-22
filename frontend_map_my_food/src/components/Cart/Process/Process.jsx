@@ -44,7 +44,7 @@ const Process = () => {
                   }}
                 >
                   <div className={classes.button_text1b}>
-                    New to Map My Food?
+                    New to GreatFood?
                   </div>
                   <div className={classes.button_text2b}>SIGN UP</div>
                 </button>

@@ -14,8 +14,8 @@ const SearchAfterClickHeader = () => {
         <button>Sort by</button>
         <button>Fast Delivery</button>
         <button>Rated 4+</button>
-        <button>Rs 100-Rs 250</button>
-        <button>Less than Rs 100</button>
+        <button>VND 100 - VND 250</button>
+        <button>Less than VND 100</button>
       </div>
     </div>
   );

@@ -27,6 +27,13 @@ const deleteUserAddressesRoute = require("../routes/user/deleteUserAddressesRout
 const insertUserOrderRoute = require("../routes/UserOrder/insertUserOrderRoute");
 const getUserOrderRoute = require("../routes/UserOrder/getUserOrderRoute");
 const updateProfileRoute = require("../routes/user/updateProfileRoute");
+const getRatingsRoute = require("../routes/Ratings/getRatingsRoute");
+const insertRatingRoute = require("../routes/Ratings/insertRatingRoute");
+
+const getChatHistoryRoute = require("../routes/Chat/getChatHistoryRoute");
+const getAnalyticsRoute = require("../routes/Analytics/getAnalyticsRoute");
+const getInboxRoute = require("../routes/Chat/getInboxRoute");
+const markReadRoute = require("../routes/Chat/markReadRoute");
 
 module.exports = routes = [
   getPaymentOffersRoute,
@@ -58,4 +65,10 @@ module.exports = routes = [
   insertUserOrderRoute,
   getUserOrderRoute,
   updateProfileRoute,
+  getRatingsRoute,
+  insertRatingRoute,
+  getChatHistoryRoute,
+  getAnalyticsRoute,
+  getInboxRoute,
+  markReadRoute,
 ];

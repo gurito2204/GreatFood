@@ -199,3 +199,35 @@
     padding: 0rem;
   }
 }
+
+.c2c_actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+.c2c_btn_deal {
+  background: white;
+  border: 1px solid #0068ff;
+  color: #0068ff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+.c2c_btn_deal:hover { background: #f0f8ff; }
+
+.c2c_btn_rate {
+  background: white;
+  border: 1px solid #fc8019;
+  color: #fc8019;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+.c2c_btn_rate:hover { background: #fff5eb; }
+

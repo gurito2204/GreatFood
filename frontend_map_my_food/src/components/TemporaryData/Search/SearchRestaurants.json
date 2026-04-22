@@ -6,7 +6,7 @@
   "Restaurant_dish": "Pizzas",
   "location": "Dumka Locality",
   "FreeDeliveryonOrderDistance": "0-10 kms",
-  "FreeDeliveryonOrderAbove": "Free Delivery on order above Rs 199",
+  "FreeDeliveryonOrderAbove": "Free Delivery on order above VND 199",
   "rating": 4,
   "ratingCount": 100,
   "time": "30 MINS",
@@ -92,23 +92,23 @@
   "offers": [
     {
       "image": "/swiggey/coupon/1.png",
-      "percentage": "40% OFF UPTO ₹80",
-      "above": "USE TRYNEWABOVE ₹129"
+      "percentage": "40% OFF UPTO VND 80",
+      "above": "USE TRYNEWABOVE VND 129"
     },
     {
       "image": "/swiggey/coupon/2.png",
-      "percentage": "20% OFF UPTO ₹150",
-      "above": "USE ICICIAMZABOVE ₹600"
+      "percentage": "20% OFF UPTO VND 150",
+      "above": "USE ICICIAMZABOVE VND 600"
     },
     {
       "image": "/swiggey/coupon/3.png",
-      "percentage": "15% OFF UPTO ₹100",
-      "above": "USE SBICFESTABOVE ₹500"
+      "percentage": "15% OFF UPTO VND 100",
+      "above": "USE SBICFESTABOVE VND 500"
     },
     {
       "image": "/swiggey/coupon/1.png",
-      "percentage": "15% OFF UPTO ₹100",
-      "above": "USE SBICFESTABOVE ₹600"
+      "percentage": "15% OFF UPTO VND 100",
+      "above": "USE SBICFESTABOVE VND 600"
     }
   ]
 }

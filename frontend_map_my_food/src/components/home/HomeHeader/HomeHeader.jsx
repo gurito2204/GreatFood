@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import classes from "./HomeHeader.module.css";
 import AuthenticationContext from "../../store/authentication/Authentication-context";
 import LocationContext from "../../store/location/Location-context";
-import useIndianCitys from "../../hook/useIndianCity";
+import useVietnamCitys from "../../hook/useVietnamCity";
 import { useNotification } from "../../hook/useNotification";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
 
@@ -11,7 +11,7 @@ const HomeHeader = () => {
   const [count, setCount] = useState(0);
   const [location, setLocation] = useState("");
   const [showSearchLocation, setSearchLocation] = useState({
-    newIndianCity: [],
+    newVietnamCity: [],
   });
   const locationContextCtx = useContext(LocationContext);
   const AuthenticationCtx = useContext(AuthenticationContext);
@@ -27,10 +27,8 @@ const HomeHeader = () => {
     AuthenticationCtx.onShow(name);
   };
   useEffect(() => {
-    const searchLocation =
-      location.charAt(0).toUpperCase() + location.slice(1).toLowerCase();
-    const IndianCity = useIndianCitys(searchLocation);
-    setSearchLocation(IndianCity);
+    const VietnamCity = useVietnamCitys(location);
+    setSearchLocation(VietnamCity);
   }, [location]);
   useEffect(() => {
     setTimeout(() => {
@@ -48,7 +46,7 @@ const HomeHeader = () => {
         <div className={classes.part1}>
           <div className={classes.part1_img}>
             <img src="/swiggey/Logo/logo_2022.png" alt="logo" />
-            <h2>Map My Food</h2>
+            <h2>GreatFood</h2>
           </div>
           <div className={classes.buttons}>
             <button
@@ -87,11 +85,11 @@ const HomeHeader = () => {
                 setLocation(e.target.value);
               }}
             />
-            {showSearchLocation.newIndianCity.length == 0 ? (
+            {showSearchLocation.newVietnamCity.length == 0 ? (
               <></>
             ) : (
               <div className={classes.searchLocations}>
-                {showSearchLocation.newIndianCity.map((place, index) => (
+                {showSearchLocation.newVietnamCity.map((place, index) => (
                   <div
                     key={index}
                     className={classes.searchLocationBox}
@@ -115,11 +113,11 @@ const HomeHeader = () => {
           </button>
         </div>
         <div className={classes.part4}>
-          <h2>POPULAR CITIES IN INDIA</h2>
+          <h2>KHU Vá»°C PHá»” BIáº¾N</h2>
           <p>
-            <span>Ahmedabad</span> Bangalore <span>Chennai</span> Delhi
-            <span> Gurgaon </span> Kolkata
-            <span> Hyderabad </span> Mumbai <span> Pune </span> & more.
+            <span>Thá»§ Äá»©c</span> DÄ© An <span>Thuáº­n An</span> Thá»§ Dáº§u Má»™t
+            <span> BÃ¬nh Tháº¡nh </span> Linh Trung
+            <span> Linh Chiá»ƒu </span> ÄÃ´ng HÃ²a <span> & nhiá»u nÆ¡i khÃ¡c.</span>
           </p>
         </div>
       </div>

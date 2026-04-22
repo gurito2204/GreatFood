@@ -9,8 +9,11 @@ module.exports = getRestaurantFood = async (id) => {
       .find({ RestaurantId: id })
       .toArray();
     const Restaurant = await getRestaurant(id);
-    const vegFood = response[0].food.filter((item) => item.veg === "true");
-    const nonVegFood = response[0].food.filter((item) => item.veg === "false");
+    const foodItems = (response && response.length > 0 && response[0].food) ? response[0].food : [];
+    
+    const vegFood = foodItems.filter((item) => String(item.veg).toLowerCase().trim() === "true");
+    const nonVegFood = foodItems.filter((item) => String(item.veg).toLowerCase().trim() !== "true");
+
     const combinedData = {
       ...Restaurant,
       veg: vegFood,

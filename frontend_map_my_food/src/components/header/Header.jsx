@@ -14,14 +14,31 @@ const Header = () => {
   const cartContextCtx = useContext(CartContext);
   const locationCtx = useContext(LocationContext);
   const authenticationContextCtx = useContext(AuthenticationContext);
-  const { fetchLocation, fetchPersonalDetails } = useLocationLocalStorage();
+  const { fetchLocation, fetchPersonalDetails, fetchRestaurantId } = useLocationLocalStorage();
   const place = fetchLocation();
   const personalDetails = fetchPersonalDetails();
+  const restaurantId = fetchRestaurantId();
   const [number, setNumber] = useState(cartContextCtx.addItems.length);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const location = useLocation();
+
   useEffect(() => {
     setNumber(cartContextCtx.addItems.length);
   }, [cartContextCtx.addItems.length]);
-  const location = useLocation();
+
+  useEffect(() => {
+    if (restaurantId) {
+      fetch(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/seller/inbox/${restaurantId}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.totalUnread !== undefined) {
+            setUnreadCount(data.totalUnread);
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  }, [restaurantId, location.pathname]);
+
   const isActive = (pathname) => {
     return location.pathname.substring(0, 7) === pathname.substring(0, 7);
   };
@@ -96,21 +113,66 @@ const Header = () => {
           </div>
         </Link>
         {personalDetails ? (
-          <Link to={"/my-account/orders"} className={classes.right_part}>
-            <div className={classes.right_image}>
-              <Svgsign />
-            </div>
-            <div
-              className={`${
-                isActive("/my-account/orders")
-                  ? classes.active
-                  : classes.right_text
-              }`}
-            >
-              {personalDetails.data.name.substr(0, 8)}
-              {"..."}
-            </div>
-          </Link>
+          <React.Fragment>
+            <Link to={"/seller/dashboard"} className={classes.right_part}>
+              <div className={classes.right_image}>
+                <Svgoffers /> {/* Reusing the offers icon for seller channel */}
+              </div>
+              <div
+                className={`${
+                  isActive("/seller/dashboard")
+                    ? classes.active
+                    : classes.right_text
+                }`}
+              >
+                Kênh Người Bán
+              </div>
+            </Link>
+            <Link to={"/seller/inbox"} className={classes.right_part}>
+              <div className={classes.right_image} style={{ position: 'relative' }}>
+                <span style={{ fontSize: '20px' }}>💬</span>
+                {unreadCount > 0 && (
+                  <span style={{
+                    position: 'absolute',
+                    top: '-5px',
+                    right: '-10px',
+                    background: 'red',
+                    color: 'white',
+                    borderRadius: '50%',
+                    padding: '2px 6px',
+                    fontSize: '10px',
+                    fontWeight: 'bold'
+                  }}>
+                    {unreadCount}
+                  </span>
+                )}
+              </div>
+              <div
+                className={`${
+                  isActive("/seller/inbox")
+                    ? classes.active
+                    : classes.right_text
+                }`}
+              >
+                Tin nhắn
+              </div>
+            </Link>
+            <Link to={"/my-account/orders"} className={classes.right_part}>
+              <div className={classes.right_image}>
+                <Svgsign />
+              </div>
+              <div
+                className={`${
+                  isActive("/my-account/orders")
+                    ? classes.active
+                    : classes.right_text
+                }`}
+              >
+                {personalDetails.data.name.substr(0, 8)}
+                {"..."}
+              </div>
+            </Link>
+          </React.Fragment>
         ) : (
           <div
             className={classes.right_part}

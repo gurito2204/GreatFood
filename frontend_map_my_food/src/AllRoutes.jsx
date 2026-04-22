@@ -10,8 +10,14 @@ import User from "./components/User/User";
 import NewRestaurant from "./components/NewRestaurant/NewRestaurant";
 import PrivateRoute from "./PrivateRoutes";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
+import SellerDashboard from "./components/SellerDashboard/SellerDashboard";
+import SellerSubscription from "./components/SellerDashboard/SellerSubscription";
+import SellerInbox from "./components/SellerDashboard/SellerInbox";
 
 const routes = [
+  { path: "/seller/dashboard", Component: SellerDashboard, private: true },
+  { path: "/seller/subscription", Component: SellerSubscription, private: true },
+  { path: "/seller/inbox", Component: SellerInbox, private: true },
   { path: "/", Component: HomePage, exact: true },
   { path: "/offers/:page", Component: Offers },
   { path: "/supports", Component: Support },

@@ -1,14 +1,14 @@
 [
   {
-    "Question": "What is Map My Food Customer Care Number?",
+    "Question": "What is GreatFood Customer Care Number?",
     "answer": [
-      "We value our customer’s time and hence moved away from a single customer care number to a comprehensive chat-based support system for quick and easy resolution. You no longer have to go through the maze of an IVRS call support. Just search for your issue in the help section on this page and initiate a chat with us. A customer care executive will be assigned to you shortly. You can also email us your issue on support@Map My Food.in",
-      "Note: We value your privacy and your information is safe with us. Please do not reveal any personal information, bank account number, OTP etc. to another person. A Map My Food representative will never ask you for these details. Please do not reveal these details to fraudsters and imposters claiming to be calling on our behalf. Be vigilant and do not entertain phishing calls or emails."
+      "We value our customerâ€™s time and hence moved away from a single customer care number to a comprehensive chat-based support system for quick and easy resolution. You no longer have to go through the maze of an IVRS call support. Just search for your issue in the help section on this page and initiate a chat with us. A customer care executive will be assigned to you shortly. You can also email us your issue on support@GreatFood.in",
+      "Note: We value your privacy and your information is safe with us. Please do not reveal any personal information, bank account number, OTP etc. to another person. A GreatFood representative will never ask you for these details. Please do not reveal these details to fraudsters and imposters claiming to be calling on our behalf. Be vigilant and do not entertain phishing calls or emails."
     ],
     "email": true
   },
   {
-    "Question": "I want to explore career opportunities with Map My Food",
+    "Question": "I want to explore career opportunities with GreatFood",
     "answer": ["Join our team"],
     "email": true
   },
@@ -33,7 +33,7 @@
     "email": false
   },
   {
-    "Question": "Will Map My Food be accountable for quality/quantity?",
+    "Question": "Will GreatFood be accountable for quality/quantity?",
     "answer": [
       "Quantity and quality of the food is the restaurants' responsibility. However in case of issues with the quality or quantity, kindly submit your feedback and we will pass it on to the restaurant."
     ],
@@ -99,35 +99,35 @@
   {
     "Question": "Did not receive OTP?",
     "answer": [
-      "Please check if your app is due for an update. If not, please share the details via support@Map My Food.in"
+      "Please check if your app is due for an update. If not, please share the details via support@GreatFood.in"
     ],
     "email": false
   },
   {
     "Question": "Did not receive referral coupon?",
     "answer": [
-      "Referral coupon is given upon the first successful transaction of the referred person. If you still have not received it, kindly send us your details at support@Map My Food.in. We will contact you within 48 hours."
+      "Referral coupon is given upon the first successful transaction of the referred person. If you still have not received it, kindly send us your details at support@GreatFood.in. We will contact you within 48 hours."
     ],
     "email": false
   },
   {
     "Question": "Deactivate my account",
     "answer": [
-      "Please write to us at support@Map My Food.in in the event that you want to deactivate your account."
+      "Please write to us at support@GreatFood.in in the event that you want to deactivate your account."
     ],
     "email": false
   },
   {
     "Question": "Unable to view the details in my profile",
     "answer": [
-      "Please check if your app is due for an update. If not, please share the details via support@Map My Food.in"
+      "Please check if your app is due for an update. If not, please share the details via support@GreatFood.in"
     ],
     "email": false
   },
   {
-    "Question": "What is Map My Food Money?",
+    "Question": "What is GreatFood Money?",
     "answer": [
-      "Map My Food Money is a secure digital wallet where you can store digital currency and use it for faster check outs. It prevents payment failures and gives you seamless refunds when necessary."
+      "GreatFood Money is a secure digital wallet where you can store digital currency and use it for faster check outs. It prevents payment failures and gives you seamless refunds when necessary."
     ],
     "email": false
   },

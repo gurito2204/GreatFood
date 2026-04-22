@@ -1,16 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./AvailableRestaurantsContainer.module.css";
 
 const AvailableRestaurantsContainer = ({ datas }) => {
+  const navigate = useNavigate();
   return (
     <div className={classes.bottom_container}>
       {datas.map((data, index) => (
-        <div key={index} className={classes.bottom_box}>
+        <div key={index} className={classes.bottom_box} onClick={() => { if(data.RestaurantId) navigate(`/search/${data.RestaurantId}`) }}>
           <div className={classes.bottom_box_image}>
-            {+data.id % 4 == 1 ? (
-              <div className={classes.bottom_box_tag}>PROMOTED</div>
-            ) : (
-              <></>
+            {data.subscriptionTier === "PREMIUM" && (
+              <div className={classes.bottom_box_tag} style={{ backgroundColor: "#FFD700", color: "#000", fontWeight: "bold" }}>PREMIUM 👑</div>
             )}
             <img
               src={`${import.meta.env.VITE_REACT_BACKEND_URL}${data.image}`}

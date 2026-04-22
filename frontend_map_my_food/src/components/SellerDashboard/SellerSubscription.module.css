@@ -1,0 +1,137 @@
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  color: #3e4152;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #686b78;
+  margin-bottom: 50px;
+}
+
+.pricingCards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 30px;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  position: relative;
+  border: 1px solid #eaeaec;
+  display: flex;
+  flex-direction: column;
+}
+
+.premiumCard {
+  border: 2px solid #fc8019;
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(252, 128, 25, 0.15);
+}
+
+.popularTag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fc8019;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tierName {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.price span {
+  font-size: 16px;
+  color: #686b78;
+  font-weight: 500;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.features li {
+  margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.currentBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #d4d5d9;
+  background: #f0f0f5;
+  color: #686b78;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: not-allowed;
+}
+
+.upgradeBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #fc8019;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.upgradeBtn:hover {
+  background: #e57317;
+}
+
+.backLink {
+  margin-top: 40px;
+}
+
+.backLink a {
+  color: #fc8019;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.backLink a:hover {
+  text-decoration: underline;
+}

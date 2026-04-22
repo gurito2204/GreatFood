@@ -1,0 +1,167 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.modal {
+  width: 350px;
+  max-width: 100%;
+  height: 500px;
+  max-height: 100vh;
+  background: white;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.header {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h3 { margin: 0; font-size: 1.1rem; }
+.header p { margin: 0; font-size: 0.85rem; color: #666; margin-top: 4px;}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.chatBox {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: #fdfdfd;
+}
+
+.systemMsg {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  padding: 0.5rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.message {
+  max-width: 80%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.msgBuyer {
+  background: #0068ff;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.msgSeller {
+  background: #f1f3f4;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.msgSystem {
+  background: #ffeb3b;
+  color: #d32f2f;
+  align-self: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 12px;
+}
+
+.quickReplies {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  border-top: 1px solid #eee;
+}
+.quickReplies::-webkit-scrollbar { display: none; }
+
+.chip {
+  background: #f1f3f5;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.chip:hover { background: #e2e6ea; }
+
+.inputArea {
+  display: flex;
+  padding: 0.8rem;
+  border-top: 1px solid #eee;
+}
+
+.inputArea input {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.inputArea button {
+  background: none;
+  border: none;
+  color: #fc8019;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+.inputArea button:disabled { color: #ccc; cursor: not-allowed; }
+
+.footer {
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+.footer p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #555; font-weight: bold; }
+
+.socialBtns button {
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #0068ff;
+  background: white;
+  color: #0068ff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.socialBtns button:hover { background: #0068ff; color: white; }

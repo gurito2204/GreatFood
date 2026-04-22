@@ -9,7 +9,7 @@ const HomeMiddleBottom = () => {
           <h1>Restaurants in your pocket</h1>
           <p>
             Order from your favorite restaurants & track on the go, with the
-            all-new Map my food app.
+            all-new GreatFood app.
           </p>
         </div>
         <div className={classes.part2}>

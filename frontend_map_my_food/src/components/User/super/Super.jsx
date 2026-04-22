@@ -5,10 +5,10 @@ const Super = () => {
   return (
     <div className={classes.container}>
       <div className={classes.left}>
-        <h1>Map my food</h1>
-        <p>Get free delivery and extra discounts all across Map my food.</p>
+        <h1>GreatFood</h1>
+        <p>Get free delivery and extra discounts all across GreatFood.</p>
         <p>
-          Your Swiggy One benefits can be availed only on the Map my food App.
+          Your Swiggy One benefits can be availed only on the GreatFood App.
         </p>
         <div className={classes.images}>
           <div className={classes.image}>

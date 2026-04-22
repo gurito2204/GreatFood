@@ -16,6 +16,8 @@ const Curd = ({ page, data, id, imageToBackend }) => {
   const chechData = async () => {
     var missingFields = "";
     for (let field of Object.keys(data)) {
+      // Skip 'image' field - it's handled separately via imageToBackend
+      if (field === "image") continue;
       if (!data[field]) {
         missingFields += field.charAt(0).toUpperCase() + field.slice(1) + ", ";
       }

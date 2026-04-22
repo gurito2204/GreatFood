@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import classes from "./Location.module.css";
 import Svgcross from "../ui/Svg/Svgcross";
 import LocationContext from "../store/location/Location-context";
-import useIndianCitys from "../hook/useIndianCity";
+import useVietnamCitys from "../hook/useVietnamCity";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 
 const Location = () => {
@@ -12,13 +12,12 @@ const Location = () => {
   const pastSearchLocation = fetchLocation();
   const [location, setLocation] = useState("");
   const [showSearchLocation, setSearchLocation] = useState({
-    newIndianCity: [],
+    newVietnamCity: [], // Đổi tên biến ở đây
   });
-  useEffect(() => {
-    const searchLocation =
-      location.charAt(0).toUpperCase() + location.slice(1).toLowerCase();
-    const IndianCity = useIndianCitys(searchLocation);
-    setSearchLocation(IndianCity);
+useEffect(() => {
+    // Không cần logic upper/lower rối rắm cũ nữa vì hook mới lo hết rồi
+    const VietnamCity = useVietnamCitys(location);
+    setSearchLocation(VietnamCity);
   }, [location]);
   const setCustomerLocation = (customerLocation) => {
     updateLocation(customerLocation);
@@ -56,11 +55,12 @@ const Location = () => {
                 setLocation(e.target.value);
               }}
             />
-            {showSearchLocation.newIndianCity.length == 0 ? (
+            {showSearchLocation.newVietnamCity.length == 0 ? (
               <></>
             ) : (
               <div className={classes.searchLocations}>
-                {showSearchLocation.newIndianCity.map((place, index) => (
+                {/* Đổi chữ ở map */}
+                {showSearchLocation.newVietnamCity.map((place, index) => (
                   <div
                     key={index}
                     className={classes.searchLocationBox}

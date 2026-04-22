@@ -1,10 +1,10 @@
-[
+﻿[
   {
     "id": 1,
     "company": "SBICFEST",
     "couponLogo": "/swiggey/coupon/1.png",
     "heading": "Get 15% discount using SBI Credit Cards",
-    "para": "Maximum discount up to ₹100 on orders above ₹500",
+    "para": "Maximum discount up to VND 100 on orders above VND 500",
     "code": "783467",
     "term": {
       "1": "Applicable once per user during the offer period",
@@ -17,8 +17,8 @@
     "id": 2,
     "company": "AMEXMATCHDAY",
     "couponLogo": "/swiggey/coupon/2.png",
-    "heading": "Get flat ₹125 discount using American Express Cards",
-    "para": "Flat ₹125 discount on orders above ₹399",
+    "heading": "Get flat VND 125 discount using American Express Cards",
+    "para": "Flat VND 125 discount on orders above VND 399",
     "code": "456782",
     "term": {
       "1": "Valid only on Thursday & Friday",
@@ -34,7 +34,7 @@
     "company": "KOTAK125",
     "couponLogo": "/swiggey/coupon/3.png",
     "heading": "Get 20% discount using Kotak Bank Debit Cards",
-    "para": "Maximum discount up to ₹125 on orders above ₹500",
+    "para": "Maximum discount up to VND 125 on orders above VND 500",
     "code": "475785",
     "term": {
       "1": "Valid only on Thursday",
@@ -48,8 +48,8 @@
     "id": 4,
     "company": "KOTAK125",
     "couponLogo": "/swiggey/coupon/3.png",
-    "heading": "Get flat ₹125 discount using American Express Cards",
-    "para": "Flat ₹125 discount on orders above ₹399",
+    "heading": "Get flat VND 125 discount using American Express Cards",
+    "para": "Flat VND 125 discount on orders above VND 399",
     "code": "456782",
     "term": {
       "1": "Valid only on Thursday & Friday",
@@ -65,7 +65,7 @@
     "company": "SBICFEST",
     "couponLogo": "/swiggey/coupon/1.png",
     "heading": "Get 15% discount using SBI Credit Cards",
-    "para": "Maximum discount up to ₹100 on orders above ₹500",
+    "para": "Maximum discount up to VND 100 on orders above VND 500",
     "code": "783467",
     "term": {
       "1": "Applicable once per user during the offer period",
@@ -79,7 +79,7 @@
     "company": "AMEXMATCHDAY",
     "couponLogo": "/swiggey/coupon/2.png",
     "heading": "Get 20% discount using Kotak Bank Debit Cards",
-    "para": "Maximum discount up to ₹125 on orders above ₹500",
+    "para": "Maximum discount up to VND 125 on orders above VND 500",
     "code": "475785",
     "term": {
       "1": "Valid only on Thursday",

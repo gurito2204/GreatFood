@@ -25,7 +25,7 @@ export const CartContextProvider = (props) => {
   const [deliveryCost, setDeliveryCost] = useState(0);
   const [GST, setGST] = useState(0);
   const [hotal, setHotal] = useState("");
-  const [place, setPlace] = useState("Dumka");
+  const [place, setPlace] = useState("");
   const [image, setImage] = useState("/swiggey/AvailableRestaurants/5.webp");
   const [restaurantId, setRestaurantId] = useState(null);
   const [deliverHere, setDeliverHere] = useState(null);
@@ -35,6 +35,7 @@ export const CartContextProvider = (props) => {
     const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
     setRestaurantId(RestaurantId);
     setHotal(dataItemPriceCart[itemId]["hotal"]);
+    setPlace(dataItemPriceCart[itemId]["place"] || "Hồ Chí Minh");
     const newItemPrice = +dataItemPriceCart[itemId]["price"];
     const updatedTotalAmount = totalAmount + newItemPrice;
     const existingCartItemIndex = addItems.findIndex(

@@ -1,6 +1,6 @@
 const getDb = require("../db").getDb;
 
-module.exports = updateRestaurant = async (RestaurantId, Restaurant) => {
+module.exports = updateRestaurant = async (RestaurantId, Restaurant, userId) => {
   try {
     const connection = await getDb();
     const result = await connection.collection("restaurant").updateOne(

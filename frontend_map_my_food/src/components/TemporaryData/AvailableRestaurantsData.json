@@ -3,104 +3,104 @@
     "id": "1",
     "image": "/swiggey/AvailableRestaurants/1.webp",
     "about": {
-      "heading": "The Heritage",
-      "name": "Chinese, North Indian, Continental"
+      "heading": "Cơm Tấm Phúc Lộc Thọ",
+      "name": "Cơm Tấm, Món Việt, Ăn Trưa"
     },
     "last": {
-      "star": "4.1",
-      "time": "24 MINS",
-      "cost": "$ 10 FOR TWO"
+      "star": "4.5",
+      "time": "20 PHÚT",
+      "cost": "80K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "2",
     "image": "/swiggey/AvailableRestaurants/2.webp",
     "about": {
-      "heading": "Moon Hotal",
-      "name": "Indian, Chinese, Biryani"
+      "heading": "Phở Thìn Lò Đúc",
+      "name": "Phở Bò, Món Nước, Truyền Thống"
     },
     "last": {
-      "star": "4",
-      "time": "18 MINS",
-      "cost": "$ 25 FOR TWO"
+      "star": "4.8",
+      "time": "15 PHÚT",
+      "cost": "150K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "3",
     "image": "/swiggey/AvailableRestaurants/3.jpg",
     "about": {
-      "heading": "Kwality Walls Frozen Dessert and Ice Cream Shop",
-      "name": "Ice Cream, Desserts"
+      "heading": "Phúc Long Coffee & Tea",
+      "name": "Trà Sữa, Cà Phê, Tráng Miệng"
     },
     "last": {
-      "star": "3.9",
-      "time": "19 MINS",
-      "cost": "$ 20 FOR TWO"
+      "star": "4.6",
+      "time": "10 PHÚT",
+      "cost": "110K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "4",
     "image": "/swiggey/AvailableRestaurants/4.webp",
     "about": {
-      "heading": "INDIAN BIRYANI",
-      "name": "Biryani, North Indian"
+      "heading": "Bánh Mì Huỳnh Hoa",
+      "name": "Bánh Mì, Ăn Nhanh, Món Việt"
     },
     "last": {
-      "star": "3.4",
-      "time": "19 MINS",
-      "cost": "$ 15 FOR TWO"
+      "star": "4.7",
+      "time": "25 PHÚT",
+      "cost": "120K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "5",
     "image": "/swiggey/AvailableRestaurants/5.webp",
     "about": {
-      "heading": "Hyderabad Biryani Hotel",
-      "name": "Biryani, North Indian"
+      "heading": "Bún Bò Huế Oanh",
+      "name": "Bún Bò, Đặc Sản Miền Trung"
     },
     "last": {
-      "star": "3.6",
-      "time": "19 MINS",
-      "cost": "$ 15 FOR TWO"
+      "star": "4.3",
+      "time": "18 PHÚT",
+      "cost": "90K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "6",
     "image": "/swiggey/AvailableRestaurants/6.jpg",
     "about": {
-      "heading": "FOOD BOWL",
-      "name": "Chinese, Fast Food, Italian, North Indian, Street Food"
+      "heading": "Ốc Đào",
+      "name": "Hải Sản, Ốc, Ăn Đêm, Ăn Vặt"
     },
     "last": {
-      "star": "3",
-      "time": "19 MINS",
-      "cost": "$ 25 FOR TWO"
+      "star": "4.2",
+      "time": "30 PHÚT",
+      "cost": "200K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "7",
     "image": "/swiggey/AvailableRestaurants/7.webp",
     "about": {
-      "heading": "Momomia Love In Every Bite",
-      "name": "Chinese, Fast Food, Beverages, Pastas"
+      "heading": "Gà Rán Jollibee",
+      "name": "Gà Rán, Thức Ăn Nhanh, Mì Ý"
     },
     "last": {
-      "star": "3.9",
-      "time": "19 MINS",
-      "cost": "$ 20 FOR TWO"
+      "star": "4.4",
+      "time": "25 PHÚT",
+      "cost": "150K CHO 2 NGƯỜI"
     }
   },
   {
     "id": "8",
     "image": "/swiggey/AvailableRestaurants/8.webp",
     "about": {
-      "heading": "ROYAL MAJESTIC",
-      "name": "Chinese, North Indian"
+      "heading": "Bún Đậu Ngõ Nhỏ",
+      "name": "Bún Đậu Mắm Tôm, Đặc Sản Miền Bắc"
     },
     "last": {
-      "star": "3.3",
-      "time": "19 MINS",
-      "cost": "$ 20 FOR TWO"
+      "star": "4.1",
+      "time": "22 PHÚT",
+      "cost": "100K CHO 2 NGƯỜI"
     }
   }
 ]

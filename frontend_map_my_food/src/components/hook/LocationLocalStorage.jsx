@@ -1,5 +1,4 @@
-import Indiancitys from "../TemporaryData/IndiaCity.json";
-
+import VietnamCity from "../TemporaryData/VietnamCity.json";
 export const useLocationLocalStorage = () => {
   const fetchLocation = () => {
     const storedData = localStorage.getItem("recentLocationSearch");
@@ -27,12 +26,15 @@ export const useLocationLocalStorage = () => {
     );
     updatePincode(newLocation);
   };
-  const updatePincode = (location) => {
+const updatePincode = (location) => {
     let pincode = "";
-    const nameToMatch = location.split(",")[0].trim();
-    for (let i = 0; i < Indiancitys.length; i++) {
-      if (Indiancitys[i].name === nameToMatch) {
-        pincode = Indiancitys[i].pincode;
+    // Lấy tên địa điểm (ví dụ: "Ký túc xá Khu A ĐHQG")
+    const nameToMatch = location.split(",")[0].trim(); 
+    
+    // Quét trong data Việt Nam thay vì Ấn Độ
+    for (let i = 0; i < VietnamCity.length; i++) {
+      if (VietnamCity[i].name === nameToMatch) {
+        pincode = VietnamCity[i].pincode;
         break;
       }
     }
@@ -42,6 +44,7 @@ export const useLocationLocalStorage = () => {
   const updatePersonalDetails = (data) => {
     localStorage.setItem("PersonalDetails", JSON.stringify(data));
     if (data.data.ResturentId) updateRestaurantId(data.data.ResturentId);
+    else localStorage.removeItem("restaurantId");
   };
   const fetchPersonalDetails = () => {
     const Data = localStorage.getItem("PersonalDetails");
@@ -50,6 +53,7 @@ export const useLocationLocalStorage = () => {
   };
   const removePersonalDetails = () => {
     localStorage.removeItem("PersonalDetails");
+    localStorage.removeItem("restaurantId");
   };
 
   const updateRestaurantId = (data) => {

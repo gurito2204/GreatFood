@@ -13,25 +13,33 @@ module.exports = getAvailableRestaurants = async (pincode) => {
       response.map(async (restaurant, index) => {
         const Restaurant = await getRestaurant(restaurant.RestaurantId);
         if (Restaurant.pincode == pincode) {
-          await restaurant.food.map((item, indexj) => {
-            var temp = {
-              itemId: "",
-              image: "",
-              about: { heading: "", name: "" },
-              last: { star: "", time: "", cost: "" },
-            };
-            temp.about.heading = Restaurant.Restaurant;
-            temp.itemId = item.itemId;
-            temp.image = item.image;
-            temp.about.name = item.name;
-            temp.last.star = item.star;
-            temp.last.time = item.timeRequired;
-            temp.last.cost = item.price;
-            AvailableRestaurants.push(temp);
-          });
+          var temp = {
+            itemId: "",
+            RestaurantId: "",
+            image: "",
+            about: { heading: "", name: "" },
+            last: { star: "", time: "", cost: "" },
+            subscriptionTier: Restaurant.subscriptionTier || 'BASIC'
+          };
+          temp.about.heading = Restaurant.Restaurant;
+          temp.RestaurantId = restaurant.RestaurantId;
+          temp.image = Restaurant.image; // Use the restaurant's uploaded image
+          temp.about.name = Restaurant.Restaurant_dish; 
+          temp.last.star = Restaurant.rating;
+          temp.last.time = Restaurant.time;
+          temp.last.cost = Restaurant.price;
+          AvailableRestaurants.push(temp);
         }
       })
     );
+    
+    // Sort so PREMIUM restaurants appear first
+    AvailableRestaurants.sort((a, b) => {
+      if (a.subscriptionTier === 'PREMIUM' && b.subscriptionTier !== 'PREMIUM') return -1;
+      if (a.subscriptionTier !== 'PREMIUM' && b.subscriptionTier === 'PREMIUM') return 1;
+      return 0;
+    });
+
     return AvailableRestaurants;
   } catch (err) {
     console.log(err.message);

@@ -11,22 +11,39 @@ const CreateNewRestaurant = () => {
   const { fetchRestaurantId } = useLocationLocalStorage();
   const [image, setImage] = useState(null);
   const [imageToBackend, setImageToBackend] = useState(null);
+  
+  // 1. Sắp xếp lại thứ tự hợp logic, gán mặc định rating là "0"
   const [values, setValues] = useState({
-    address: "",
     Restaurant: "",
-    Restaurant_dish: "",
+    phone_number: "",
+    address: "",
     location: "",
+    pincode: "",
+    Restaurant_dish: "",
+    opening_hours: "",
+    time: "",
+    price: "",
     FreeDeliveryonOrderDistance: "",
     FreeDeliveryonOrderAbove: "",
-    rating: "",
-    ratingCount: "",
-    time: "",
-    phone_number: "",
-    opening_hours: "",
-    price: "",
-    pincode: "",
-    image: "",
+    rating: "0",      
+    ratingCount: "0", 
   });
+
+  // 2. Tạo từ điển Việt hóa giao diện (UI) thay vì hiện key tiếng Anh
+  const labelMapping = {
+    Restaurant: "Tên quán / Tên người bán",
+    phone_number: "Số điện thoại liên hệ",
+    address: "Địa chỉ chi tiết (VD: 123 Lê Lợi, KTX Khu B)",
+    location: "Khu vực (VD: TP Thủ Đức, Dĩ An)",
+    pincode: "Mã vùng (VD: 700000, 820000)",
+    Restaurant_dish: "Chuyên món (VD: Cơm tấm, Trà sữa)",
+    opening_hours: "Giờ hoạt động (VD: 08:00 - 22:00)",
+    time: "Thời gian chuẩn bị dự kiến (Phút)",
+    price: "Khoảng giá trung bình (VD: 20k - 50k)",
+    FreeDeliveryonOrderDistance: "Freeship trong bán kính (Km)",
+    FreeDeliveryonOrderAbove: "Freeship cho đơn hàng từ (VNĐ)"
+  };
+
   useEffect(() => {
     const fetchdata = async () => {
       const response = await GetFoodsAndOffersData("restaurant");
@@ -36,13 +53,15 @@ const CreateNewRestaurant = () => {
     };
     if (fetchRestaurantId() != undefined) fetchdata();
   }, []);
+
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
+
   return (
     <div className={classes.container}>
-      <div className={classes.heading}> Create New Restaurant</div>
-      <div className={classes.part1_a}>Restaurant picture</div>
+      <div className={classes.heading}> Đăng ký Bán hàng </div>
+      <div className={classes.part1_a}>Ảnh đại diện của Quán/Món ăn</div>
       <div className={classes.part1}>
         {image && (
           <UploadImage
@@ -68,13 +87,16 @@ const CreateNewRestaurant = () => {
         </div>
       </div>
       <div className={classes.allquestion}>
-        {Object.entries(values).map(([question, value]) => (
-          <Question
-            key={question}
-            value={value}
-            question={question}
-            handleChange={handleChange(question)}
-          />
+        {Object.entries(values)
+          // 3. Lọc bỏ các trường không cho người dùng tự nhập
+          .filter(([question]) => question !== "image" && question !== "rating" && question !== "ratingCount")
+          .map(([question, value]) => (
+            <Question
+              key={question}
+              value={value}
+              question={labelMapping[question] || question} // Ép hiển thị tiếng Việt
+              handleChange={handleChange(question)}
+            />
         ))}
       </div>
     </div>
