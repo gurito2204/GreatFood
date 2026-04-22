@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const insertOtp = require("../../db/Auth/insertOtp");
 const getUsers = require("../../db/Auth/getUsers");
 

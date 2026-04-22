@@ -1,6 +1,6 @@
 const getOpt = require("../../db/Auth/getOpt");
 const deleteOtp = require("../../db/Auth/deleteOtp");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const updateUser = require("../../db/Auth/updateUser");
 
