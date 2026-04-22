@@ -8,6 +8,7 @@ import Auth from "./components/Authentication/Auth";
 import Footer from "./components/Footer/Footer";
 import LocationContext from "./components/store/location/Location-context";
 import { useLocationLocalStorage } from "./components/hook/LocationLocalStorage";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const locationContextCtx = useContext(LocationContext);
@@ -34,6 +35,7 @@ function App() {
       </div>
       <Auth />
       <Footer />
+      <SpeedInsights />
     </div>
   );
 }
