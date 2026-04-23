@@ -32,9 +32,9 @@
 
 .header {
   padding: 1rem;
-  background: #f8f9fa;
+  background: #ffffff;
   border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -80,7 +80,7 @@
 }
 
 .msgBuyer {
-  background: #0068ff;
+  background: linear-gradient(135deg, #fc8019, #ff9a44);
   color: white;
   align-self: flex-end;
   border-bottom-right-radius: 4px;
@@ -155,13 +155,14 @@
 .footer p { margin: 0 0 0.5rem 0; font-size: 0.85rem; color: #555; font-weight: bold; }
 
 .socialBtns button {
-  padding: 0.4rem 1rem;
-  border-radius: 4px;
-  border: 1px solid #0068ff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 1.5px solid #fc8019;
   background: white;
-  color: #0068ff;
+  color: #fc8019;
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: all 0.2s;
 }
-.socialBtns button:hover { background: #0068ff; color: white; }
+.socialBtns button:hover { background: #fc8019; color: white; }

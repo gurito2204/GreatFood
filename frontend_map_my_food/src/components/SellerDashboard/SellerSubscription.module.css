@@ -1,125 +1,148 @@
+/* === Choices: Chỉ 2 lựa chọn BASIC vs PREMIUM, rõ ràng === */
+/* === Similarity: CTA nâng cấp cam === */
+/* === Symmetry: 2 card đối xứng === */
+
 .container {
   max-width: 900px;
   margin: 50px auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   text-align: center;
-  color: #3e4152;
+  color: #282c3f;
+  padding: 0 20px;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  color: #282c3f;
 }
 
 .subtitle {
-  font-size: 16px;
-  color: #686b78;
-  margin-bottom: 50px;
+  font-size: 15px;
+  color: #93959f;
+  margin-bottom: 45px;
 }
 
+/* === Choices: Chỉ 2 card, đối xứng === */
 .pricingCards {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 740px;
+  margin: 0 auto;
 }
 
+/* === Common Region: Card có border riêng biệt === */
 .card {
-  background: white;
-  border-radius: 16px;
-  padding: 40px 30px;
-  width: 320px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 28px;
   border: 1px solid #eaeaec;
+  position: relative;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+/* === Similarity: Premium card viền cam === */
 .premiumCard {
   border: 2px solid #fc8019;
-  transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(252, 128, 25, 0.15);
+  box-shadow: 0 8px 30px rgba(252, 128, 25, 0.12);
+}
+
+.premiumCard:hover {
+  box-shadow: 0 12px 35px rgba(252, 128, 25, 0.2);
 }
 
 .popularTag {
   position: absolute;
-  top: -12px;
+  top: -13px;
   left: 50%;
   transform: translateX(-50%);
-  background: #fc8019;
+  background: linear-gradient(135deg, #fc8019, #ff9a44);
   color: white;
-  padding: 4px 12px;
+  padding: 5px 16px;
   border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .tierName {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  color: #282c3f;
 }
 
 .price {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
+  color: #282c3f;
 }
 
 .price span {
-  font-size: 16px;
-  color: #686b78;
+  font-size: 14px;
+  color: #93959f;
   font-weight: 500;
 }
 
 .features {
   list-style: none;
   padding: 0;
-  margin: 0 0 40px 0;
+  margin: 0 0 30px 0;
   text-align: left;
   flex-grow: 1;
 }
 
 .features li {
-  margin-bottom: 15px;
-  font-size: 15px;
-  line-height: 1.4;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3e4152;
 }
 
 .disabled {
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
 .currentBtn {
   width: 100%;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid #d4d5d9;
-  background: #f0f0f5;
-  color: #686b78;
+  background: #f5f5f6;
+  color: #93959f;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   cursor: not-allowed;
 }
 
+/* === Similarity: CTA nâng cấp cam === */
 .upgradeBtn {
   width: 100%;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 12px;
   border: none;
-  background: #fc8019;
+  background: linear-gradient(135deg, #fc8019, #ff9a44);
   color: white;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 15px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.3px;
 }
 
 .upgradeBtn:hover {
-  background: #e57317;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(252, 128, 25, 0.35);
 }
 
 .backLink {
@@ -130,6 +153,7 @@
   color: #fc8019;
   text-decoration: none;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .backLink a:hover {

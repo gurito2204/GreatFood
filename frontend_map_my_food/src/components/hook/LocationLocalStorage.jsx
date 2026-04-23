@@ -45,6 +45,7 @@ const updatePincode = (location) => {
     localStorage.setItem("PersonalDetails", JSON.stringify(data));
     if (data.data.ResturentId) updateRestaurantId(data.data.ResturentId);
     else localStorage.removeItem("restaurantId");
+    window.dispatchEvent(new Event("authChanged"));
   };
   const fetchPersonalDetails = () => {
     const Data = localStorage.getItem("PersonalDetails");
@@ -54,6 +55,7 @@ const updatePincode = (location) => {
   const removePersonalDetails = () => {
     localStorage.removeItem("PersonalDetails");
     localStorage.removeItem("restaurantId");
+    window.dispatchEvent(new Event("authChanged"));
   };
 
   const updateRestaurantId = (data) => {

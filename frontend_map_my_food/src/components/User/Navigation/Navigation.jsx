@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Navigation.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SvgOrder from "../../ui/User/SvgOrder";
 import SvgSuper from "../../ui/User/SvgSuper";
 import SvgFavourites from "../../ui/User/SvgFavourites";
@@ -13,6 +13,7 @@ import SvgRestaurant from "../../ui/User/SvgRestaurant";
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isActive = (pathname) => {
     return location.pathname === pathname;
   };
@@ -91,6 +92,7 @@ const Navigation = () => {
           }`}
           onClick={() => {
             removePersonalDetails();
+            navigate("/");
           }}
         >
           <SvgLogOut />

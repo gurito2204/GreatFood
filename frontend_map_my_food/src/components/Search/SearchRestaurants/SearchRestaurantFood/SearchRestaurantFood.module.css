@@ -15,10 +15,15 @@
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  box-shadow: 0 4px 29px #e8e8e8;
-  background-color: #fff;
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 1.4rem 1rem 0.5rem;
-  border-radius: 24px;
+  border-radius: 16px;
+  transition: box-shadow 0.2s;
+}
+.item:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .item_part1 {
   display: flex;
@@ -91,10 +96,9 @@
   color: #3e4152;
   padding-top: 0.4rem;
 }
-.item_part3_price:before {
-  content: "\20B9";
+.item_part3_price:after {
+  content: " ₫";
   color: #535665;
-  padding-right: 1px;
 }
 .item_part3_para {
   font-size: 0.8rem;
@@ -206,17 +210,20 @@
   margin-top: 15px;
 }
 .c2c_btn_deal {
-  background: white;
-  border: 1px solid #0068ff;
-  color: #0068ff;
-  padding: 6px 12px;
-  border-radius: 6px;
+  background: #ffffff;
+  border: 1.5px solid #fc8019;
+  color: #fc8019;
+  padding: 7px 14px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.8rem;
-  transition: 0.2s;
+  transition: all 0.2s;
 }
-.c2c_btn_deal:hover { background: #f0f8ff; }
+.c2c_btn_deal:hover {
+  background: #fc8019;
+  color: #ffffff;
+}
 
 .c2c_btn_rate {
   background: white;

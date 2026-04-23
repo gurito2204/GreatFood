@@ -1,3 +1,6 @@
+/* === Visual Identity: White + Orange === */
+/* === Similarity: CTA đồng nhất cam, text đen === */
+
 .container,
 .left,
 .right,
@@ -10,28 +13,42 @@
   align-items: center;
   padding: 0.2rem 0.5rem 0.2rem 0rem;
 }
+
+/* === Common Region: Header tách biệt bằng shadow === */
 .container {
-  box-shadow: 0 6px 6px -3px #bebebe;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
+
 .left {
   gap: 1rem;
   padding-left: 5%;
 }
+
 .right {
-  gap: 2rem;
+  gap: 1.5rem;
   padding-right: 5%;
 }
+
 .right_part {
-  gap: 1rem;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: color 0.2s;
 }
+
 .left_image {
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
 }
+
 .left_image img {
   width: 100%;
   height: 100%;
 }
+
 .left_place {
   padding: 5px;
   color: #686b78;
@@ -41,6 +58,7 @@
   font-size: 0.9rem;
   cursor: pointer;
 }
+
 .left_place span {
   min-width: 30px;
   margin-right: 10px;
@@ -48,8 +66,10 @@
   overflow: hidden;
   white-space: nowrap;
   font-weight: bold;
-  border-bottom: 0.15rem solid black;
+  color: #282c3f;
+  border-bottom: 2px solid #fc8019;
 }
+
 .left_image_arrow {
   border: solid #fc8019;
   border-width: 0 2.5px 2.5px 0;
@@ -58,74 +78,99 @@
   transform: rotate(45deg);
   cursor: pointer;
 }
+
 .right_image {
   width: 15px;
   height: 15px;
 }
+
+/* === Similarity: nav text đồng nhất === */
 .right_text {
-  color: #000000;
+  color: #3e4152;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
-.right_part :hover {
+
+/* === Similarity: Hover cam đồng nhất === */
+.right_part:hover .right_text,
+.right_part:hover .right_image {
   color: #fc8019;
 }
+
 .right_text span {
   color: #fc8019;
   font-size: 0.5rem;
   position: absolute;
   font-weight: bold;
 }
+
+/* === Active state === */
+.active {
+  color: #fc8019;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 .active span {
   color: #fc8019;
   font-size: 0.5rem;
   position: absolute;
   font-weight: bold;
 }
+
+/* === Similarity: Cart icon cam === */
 .right_number {
+  border: 2px solid #d4d5d9;
+  padding: 2px 5px;
+  border-radius: 5px 5px 2px 2px;
+  color: #3e4152;
+  font-weight: 600;
+}
+
+.right_number_green {
   border: 2px solid #fc8019;
   padding: 2px 5px;
+  color: #fc8019;
   border-radius: 5px 5px 2px 2px;
+  font-weight: 700;
 }
-.right_number_green {
-  border: 2px solid #60b246;
-  padding: 2px 5px;
-  color: #60b246;
-  border-radius: 5px 5px 2px 2px;
-}
+
 .right_number_green:hover {
-  color: #ff0f00;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  background: #fc8019;
 }
+
+/* ========== RESPONSIVE ========== */
+
 @media screen and (max-width: 1040px) {
   .container {
     justify-content: center;
   }
   .right {
     padding-right: 0%;
+    gap: 1rem;
   }
 }
+
 @media screen and (max-width: 620px) {
   .left {
     gap: 0.5rem;
   }
   .right {
-    gap: 1rem;
+    gap: 0.8rem;
     justify-content: center;
   }
   .right_part {
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
   .right_text {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
   }
   .active {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
   }
-}
-.active {
-  color: #fc8019;
-  font-size: 1.2rem;
 }
 
 @media screen and (max-width: 540px) {
@@ -137,8 +182,6 @@
   }
   .left i {
     display: none;
-  }
-  .left {
   }
   .left_image {
     position: absolute;
@@ -165,23 +208,19 @@
   .left_place span {
     display: none;
   }
-  .left_image_arrow {
-  }
   .right {
     position: fixed;
-    bottom: 0rem;
-    left: 0rem;
-    right: 0rem;
-    box-shadow: 0 6px 6px -3px #bebebe;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
     background: #ffffff;
-    z-idex: 1;
+    z-index: 100;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.1rem 0rem 0rem 0rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    justify-content: space-around;
+    padding: 0.3rem 1rem;
   }
   .offers {
     position: absolute;
@@ -191,7 +230,7 @@
     flex-direction: row;
   }
   .right_text {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .offers_text {
     position: absolute;
@@ -201,7 +240,7 @@
     width: 100px;
   }
   .active {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .right_part {
     flex-direction: column;

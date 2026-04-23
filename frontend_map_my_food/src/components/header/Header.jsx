@@ -20,7 +20,14 @@ const Header = () => {
   const restaurantId = fetchRestaurantId();
   const [number, setNumber] = useState(cartContextCtx.addItems.length);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [authState, setAuthState] = useState(Date.now());
   const location = useLocation();
+
+  useEffect(() => {
+    const handleAuthChange = () => setAuthState(Date.now());
+    window.addEventListener("authChanged", handleAuthChange);
+    return () => window.removeEventListener("authChanged", handleAuthChange);
+  }, []);
 
   useEffect(() => {
     setNumber(cartContextCtx.addItems.length);
@@ -129,18 +136,18 @@ const Header = () => {
               </div>
             </Link>
             <Link to={"/seller/inbox"} className={classes.right_part}>
-              <div className={classes.right_image} style={{ position: 'relative' }}>
-                <span style={{ fontSize: '20px' }}>💬</span>
+              <div className={classes.right_image} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontSize: '18px', lineHeight: 1 }}>💬</span>
                 {unreadCount > 0 && (
                   <span style={{
                     position: 'absolute',
-                    top: '-5px',
-                    right: '-10px',
-                    background: 'red',
+                    top: '-6px',
+                    right: '-8px',
+                    background: '#fc8019',
                     color: 'white',
                     borderRadius: '50%',
-                    padding: '2px 6px',
-                    fontSize: '10px',
+                    padding: '2px 5px',
+                    fontSize: '9px',
                     fontWeight: 'bold'
                   }}>
                     {unreadCount}

@@ -1,107 +1,156 @@
+/* === Common Region: Card bao bởi border + shadow nhẹ, phân tách rõ ràng === */
+/* === Symmetry: Grid đối xứng, gọn gàng === */
+/* === Continuity: Danh sách sắp xếp grid liên tục dẫn hướng mắt === */
+
 .bottom_container {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  width: 100%;
 }
+
+/* === Objects: Mỗi shop là card độc lập === */
+/* === Common Region: Card có border + shadow riêng biệt === */
 .bottom_box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 10px;
-  width: 280px;
-  transition: transform 0.2s ease-in-out;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .bottom_box:hover {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+
+/* === Disclosure: Chỉ hiện ảnh, tên, giá — chi tiết khi bấm vào === */
 .bottom_box_image {
   width: 100%;
-  height: 11rem;
+  height: 200px;
   position: relative;
+  overflow: hidden;
 }
+
 .bottom_box_image img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
+.bottom_box:hover .bottom_box_image img {
+  transform: scale(1.05);
+}
+
+/* === Similarity: Badge Premium đồng nhất màu cam === */
 .bottom_box_tag {
   position: absolute;
-  left: -5px;
-  top: -5px;
+  left: 0;
+  top: 12px;
   z-index: 5;
-  background-color: #3a3c41;
-  color: white;
-  font-size: 0.9rem;
-  padding: 0.3rem 1rem;
-  border-radius: 2px;
+  background: linear-gradient(135deg, #fc8019, #ff9a44);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 0 20px 20px 0;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(252, 128, 25, 0.35);
 }
+
+/* === Proximity: Tên + mô tả gần nhau === */
 .bottom_box_about {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.5rem;
+  padding: 14px 16px 8px;
+  gap: 4px;
 }
+
 .bottom_box_about_heading {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: #282c3f;
-  font-weight: 600;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .bottom_box_about_para {
-  font-size: 0.75rem;
-  color: #686b78;
+  font-size: 0.8rem;
+  color: #93959f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+/* === Proximity: Star, time, cost nhóm cạnh nhau === */
 .bottom_box_last {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  padding: 0 16px 10px;
+  border-top: 1px solid #f5f5f5;
+  padding-top: 10px;
 }
+
 .bottom_box_last_star {
   font-size: 0.75rem;
-  color: black;
+  color: #ffffff;
   background-color: #48c479;
-  padding: 0.25rem;
-  border-radius: 3px;
-  width: 15px;
-  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
 }
+
 .bottom_box_last_time {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #535665;
+  font-weight: 500;
 }
+
 .bottom_box_last_cost {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #535665;
 }
+
+/* === Similarity: CTA "Quick View" thống nhất màu cam === */
 .quick_view {
-  font-size: 1rem;
-  color: #5d8ed5;
+  font-size: 0.85rem;
+  color: #fc8019;
+  font-weight: 600;
   text-align: center;
-  width: 100%;
+  padding: 10px 0;
+  border-top: 1px solid #f5f5f5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.2s;
 }
+
+.quick_view:hover {
+  background: #fff5ec;
+}
+
+/* === Responsive === */
 @media screen and (max-width: 820px) {
   .bottom_container {
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
   }
 }
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 540px) {
+  .bottom_container {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
   .bottom_box_image {
-    width: 90%;
-  }
-  .bottom_box {
-    padding: 0rem;
-    padding-left: 0.5rem;
-    align-items: center;
-  }
-  .bottom_box_last {
-    width: 80%;
+    height: 180px;
   }
 }

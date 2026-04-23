@@ -11,6 +11,9 @@
   align-items: flex-start;
   color: #93959f;
   gap: 1rem;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 .box h1 {
   margin: 0;
@@ -42,14 +45,19 @@
 }
 .button {
   color: #ffffff;
-  background: #064f06;
-  font-weight: 500;
-  font-size: 0.9rem;
+  background: linear-gradient(135deg, #fc8019, #ff9a44);
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  letter-spacing: -0.3px;
-  padding: 0.5rem 1rem;
+  letter-spacing: 0.5px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(252, 128, 25, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .button:hover {
-  background: #064f66;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(252, 128, 25, 0.4);
 }
