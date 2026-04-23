@@ -5,7 +5,7 @@
 .container {
   max-width: 900px;
   margin: 50px auto;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #282c3f;
   padding: 0 20px;
@@ -13,7 +13,7 @@
 
 .title {
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 8px;
   color: #282c3f;
 }
@@ -83,7 +83,7 @@
 
 .price {
   font-size: 34px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 28px;
   color: #282c3f;
 }

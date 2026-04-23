@@ -10,8 +10,8 @@
   border-radius: 16px;
   box-shadow: 0 2px 15px rgba(0,0,0,0.06);
   overflow: hidden;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   border: 1px solid #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* === Common Region: Sidebar riêng biệt === */
