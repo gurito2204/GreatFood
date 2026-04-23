@@ -7,7 +7,7 @@ import { useNotification } from "../../hook/useNotification";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
 
 const HomeHeader = () => {
-  const [name, setName] = useState("Movie marathon?");
+  const [name, setName] = useState("Xem phim cả đêm?");
   const [count, setCount] = useState(0);
   const [location, setLocation] = useState("");
   const [showSearchLocation, setSearchLocation] = useState({
@@ -32,10 +32,10 @@ const HomeHeader = () => {
   }, [location]);
   useEffect(() => {
     setTimeout(() => {
-      if (count % 4 == 0) setName("Hungry?");
-      if (count % 4 == 1) setName("Movie marathon?");
-      if (count % 4 == 2) setName("Unexpected Guest");
-      if (count % 4 == 3) setName("Late Night at Office?");
+      if (count % 4 == 0) setName("Đói bụng hả?");
+      if (count % 4 == 1) setName("Xem phim cả đêm?");
+      if (count % 4 == 2) setName("Khách đến bất ngờ?");
+      if (count % 4 == 3) setName("Làm việc muộn ở công ty?");
       setCount((prev) => 1 + prev);
     }, 3000);
   }, [count]);
@@ -55,7 +55,7 @@ const HomeHeader = () => {
               }}
               className={classes.login}
             >
-              Login
+              Đăng nhập
             </button>
             <button
               onClick={() => {
@@ -63,7 +63,7 @@ const HomeHeader = () => {
               }}
               className={classes.signup}
             >
-              Sign up
+              Đăng ký
             </button>
           </div>
         </div>
@@ -71,7 +71,7 @@ const HomeHeader = () => {
           <div className={classes.overflowPart}>
             <h2>{name}</h2>
           </div>
-          <p>Order food from favourite restaurants near you.</p>
+          <p>Đặt đồ ăn từ các nhà hàng yêu thích quanh bạn.</p>
         </div>
         <div className={classes.part3}>
           <div className={classes.Input_searchLocations}>
@@ -79,7 +79,7 @@ const HomeHeader = () => {
               type="text"
               name=""
               id=""
-              placeholder="Enter your delivery location"
+              placeholder="Nhập địa chỉ giao hàng của bạn"
               value={location}
               onChange={(e) => {
                 setLocation(e.target.value);
@@ -109,15 +109,15 @@ const HomeHeader = () => {
               console.log("Find Food");
             }}
           >
-            FIND FOOD
+            TÌM ĐỒ ĂN
           </button>
         </div>
         <div className={classes.part4}>
-          <h2>KHU Vá»°C PHá»” BIáº¾N</h2>
+          <h2>KHU VỰC PHỔ BIẾN</h2>
           <p>
-            <span>Thá»§ Äá»©c</span> DÄ© An <span>Thuáº­n An</span> Thá»§ Dáº§u Má»™t
-            <span> BÃ¬nh Tháº¡nh </span> Linh Trung
-            <span> Linh Chiá»ƒu </span> ÄÃ´ng HÃ²a <span> & nhiá»u nÆ¡i khÃ¡c.</span>
+            <span>Thủ Đức</span> Dĩ An <span>Thuận An</span> Thủ Dầu Một
+            <span> Bình Thạnh </span> Linh Trung
+            <span> Linh Chiểu </span> Đông Hòa <span> & nhiều nơi khác.</span>
           </p>
         </div>
       </div>

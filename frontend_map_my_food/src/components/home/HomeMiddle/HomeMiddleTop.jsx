@@ -5,18 +5,18 @@ const HomeMiddleTop = () => {
   const datas = [
     {
       image: "/swiggey/trackMyFood/noMinOrder.png",
-      heading: "Live Order Tracking",
-      para: "Know where your order is at all times, from the restaurant to your doorstep",
+      heading: "Theo Dõi Đơn Hàng",
+      para: "Biết chính xác đơn hàng của bạn đang ở đâu, từ nhà hàng đến tận cửa nhà",
     },
     {
       image: "/swiggey/trackMyFood/liveOrder.png",
-      heading: "No Minimum Order",
-      para: "Order in for yourself or for the group, with no restrictions on order value",
+      heading: "Không Giới Hạn Đơn Tối Thiểu",
+      para: "Đặt món cho bạn hoặc cả nhóm, không giới hạn giá trị đơn hàng",
     },
     {
       image: "/swiggey/trackMyFood/superFastDelivery.png",
-      heading: "Lightning-Fast Delivery",
-      para: "Experience GreatFood's superfast delivery for food delivered fresh & on time",
+      heading: "Giao Hàng Siêu Tốc",
+      para: "Trải nghiệm giao hàng siêu tốc của GreatFood, đảm bảo đồ ăn luôn tươi ngon và đúng giờ",
     },
   ];
   return (

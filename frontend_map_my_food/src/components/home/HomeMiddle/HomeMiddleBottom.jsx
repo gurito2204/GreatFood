@@ -6,10 +6,9 @@ const HomeMiddleBottom = () => {
     <div className={classes.box}>
       <div className={classes.left}>
         <div className={classes.part1}>
-          <h1>Restaurants in your pocket</h1>
+          <h1>Nhà hàng trong túi bạn</h1>
           <p>
-            Order from your favorite restaurants & track on the go, with the
-            all-new GreatFood app.
+            Đặt món từ các nhà hàng yêu thích và theo dõi trên mọi nẻo đường, với ứng dụng GreatFood hoàn toàn mới.
           </p>
         </div>
         <div className={classes.part2}>
