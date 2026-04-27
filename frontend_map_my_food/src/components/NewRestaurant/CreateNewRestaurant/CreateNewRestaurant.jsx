@@ -5,6 +5,7 @@ import UploadImage from "../UploadImage/UploadImage";
 import Curd from "../Crud/Crud";
 import useGetFoodsAndOffers from "../../hook/useGetFoodsAndOffers";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
+import ShopLocationPicker from "../ShopLocationPicker/ShopLocationPicker";
 
 const CreateNewRestaurant = () => {
   const { GetFoodsAndOffersData } = useGetFoodsAndOffers();
@@ -87,14 +88,34 @@ const CreateNewRestaurant = () => {
         </div>
       </div>
       <div className={classes.allquestion}>
+        {/* ShopLocationPicker thay thế 3 trường: address, location, pincode */}
+        <ShopLocationPicker
+          onChange={(locationData) => {
+            setValues((prev) => ({
+              ...prev,
+              address: locationData.address || prev.address,
+              location: locationData.location || prev.location,
+              pincode: locationData.pincode || prev.pincode,
+              ...(locationData.lat != null ? { lat: locationData.lat } : {}),
+              ...(locationData.lng != null ? { lng: locationData.lng } : {}),
+            }));
+          }}
+        />
         {Object.entries(values)
-          // 3. Lọc bỏ các trường không cho người dùng tự nhập
-          .filter(([question]) => question !== "image" && question !== "rating" && question !== "ratingCount")
+          // Lọc bỏ các trường không cho người dùng tự nhập + các trường đã có ShopLocationPicker lo
+          .filter(([question]) =>
+            question !== "image" &&
+            question !== "rating" &&
+            question !== "ratingCount" &&
+            question !== "address" &&
+            question !== "location" &&
+            question !== "pincode"
+          )
           .map(([question, value]) => (
             <Question
               key={question}
               value={value}
-              question={labelMapping[question] || question} // Ép hiển thị tiếng Việt
+              question={labelMapping[question] || question}
               handleChange={handleChange(question)}
             />
         ))}

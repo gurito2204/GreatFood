@@ -30,8 +30,13 @@ const AvailableRestaurantsContainer = ({ datas }) => {
             </div>
           </div>
           <div className={classes.bottom_box_last}>
-            <div className={classes.bottom_box_last_star}>{data.last.star}</div>
-            <div className={classes.bottom_box_last_time}>{data.last.time}</div>
+            <div className={classes.bottom_box_last_star}>
+              <span>★</span> {data.last.star}
+            </div>
+            <div className={classes.bottom_box_last_time}>• {data.last.time}</div>
+            {data.distanceKm != null && (
+              <div className={classes.bottom_box_last_distance}>📍 {data.distanceKm} km</div>
+            )}
             <div className={classes.bottom_box_last_cost}>{data.last.cost}</div>
           </div>
           <div className={classes.quick_view}>QUICK VIEW</div>

@@ -67,6 +67,14 @@ const updatePincode = (location) => {
     return response;
   };
 
+  const updateGPSCoords = (lat, lng) => {
+    localStorage.setItem("gpsCoords", JSON.stringify({ lat, lng }));
+  };
+  const fetchGPSCoords = () => {
+    const data = localStorage.getItem("gpsCoords");
+    return data ? JSON.parse(data) : null;
+  };
+
   return {
     fetchLocation,
     updateLocation,
@@ -76,5 +84,7 @@ const updatePincode = (location) => {
     removePersonalDetails,
     updateRestaurantId,
     fetchRestaurantId,
+    updateGPSCoords,
+    fetchGPSCoords,
   };
 };

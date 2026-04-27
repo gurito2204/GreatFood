@@ -33,6 +33,16 @@
   cursor: pointer;
   border-bottom: 1px solid #fc8019;
 }
+.header_right_text_disabled {
+  font-size: 1rem;
+  color: #cbd5e1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.header_right_text_disabled:hover {
+  color: #94a3b8;
+}
 @media screen and (max-width: 1000px) {
   .header_right {
     gap: 1rem;

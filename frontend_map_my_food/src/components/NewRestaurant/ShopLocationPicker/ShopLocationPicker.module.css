@@ -1,0 +1,236 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sectionLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Tab Bar ── */
+.tabBar {
+  display: flex;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tabBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: white;
+  color: #94a3b8;
+  transition: all 0.18s;
+}
+.tabBtn:hover:not(.tabActive) {
+  background: #fff7f0;
+  color: #f97316;
+}
+.tabActive {
+  background: #f97316;
+  color: white;
+}
+
+/* ── GPS Tab ── */
+.gpsTab {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gpsBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border-radius: 10px;
+  border: 2px dashed #e2e8f0;
+  background: #f8fafc;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #475569;
+  transition: all 0.18s;
+}
+.gpsBtn:hover {
+  border-color: #f97316;
+  background: #fff7f0;
+  color: #ea580c;
+}
+.gpsLoading {
+  border-color: #f97316;
+  background: #fff7f0;
+  color: #ea580c;
+  animation: pulse 1.2s infinite;
+}
+.gpsSuccess {
+  border-color: #10b981;
+  border-style: solid;
+  background: #ecfdf5;
+  color: #059669;
+}
+.gpsResult {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #166534;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gpsError {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #991b1b;
+}
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #f97316;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Manual Tab ── */
+.manualTab {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 3-column cascade */
+.colWrapper {
+  display: flex;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 200px;
+}
+.col {
+  flex: 1;
+  overflow-y: auto;
+  border-right: 1px solid #e2e8f0;
+  scroll-behavior: smooth;
+}
+.col:last-child {
+  border-right: none;
+}
+.colHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 6px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.colItem {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.12s;
+  border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.colItem:hover {
+  background: #fff7f0;
+  color: #ea580c;
+}
+.colSelected {
+  background: #fff7f0;
+  color: #ea580c;
+  font-weight: 600;
+}
+.colDisabled {
+  padding: 10px 12px;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+/* ── Fields ── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.fieldLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+.fieldInput {
+  padding: 10px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px;
+  font-size: 0.85rem;
+  color: #1e293b;
+  outline: none;
+  transition: border 0.15s;
+  width: 100%;
+}
+.fieldInput:focus {
+  border-color: #f97316;
+}
+
+/* ── Preview ── */
+.preview {
+  background: #fff7f0;
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.previewLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #9a3412;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.previewVal {
+  font-size: 0.85rem;
+  color: #1e293b;
+  font-weight: 500;
+}
+.previewPincode {
+  font-size: 0.75rem;
+  color: #78350f;
+  margin-top: 2px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
