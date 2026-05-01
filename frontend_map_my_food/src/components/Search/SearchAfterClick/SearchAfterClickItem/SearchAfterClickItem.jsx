@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import useItemPriceCart from "../../../../hook/useItemPriceCart";
 import { Link } from "react-router-dom";
 import classes from "./SearchAfterClickItem.module.css";
 import SvgArrow from "../../../ui/Svg/SvgArrow";
@@ -6,8 +7,19 @@ import CartContext from "../../../store/cart/Cart-context";
 
 const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
   const cartContextCtx = useContext(CartContext);
-  const IncreseItem = (itemId, RestaurantId) => {
-    cartContextCtx.onAddItems(RestaurantId, itemId);
+  const { ItemPriceCartData } = useItemPriceCart();
+  const [loadingItems, setLoadingItems] = useState({});
+
+  const IncreseItem = async (itemId, RestaurantId) => {
+    setLoadingItems((prev) => ({ ...prev, [itemId]: true }));
+    try {
+      const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
+      if (dataItemPriceCart && dataItemPriceCart[itemId]) {
+        cartContextCtx.onAddItems(RestaurantId, itemId, dataItemPriceCart[itemId]);
+      }
+    } finally {
+      setLoadingItems((prev) => ({ ...prev, [itemId]: false }));
+    }
   };
   const DecreaseItem = (itemId, RestaurantId) => {
     cartContextCtx.onRemoveItem(RestaurantId, itemId);
@@ -109,7 +121,7 @@ const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
                             </div>
                           </div>
                         ) : (
-                          <div
+                          <button
                             className={classes.addButton}
                             onClick={() => {
                               IncreseItem(
@@ -117,9 +129,10 @@ const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
                                 each_item.RestaurantId
                               );
                             }}
+                            disabled={loadingItems[each_item.itemId]}
                           >
-                            ADD
-                          </div>
+                            {loadingItems[each_item.itemId] ? "..." : "ADD"}
+                          </button>
                         )}
                       </div>
                     </div>

@@ -1,13 +1,25 @@
 import React, { useState, useContext } from "react";
 import classes from "./PlaceOrder.module.css";
 import CartContext from "../../store/cart/Cart-context";
+import useItemPriceCart from "../../hook/useItemPriceCart";
 
 const PlaceOrder = () => {
   const cartContextCtx = useContext(CartContext);
   const cartItems = cartContextCtx.addItems;
   const marginTop = 4 + cartItems.length * 3.5 + "rem";
-  const IncreseItem = (itemId, RestaurantId) => {
-    cartContextCtx.onAddItems(RestaurantId, itemId);
+  const { ItemPriceCartData } = useItemPriceCart();
+  const [loadingItems, setLoadingItems] = useState({});
+
+  const IncreseItem = async (itemId, RestaurantId) => {
+    setLoadingItems((prev) => ({ ...prev, [itemId]: true }));
+    try {
+      const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
+      if (dataItemPriceCart && dataItemPriceCart[itemId]) {
+        cartContextCtx.onAddItems(RestaurantId, itemId, dataItemPriceCart[itemId]);
+      }
+    } finally {
+      setLoadingItems((prev) => ({ ...prev, [itemId]: false }));
+    }
   };
   const DecreaseItem = (itemId, RestaurantId) => {
     cartContextCtx.onRemoveItem(RestaurantId, itemId);
@@ -68,8 +80,11 @@ const PlaceOrder = () => {
                   <div
                     className={classes.item_quantity_more}
                     onClick={() => {
-                      IncreseItem(item.itemId, cartContextCtx.RestaurantId);
+                      if (!loadingItems[item.itemId]) {
+                        IncreseItem(item.itemId, cartContextCtx.RestaurantId);
+                      }
                     }}
+                    style={{ opacity: loadingItems[item.itemId] ? 0.5 : 1, cursor: loadingItems[item.itemId] ? 'wait' : 'pointer' }}
                   >
                     +
                   </div>

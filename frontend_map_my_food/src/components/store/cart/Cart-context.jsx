@@ -32,16 +32,11 @@ export const CartContextProvider = (props) => {
   const [deliverHere, setDeliverHere] = useState(null);
   const { NotificationHandler } = useNotification();
 
-  const AddItemsHandler = async (RestaurantId, itemId) => {
-    const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
-    if (!dataItemPriceCart || !dataItemPriceCart[itemId]) {
-      NotificationHandler("Không thể lấy thông tin món ăn. Vui lòng thử lại.", "Error");
-      return;
-    }
+  const AddItemsHandler = (RestaurantId, itemId, verifiedData) => {
     setRestaurantId(RestaurantId);
-    setHotal(dataItemPriceCart[itemId]["hotal"]);
-    setPlace(dataItemPriceCart[itemId]["place"] || "Hồ Chí Minh");
-    const newItemPrice = +dataItemPriceCart[itemId]["price"];
+    setHotal(verifiedData.hotal);
+    setPlace(verifiedData.place || "Hồ Chí Minh");
+    const newItemPrice = +verifiedData.price;
     const updatedTotalAmount = totalAmount + newItemPrice;
     const existingCartItemIndex = addItems.findIndex(
       (item) => item.itemId === itemId
@@ -59,7 +54,7 @@ export const CartContextProvider = (props) => {
       updatedItems = {
         itemId: itemId,
         quantity: 1,
-        items: dataItemPriceCart[itemId],
+        items: verifiedData,
         amount: newItemPrice,
       };
     }
@@ -84,18 +79,14 @@ export const CartContextProvider = (props) => {
     setGST(updatedTotalAmount * GST_RATE);
   };
 
-  const onRemoveHandler = async (RestaurantId, itemId) => {
-    const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
-    if (!dataItemPriceCart || !dataItemPriceCart[itemId]) {
-      NotificationHandler("Không thể lấy thông tin món ăn. Vui lòng thử lại.", "Error");
-      return;
-    }
-    const deleteItemPrice = +dataItemPriceCart[itemId]["price"];
-    const updatedTotalAmount = totalAmount - deleteItemPrice;
+  const onRemoveHandler = (RestaurantId, itemId) => {
     const existingCartItemIndex = addItems.findIndex(
       (item) => item.itemId === itemId
     );
+    if (existingCartItemIndex === -1) return;
     const existingItem = addItems[existingCartItemIndex];
+    const deleteItemPrice = +existingItem.items.price;
+    const updatedTotalAmount = totalAmount - deleteItemPrice;
     let updatedItems;
     if (existingItem.quantity == 1) {
       updatedItems = addItems.filter((item) => item.itemId !== itemId);

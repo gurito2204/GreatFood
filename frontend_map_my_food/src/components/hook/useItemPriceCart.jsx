@@ -1,15 +1,8 @@
-
+import { api } from "../../services/api";
 
 const useItemPriceCart = () => {
   const ItemPriceCartData = async (RestaurantId, itemId) => {
-    const data = await fetch(
-      `${
-        import.meta.env.VITE_REACT_BACKEND_URL
-      }/ItemPriceCart/${RestaurantId}/${itemId}`
-    )
-      .then((response) => {
-        return response.json();
-      })
+    const data = await api.get(`/ItemPriceCart/${RestaurantId}/${itemId}`)
       .catch((err) => { console.error(err); return null; });
     return data;
   };

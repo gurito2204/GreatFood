@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { api } from "../../services/api";
 
 /**
  * useGPSLocation – SIMPLIFIED
@@ -37,11 +38,7 @@ const useGPSLocation = () => {
         setCoords({ lat, lng });
 
         try {
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=vi`,
-            { headers: { "Accept-Language": "vi" } }
-          );
-          const json = await res.json();
+          const json = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
           const address = json.address || {};
 
           // Chỉ lấy cấp phường/xã + tỉnh/thành → bỏ cấp quận/thành phố ở giữa

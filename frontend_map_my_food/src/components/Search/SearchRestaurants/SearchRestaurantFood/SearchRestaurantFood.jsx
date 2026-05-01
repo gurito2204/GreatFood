@@ -7,18 +7,29 @@ import ChatModal from "../../../ChatModal/ChatModal";
 import TasteRatingModal from "../../../TasteRatingModal/TasteRatingModal";
 
 import { useLocationLocalStorage } from "../../../hook/LocationLocalStorage";
+import useItemPriceCart from "../../../hook/useItemPriceCart";
 
 const SearchRestaurantFood = ({ items, veg, data }) => {
   const cartContextCtx = useContext(CartContext);
   const { fetchRestaurantId } = useLocationLocalStorage();
   const myRestaurantId = fetchRestaurantId();
+  const { ItemPriceCartData } = useItemPriceCart();
+  const [loadingItems, setLoadingItems] = useState({});
   
   // State for Modals
   const [activeTasteItem, setActiveTasteItem] = useState(null);
   const [activeChatItem, setActiveChatItem] = useState(null);
 
-  const IncreseItem = (itemId, RestaurantId) => {
-    cartContextCtx.onAddItems(RestaurantId, itemId);
+  const IncreseItem = async (itemId, RestaurantId) => {
+    setLoadingItems((prev) => ({ ...prev, [itemId]: true }));
+    try {
+      const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
+      if (dataItemPriceCart && dataItemPriceCart[itemId]) {
+        cartContextCtx.onAddItems(RestaurantId, itemId, dataItemPriceCart[itemId]);
+      }
+    } finally {
+      setLoadingItems((prev) => ({ ...prev, [itemId]: false }));
+    }
   };
   const DecreaseItem = (itemId, RestaurantId) => {
     cartContextCtx.onRemoveItem(RestaurantId, itemId);
@@ -144,14 +155,15 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
                     </div>
                   </div>
                 ) : (
-                  <div
+                  <button
                     className={classes.addButton}
                     onClick={() => {
                       IncreseItem(each_item.itemId, data.RestaurantId);
                     }}
+                    disabled={loadingItems[each_item.itemId]}
                   >
-                    ADD
-                  </div>
+                    {loadingItems[each_item.itemId] ? "..." : "ADD"}
+                  </button>
                 )}
               </div>
             </div>

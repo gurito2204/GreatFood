@@ -1,57 +1,48 @@
+import { useLocationState } from "./useLocationState";
+import { VietnamCity } from "../TemporaryData/VietnamCity";
 
 export const useLocationLocalStorage = () => {
+  const { mode, coords, pincode, displayAddress, updateGPSLocation, updateManualLocation } = useLocationState();
+
   const fetchLocation = () => {
-    const storedData = localStorage.getItem("recentLocationSearch");
-    const location = JSON.parse(storedData);
-    return location;
+    return displayAddress || pincode || null;
   };
-  const fetchPincode = () => {
-    const storedData = localStorage.getItem("pincode");
-    const pincode = JSON.parse(storedData);
-    return pincode;
-  };
+
   const updateLocation = (newLocation) => {
-    let currentLocation = [];
-    const pastLocation = localStorage.getItem("recentLocationSearch");
-    if (pastLocation) currentLocation = JSON.parse(pastLocation);
-    const isLocationExists = currentLocation.includes(newLocation);
-    if (isLocationExists) {
-      const index = currentLocation.indexOf(newLocation);
-      currentLocation.splice(index, 1);
-    }
-    currentLocation.unshift(newLocation);
-    localStorage.setItem(
-      "recentLocationSearch",
-      JSON.stringify(currentLocation)
-    );
-    updatePincode(newLocation);
-  };
-const updatePincode = (location) => {
-    let pincode = "";
-    // Lấy tên địa điểm (ví dụ: "Ký túc xá Khu A ĐHQG")
-    const nameToMatch = location.split(",")[0].trim(); 
-    
-    // Quét trong data Việt Nam thay vì Ấn Độ
+    let newPincode = "";
+    const nameToMatch = newLocation.split(",")[0].trim(); 
     for (let i = 0; i < VietnamCity.length; i++) {
       if (VietnamCity[i].name === nameToMatch) {
-        pincode = VietnamCity[i].pincode;
+        newPincode = VietnamCity[i].pincode;
         break;
       }
     }
-    localStorage.setItem("pincode", JSON.stringify(pincode));
+    updateManualLocation(newPincode, newLocation);
+  };
+
+  const fetchPincode = () => {
+    return pincode;
   };
 
   const updatePersonalDetails = (data) => {
     localStorage.setItem("PersonalDetails", JSON.stringify(data));
-    if (data.data.ResturentId) updateRestaurantId(data.data.ResturentId);
-    else localStorage.removeItem("restaurantId");
+    if (data && data.data && data.data.ResturentId) {
+      updateRestaurantId(data.data.ResturentId);
+    } else {
+      localStorage.removeItem("restaurantId");
+    }
     window.dispatchEvent(new Event("authChanged"));
   };
+
   const fetchPersonalDetails = () => {
-    const Data = localStorage.getItem("PersonalDetails");
-    const response = JSON.parse(Data);
-    return response;
+    try {
+      const Data = localStorage.getItem("PersonalDetails");
+      return Data ? JSON.parse(Data) : null;
+    } catch {
+      return null;
+    }
   };
+
   const removePersonalDetails = () => {
     localStorage.removeItem("PersonalDetails");
     localStorage.removeItem("restaurantId");
@@ -61,18 +52,22 @@ const updatePincode = (location) => {
   const updateRestaurantId = (data) => {
     localStorage.setItem("restaurantId", JSON.stringify(data));
   };
+
   const fetchRestaurantId = () => {
-    const Data = localStorage.getItem("restaurantId");
-    const response = JSON.parse(Data);
-    return response;
+    try {
+      const Data = localStorage.getItem("restaurantId");
+      return Data ? JSON.parse(Data) : null;
+    } catch {
+      return null;
+    }
   };
 
   const updateGPSCoords = (lat, lng) => {
-    localStorage.setItem("gpsCoords", JSON.stringify({ lat, lng }));
+    updateGPSLocation(lat, lng);
   };
+
   const fetchGPSCoords = () => {
-    const data = localStorage.getItem("gpsCoords");
-    return data ? JSON.parse(data) : null;
+    return coords;
   };
 
   return {

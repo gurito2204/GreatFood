@@ -1,4 +1,5 @@
 import { useLocationLocalStorage } from "./LocationLocalStorage";
+import { api } from "../../services/api";
 
 const useAvailableRestaurants = () => {
   const { fetchPincode, fetchGPSCoords } = useLocationLocalStorage();
@@ -9,20 +10,14 @@ const useAvailableRestaurants = () => {
     // Nếu có GPS coords → gọi /nearbyrestaurants (không cần pincode)
     if (gpsCoords) {
       const { lat, lng } = gpsCoords;
-      const data = await fetch(
-        `${import.meta.env.VITE_REACT_BACKEND_URL}/nearbyrestaurants?lat=${lat}&lng=${lng}`
-      )
-        .then((res) => res.json())
+      const data = await api.get(`/nearbyrestaurants?lat=${lat}&lng=${lng}`)
         .catch((err) => { console.error(err); return []; });
       return data;
     }
 
     // Fallback: dùng pincode như cũ
     const pincode = fetchPincode();
-    const data = await fetch(
-      `${import.meta.env.VITE_REACT_BACKEND_URL}/availablerestaurants/${pincode}`
-    )
-      .then((res) => res.json())
+    const data = await api.get(`/availablerestaurants/${pincode}`)
       .catch((err) => { console.error(err); return []; });
     return data;
   };

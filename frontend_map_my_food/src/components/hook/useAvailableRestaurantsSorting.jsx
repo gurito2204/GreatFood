@@ -1,5 +1,6 @@
 
 import { useLocationLocalStorage } from "./LocationLocalStorage";
+import { api } from "../../services/api";
 
 const useAvailableRestaurantsSorting = () => {
   const { fetchPincode, fetchGPSCoords } = useLocationLocalStorage();

@@ -1,9 +1,9 @@
+import { api } from "../../services/api";
 
 
 const useSmallSearch = () => {
   const smallSearch = async (search) => {
-    const data = await fetch(
-      `${import.meta.env.VITE_REACT_BACKEND_URL}/smallSearch/${search}`
+    const data = await api.get(/smallSearch/${search}`
     )
       .then((response) => {
         return response.json();
@@ -13,7 +13,7 @@ const useSmallSearch = () => {
           Object.keys(obj).some((key) =>
             key.trim().toLowerCase().includes(search.trim().toLowerCase())
           )
-        );
+        );).catch(err => { console.error(err); return null; });
         return newSearchItemData;
       });
     return data;

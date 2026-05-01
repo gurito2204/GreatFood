@@ -35,6 +35,7 @@ const getAnalyticsRoute = require("./Analytics/getAnalyticsRoute");
 const getInboxRoute = require("./Chat/getInboxRoute");
 const markReadRoute = require("./Chat/markReadRoute");
 const getNearbyRestaurantsRoute = require("./NearbyRestaurants/getNearbyRestaurantsRoute");
+const getReverseGeocodeRoute = require("./Location/getReverseGeocodeRoute");
 
 module.exports = routes = [
   getPaymentOffersRoute,
@@ -73,4 +74,5 @@ module.exports = routes = [
   getInboxRoute,
   markReadRoute,
   getNearbyRestaurantsRoute,
+  getReverseGeocodeRoute,
 ];
