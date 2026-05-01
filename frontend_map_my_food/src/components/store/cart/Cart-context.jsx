@@ -34,6 +34,10 @@ export const CartContextProvider = (props) => {
 
   const AddItemsHandler = async (RestaurantId, itemId) => {
     const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
+    if (!dataItemPriceCart || !dataItemPriceCart[itemId]) {
+      NotificationHandler("Không thể lấy thông tin món ăn. Vui lòng thử lại.", "Error");
+      return;
+    }
     setRestaurantId(RestaurantId);
     setHotal(dataItemPriceCart[itemId]["hotal"]);
     setPlace(dataItemPriceCart[itemId]["place"] || "Hồ Chí Minh");
@@ -82,6 +86,10 @@ export const CartContextProvider = (props) => {
 
   const onRemoveHandler = async (RestaurantId, itemId) => {
     const dataItemPriceCart = await ItemPriceCartData(RestaurantId, itemId);
+    if (!dataItemPriceCart || !dataItemPriceCart[itemId]) {
+      NotificationHandler("Không thể lấy thông tin món ăn. Vui lòng thử lại.", "Error");
+      return;
+    }
     const deleteItemPrice = +dataItemPriceCart[itemId]["price"];
     const updatedTotalAmount = totalAmount - deleteItemPrice;
     const existingCartItemIndex = addItems.findIndex(

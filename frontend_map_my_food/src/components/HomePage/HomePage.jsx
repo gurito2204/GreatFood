@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Home from "../home/Home";
 import Restaurants from "../restaurants/Restaurants";
 import LocationContext from "../store/location/Location-context";
