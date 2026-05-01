@@ -17,7 +17,7 @@ function App() {
   const [islogIn, setIslogIn] = useState(fetchPersonalDetails());
   useEffect(() => {
     setIsLocation(fetchLocation());
-    setIslogIn(true);
+    setIslogIn(fetchPersonalDetails());
   }, [locationContextCtx.localStorageLocation]);
 
   return (

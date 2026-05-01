@@ -16,7 +16,7 @@ const Steps = ({ setIsShow }) => {
         >
           <h1>Create New Restaurant</h1>
           <div className={classes.location}>
-            <img src="/swiggey/Logo/logo_2022.png" alt="" />
+            <img src="/greatfood/Logo/logo_2022.png" alt="" />
           </div>
         </div>
         <div

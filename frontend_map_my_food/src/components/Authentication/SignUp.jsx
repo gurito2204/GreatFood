@@ -68,7 +68,7 @@ const SignUP = () => {
             <div className={classes.underline}> </div>
           </div>
           <div className={classes.part1_right}>
-            <img src="/swiggey/Auth/login.webp" alt="" />
+            <img src="/greatfood/Auth/login.webp" alt="" />
           </div>
         </div>
         <div className={classes.form}>

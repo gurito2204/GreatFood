@@ -1,4 +1,4 @@
-import PaymentOffersData from "../TemporaryData/PaymentOffers.json";
+
 
 const usePaymentOffers = () => {
   const data = async (pincode) => {
@@ -8,9 +8,7 @@ const usePaymentOffers = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return PaymentOffersData;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { data };

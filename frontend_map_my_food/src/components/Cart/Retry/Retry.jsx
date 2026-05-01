@@ -5,7 +5,7 @@ const Retry = () => {
   return (
     <div className={classes.container}>
       <div className={classes.side_image}>
-        <img src="/swiggey/Cart/1.webp" alt="" />
+        <img src="/greatfood/Cart/1.webp" alt="" />
       </div>
       <div className={classes.box}>
         <h1>

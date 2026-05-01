@@ -17,7 +17,7 @@ const CartNotification = () => {
           </div>
           <Link to={"/checkout"} className={classes.right}>
             VIEW CART
-            <img src="/swiggey/Cart/logo.webp" alt="" />
+            <img src="/greatfood/Cart/logo.webp" alt="" />
           </Link>
         </div>
       ) : (

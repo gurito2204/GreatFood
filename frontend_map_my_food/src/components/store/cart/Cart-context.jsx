@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import useItemPriceCart from "../../hook/useItemPriceCart";
 import { useNotification } from "../../hook/useNotification";
+import { DELIVERY_BASE_COST, DELIVERY_DISCOUNT_RATE, GST_RATE } from "../../../constants/pricing";
 
 const CartContext = React.createContext({
   addItems: [],
@@ -26,7 +27,7 @@ export const CartContextProvider = (props) => {
   const [GST, setGST] = useState(0);
   const [hotal, setHotal] = useState("");
   const [place, setPlace] = useState("");
-  const [image, setImage] = useState("/swiggey/AvailableRestaurants/5.webp");
+  const [image, setImage] = useState("/greatfood/AvailableRestaurants/5.webp");
   const [restaurantId, setRestaurantId] = useState(null);
   const [deliverHere, setDeliverHere] = useState(null);
   const { NotificationHandler } = useNotification();
@@ -61,8 +62,8 @@ export const CartContextProvider = (props) => {
     if (restaurantId != null && RestaurantId != restaurantId) {
       setAddItems([updatedItems]);
       setTotalAmount(newItemPrice);
-      setDeliveryCost(48 - newItemPrice * 0.01);
-      setGST(newItemPrice * 0.02);
+      setDeliveryCost(DELIVERY_BASE_COST - newItemPrice * DELIVERY_DISCOUNT_RATE);
+      setGST(newItemPrice * GST_RATE);
       NotificationHandler(
         "Your cart contains items from other restaurant.Your cart had reset for adding items from this restaurant?",
         "Info"
@@ -75,8 +76,8 @@ export const CartContextProvider = (props) => {
     else updatedItemsAll.push(updatedItems);
     setAddItems(updatedItemsAll);
     setTotalAmount(updatedTotalAmount);
-    setDeliveryCost(48 - updatedTotalAmount * 0.01);
-    setGST(updatedTotalAmount * 0.02);
+    setDeliveryCost(DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE);
+    setGST(updatedTotalAmount * GST_RATE);
   };
 
   const onRemoveHandler = async (RestaurantId, itemId) => {
@@ -101,8 +102,8 @@ export const CartContextProvider = (props) => {
     }
     setAddItems(updatedItems);
     setTotalAmount(updatedTotalAmount);
-    setDeliveryCost(48 - updatedTotalAmount * 0.01);
-    setGST(updatedTotalAmount * 0.02);
+    setDeliveryCost(DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE);
+    setGST(updatedTotalAmount * GST_RATE);
   };
 
   const onDeliverHereHandler = (address) => {

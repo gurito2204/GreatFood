@@ -1,4 +1,4 @@
-import VietnamCity from "../TemporaryData/VietnamCity.json";
+
 
 const useVietnamCitys = (searchWord) => {
   // Nếu chưa gõ gì thì trả về mảng rỗng

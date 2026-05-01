@@ -1,4 +1,4 @@
-import categorywisefoodData from "../TemporaryData/Search/Big.json";
+
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 
 const useCategoryWiseFood = () => {
@@ -11,9 +11,7 @@ const useCategoryWiseFood = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return categorywisefoodData;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { CategoryWiseFoodData };

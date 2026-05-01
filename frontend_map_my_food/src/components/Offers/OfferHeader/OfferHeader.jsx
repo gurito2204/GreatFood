@@ -15,7 +15,7 @@ const OfferHeader = () => {
           <p>Explore top deals and offers exclusively for you!</p>
         </div>
         <div className={classes.right}>
-          <img src="/swiggey/Logo/offer.webp" alt="" />
+          <img src="/greatfood/Logo/offer.webp" alt="" />
         </div>
       </div>
       <div className={classes.Link_to_pages}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import classes from "../Restarurant.module.css";
+import classes from "../Restaurant.module.css";
 import Question from "../Question/Question";
 import UploadImage from "../UploadImage/UploadImage";
 import Curd from "../Crud/Crud";

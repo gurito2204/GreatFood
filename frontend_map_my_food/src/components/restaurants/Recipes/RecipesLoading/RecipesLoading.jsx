@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import classes from "./RecipesLoading.module.css";
-import RecipesData from "../../../TemporaryData/RecipesData.json";
+const skeletonData = [
+  {
+    "category": { "1": {}, "2": {}, "3": {}, "4": {} }
+  }
+];
 
 const RecipesLoading = () => {
-  const [datas, setData] = useState(RecipesData);
+  const [datas, setData] = useState(skeletonData);
   return (
     <div className={classes.container}>
       {datas.map((item, index) => {

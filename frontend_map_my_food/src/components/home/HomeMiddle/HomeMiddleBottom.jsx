@@ -12,16 +12,16 @@ const HomeMiddleBottom = () => {
           </p>
         </div>
         <div className={classes.part2}>
-          <img src="/swiggey/Logo/googlePlay.png" alt="googlePlay" />
-          <img src="/swiggey/Logo/appStore.png" alt="appStore" />
+          <img src="/greatfood/Logo/googlePlay.png" alt="googlePlay" />
+          <img src="/greatfood/Logo/appStore.png" alt="appStore" />
         </div>
       </div>
       <div className={classes.right}>
         <div className={classes.rightfirst}>
-          <img src="/swiggey/PhoneView/lower.png" alt="lower" />
+          <img src="/greatfood/PhoneView/lower.png" alt="lower" />
         </div>
         <div className={classes.rightsecond}>
-          <img src="/swiggey/PhoneView/upper.webp" alt="upper" />
+          <img src="/greatfood/PhoneView/upper.webp" alt="upper" />
         </div>
       </div>
     </div>

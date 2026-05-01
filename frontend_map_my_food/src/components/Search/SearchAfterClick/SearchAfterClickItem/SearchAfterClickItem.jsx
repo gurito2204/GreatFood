@@ -32,7 +32,7 @@ const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
                         {each_item.Restaurant}
                       </h1>
                       <div className={classes.item_part1_star}>
-                        <img src="/swiggey/Search/logo/rating.jpg" alt="" />
+                        <img src="/greatfood/Search/logo/rating.jpg" alt="" />
                         {each_item.star}
                         {"   ...   "}
                         {each_item.Dtime}
@@ -48,10 +48,10 @@ const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
                       <div className={classes.item_part3_left}>
                         <div className={classes.item_part3_name}>
                           {each_item.veg == "true" && (
-                            <img src="/swiggey/Search/logo/veg.png" alt="" />
+                            <img src="/greatfood/Search/logo/veg.png" alt="" />
                           )}
                           {each_item.veg == "false" && (
-                            <img src="/swiggey/Search/logo/nonveg.jpg" alt="" />
+                            <img src="/greatfood/Search/logo/nonveg.jpg" alt="" />
                           )}
                           {each_item.name}
                         </div>

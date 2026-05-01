@@ -17,7 +17,7 @@ const Orders = () => {
     <div className={classes.container}>
       {order == null ? (
         <>
-          <img src="/swiggey/User/empty-orders.png" alt="" />
+          <img src="/greatfood/User/empty-orders.png" alt="" />
           <h1>No Orders</h1>
           <p>You haven't placed any order yet.</p>
         </>

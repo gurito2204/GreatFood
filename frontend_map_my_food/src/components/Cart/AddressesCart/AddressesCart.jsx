@@ -61,7 +61,7 @@ const AddressesCart = () => {
         ))}
         <div className={classes.boxTextarea}>
           <div className={classes.box_left}>
-            <img src="/swiggey/location.png" alt="" />
+            <img src="/greatfood/location.png" alt="" />
           </div>
           <div className={classes.box_right}>
             <h1>Add New Address</h1>

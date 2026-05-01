@@ -1,4 +1,4 @@
-import DataItemPriceCart from "../TemporaryData/ItemPrice.json";
+
 
 const useItemPriceCart = () => {
   const ItemPriceCartData = async (RestaurantId, itemId) => {
@@ -10,9 +10,7 @@ const useItemPriceCart = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return DataItemPriceCart;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { ItemPriceCartData };

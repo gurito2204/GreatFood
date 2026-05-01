@@ -1,4 +1,4 @@
-import restaurantData from "../TemporaryData/Search/SearchRestaurants.json";
+
 
 const useRestaurant = () => {
   const data = async (id) => {
@@ -8,9 +8,7 @@ const useRestaurant = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return restaurantData;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { data };

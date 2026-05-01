@@ -1,4 +1,3 @@
-import AvailablerestaurantsData from "../TemporaryData/AvailableRestaurantsData.json";
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 
 const useAvailableRestaurants = () => {
@@ -14,7 +13,7 @@ const useAvailableRestaurants = () => {
         `${import.meta.env.VITE_REACT_BACKEND_URL}/nearbyrestaurants?lat=${lat}&lng=${lng}`
       )
         .then((res) => res.json())
-        .catch(() => AvailablerestaurantsData);
+        .catch((err) => { console.error(err); return []; });
       return data;
     }
 
@@ -24,7 +23,7 @@ const useAvailableRestaurants = () => {
       `${import.meta.env.VITE_REACT_BACKEND_URL}/availablerestaurants/${pincode}`
     )
       .then((res) => res.json())
-      .catch(() => AvailablerestaurantsData);
+      .catch((err) => { console.error(err); return []; });
     return data;
   };
 

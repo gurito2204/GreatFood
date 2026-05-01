@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Favourites = () => {
   return (
     <div className={classes.container}>
-      <img src="/swiggey/User/empty404.webp" alt="" />
+      <img src="/greatfood/User/empty404.webp" alt="" />
       <h1>Page not found</h1>
       <p>
         Uh-oh! Looks like the page you are trying to access, doesn't exist.

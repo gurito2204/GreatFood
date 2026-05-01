@@ -8,7 +8,7 @@ const searchItemDataTemp = [
     _id: "6474ed7eb89b4fb6785ca2e0",
     "": [
       {
-        image: "/swiggey/Search/Small/6.png",
+        image: "/greatfood/Search/Small/6.png",
         name: "See all result for ",
       },
     ],

@@ -26,30 +26,30 @@ const Footer = () => {
           })}
         </div>
         <div className={classes.part4}>
-          <img src="/swiggey/Logo/googlePlay.png" alt="googlePlay" />
-          <img src="/swiggey/Logo/appStore.png" alt="appStore" />
+          <img src="/greatfood/Logo/googlePlay.png" alt="googlePlay" />
+          <img src="/greatfood/Logo/appStore.png" alt="appStore" />
         </div>
       </div>
       <div className={classes.bottom}>
        
         <div className={classes.bottom_last}>
           <div className={classes.part1_img}>
-            <img src="/swiggey/Logo/logo_2022.png" alt="logo" />
+            <img src="/greatfood/Logo/logo_2022.png" alt="logo" />
             <h2>GreatFood</h2>
           </div>
           <div className={classes.part2}>Â© 2023 GreatFood</div>
           <div className={classes.part3}>
             <div>
-              <img src="/swiggey/Logo/Footer/facebook.png" alt="" />
+              <img src="/greatfood/Logo/Footer/facebook.png" alt="" />
             </div>
             <div>
-              <img src="/swiggey/Logo/Footer/pinterest.png" alt="" />
+              <img src="/greatfood/Logo/Footer/pinterest.png" alt="" />
             </div>
             <div>
-              <img src="/swiggey/Logo/Footer/instagram.png" alt="" />
+              <img src="/greatfood/Logo/Footer/instagram.png" alt="" />
             </div>
             <div>
-              <img src="/swiggey/Logo/Footer/twitter.png" alt="" />
+              <img src="/greatfood/Logo/Footer/twitter.png" alt="" />
             </div>
           </div>
         </div>

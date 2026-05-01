@@ -58,7 +58,7 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
             <div className={classes.item_part1}>
               <h1 className={classes.item_part1_hotal}>{data.Restaurant}</h1>
               <div className={classes.item_part1_star}>
-                <img src="/swiggey/Search/logo/rating.jpg" alt="" />
+                <img src="/greatfood/Search/logo/rating.jpg" alt="" />
                 {each_item.star}
                 {"   ...   "}
                 {each_item.Dtime}
@@ -71,9 +71,9 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
             <div className={classes.item_part3}>
               <div className={classes.item_part3_left}>
                 <div className={classes.item_part3_name}>
-                  {veg && <img src="/swiggey/Search/logo/veg.png" alt="" />}
+                  {veg && <img src="/greatfood/Search/logo/veg.png" alt="" />}
 
-                  {!veg && <img src="/swiggey/Search/logo/nonveg.jpg" alt="" />}
+                  {!veg && <img src="/greatfood/Search/logo/nonveg.jpg" alt="" />}
                   {each_item.name}
                 </div>
                 <div className={classes.item_part3_price}>

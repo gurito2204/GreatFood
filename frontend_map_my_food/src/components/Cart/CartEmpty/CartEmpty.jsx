@@ -9,7 +9,7 @@ const CartEmpty = () => {
           <h1>Cart Empty</h1>
         </div>
         <div className={classes.image}>
-          <img src="/swiggey/Cart/CartEmpty.webp" alt="Unserviceable" />
+          <img src="/greatfood/Cart/CartEmpty.webp" alt="Unserviceable" />
         </div>
         <div className={classes.paragraph}>
           <p>

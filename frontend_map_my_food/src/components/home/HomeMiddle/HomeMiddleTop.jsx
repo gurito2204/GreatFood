@@ -4,17 +4,17 @@ import classes from "./HomeMiddleTop.module.css";
 const HomeMiddleTop = () => {
   const datas = [
     {
-      image: "/swiggey/trackMyFood/noMinOrder.png",
+      image: "/greatfood/trackMyFood/noMinOrder.png",
       heading: "Theo Dõi Đơn Hàng",
       para: "Biết chính xác đơn hàng của bạn đang ở đâu, từ nhà hàng đến tận cửa nhà",
     },
     {
-      image: "/swiggey/trackMyFood/liveOrder.png",
+      image: "/greatfood/trackMyFood/liveOrder.png",
       heading: "Không Giới Hạn Đơn Tối Thiểu",
       para: "Đặt món cho bạn hoặc cả nhóm, không giới hạn giá trị đơn hàng",
     },
     {
-      image: "/swiggey/trackMyFood/superFastDelivery.png",
+      image: "/greatfood/trackMyFood/superFastDelivery.png",
       heading: "Giao Hàng Siêu Tốc",
       para: "Trải nghiệm giao hàng siêu tốc của GreatFood, đảm bảo đồ ăn luôn tươi ngon và đúng giờ",
     },

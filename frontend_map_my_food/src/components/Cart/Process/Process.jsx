@@ -51,14 +51,14 @@ const Process = () => {
               </div>
             </div>
             <div className={classes.part2}>
-              <img src="/swiggey/Auth/login.webp" alt="" />
+              <img src="/greatfood/Auth/login.webp" alt="" />
             </div>
           </div>
         )}
         <div className={classes.box}>
           {personalDetails ? <AddressesCart /> : <h1>Delivery address</h1>}
           <div className={classes.location}>
-            <img src="/swiggey/Logo/logo_2022.png" alt="" />
+            <img src="/greatfood/Logo/logo_2022.png" alt="" />
           </div>
         </div>
         <PaymentProcess />

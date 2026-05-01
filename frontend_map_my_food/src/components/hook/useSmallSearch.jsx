@@ -1,4 +1,4 @@
-import SmallSearch from "../TemporaryData/Search/Small.json";
+
 
 const useSmallSearch = () => {
   const smallSearch = async (search) => {

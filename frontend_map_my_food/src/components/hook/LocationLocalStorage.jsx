@@ -1,4 +1,4 @@
-import VietnamCity from "../TemporaryData/VietnamCity.json";
+
 export const useLocationLocalStorage = () => {
   const fetchLocation = () => {
     const storedData = localStorage.getItem("recentLocationSearch");

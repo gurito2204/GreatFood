@@ -53,7 +53,7 @@ const Header = () => {
     <div className={classes.container}>
       <div className={classes.left}>
         <Link to={"/"} className={classes.left_image}>
-          <img src="/swiggey/Logo/logo_2022.png" alt="logo" />
+          <img src="/greatfood/Logo/logo_2022.png" alt="logo" />
         </Link>
         <div
           className={classes.left_phone_other}

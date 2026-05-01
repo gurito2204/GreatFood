@@ -45,7 +45,7 @@ const SearchRestaurantHeading = ({ data }) => {
         </div>
         <div className={classes.part2_right}>
           <div className={classes.part2_right_top}>
-            <img src="/swiggey/Search/logo/star.png" alt="" />
+            <img src="/greatfood/Search/logo/star.png" alt="" />
             <span>{data.rating}</span>
           </div>
           <div className={classes.part2_right_bottom}>

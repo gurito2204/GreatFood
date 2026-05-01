@@ -12,15 +12,15 @@ const Super = () => {
         </p>
         <div className={classes.images}>
           <div className={classes.image}>
-            <img src="/swiggey/Logo/appStore.png" alt="" />
+            <img src="/greatfood/Logo/appStore.png" alt="" />
           </div>
           <div className={classes.image}>
-            <img src="/swiggey/Logo/googlePlay.png" alt="" />
+            <img src="/greatfood/Logo/googlePlay.png" alt="" />
           </div>
         </div>
       </div>
       <div className={classes.right}>
-        <img src="/swiggey/User/my_account_supe.webp" alt="" />
+        <img src="/greatfood/User/my_account_supe.webp" alt="" />
       </div>
     </div>
   );

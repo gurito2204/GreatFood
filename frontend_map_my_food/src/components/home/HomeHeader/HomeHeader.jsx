@@ -45,7 +45,7 @@ const HomeHeader = () => {
       <div className={classes.left}>
         <div className={classes.part1}>
           <div className={classes.part1_img}>
-            <img src="/swiggey/Logo/logo_2022.png" alt="logo" />
+            <img src="/greatfood/Logo/logo_2022.png" alt="logo" />
             <h2>GreatFood</h2>
           </div>
           <div className={classes.buttons}>
@@ -97,7 +97,7 @@ const HomeHeader = () => {
                       setCustomerLocation(place);
                     }}
                   >
-                    <img src="/swiggey/location.png" alt="" />
+                    <img src="/greatfood/location.png" alt="" />
                     <div className={classes.searchLocation}>{place}</div>
                   </div>
                 ))}

@@ -1,4 +1,4 @@
-import AvailablerestaurantsData from "../TemporaryData/AvailableRestaurantsData.json";
+
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 
 const useAvailableRestaurantsSorting = () => {
@@ -14,9 +14,7 @@ const useAvailableRestaurantsSorting = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return AvailablerestaurantsData;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { AvailableRestaurantsSortingData };

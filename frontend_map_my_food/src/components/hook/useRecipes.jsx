@@ -1,4 +1,4 @@
-import recipesData from "../TemporaryData/RecipesData.json";
+
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 
 const useRecipes = () => {
@@ -11,9 +11,7 @@ const useRecipes = () => {
       .then((response) => {
         return response.json();
       })
-      .catch((err) => {
-        return recipesData;
-      });
+      .catch((err) => { console.error(err); return null; });
     return data;
   };
   return { RecipesData };

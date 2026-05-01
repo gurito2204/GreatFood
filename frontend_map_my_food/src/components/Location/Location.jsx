@@ -85,7 +85,7 @@ const Location = () => {
                     className={classes.searchLocationBox}
                     onClick={() => setCustomerLocation(place)}
                   >
-                    <img src="/swiggey/location.png" alt="" />
+                    <img src="/greatfood/location.png" alt="" />
                     <div className={classes.searchLocation}>{place}</div>
                   </div>
                 ))}
@@ -96,7 +96,7 @@ const Location = () => {
           <div className={classes.AllSearchLocationBox}>
             {pastSearchLocation.map((loc, index) => (
               <div key={index} className={classes.searchLocationBox}>
-                <img src="/swiggey/location.png" alt="" />
+                <img src="/greatfood/location.png" alt="" />
                 <div className={classes.searchLocation} onClick={() => setCustomerLocation(loc)}>
                   {loc}
                 </div>

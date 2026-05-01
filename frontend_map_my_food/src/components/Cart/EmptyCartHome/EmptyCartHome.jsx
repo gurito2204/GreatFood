@@ -7,7 +7,7 @@ const EmptyCartHome = () => {
     <div className={classes.box}>
       <div className={classes.container}>
         <div className={classes.image}>
-          <img src="/swiggey/Cart/EmptyCartHome.webp" alt="Unserviceable" />
+          <img src="/greatfood/Cart/EmptyCartHome.webp" alt="Unserviceable" />
         </div>
         <div className={classes.heading}>
           <h1>Your cart is empty</h1>
