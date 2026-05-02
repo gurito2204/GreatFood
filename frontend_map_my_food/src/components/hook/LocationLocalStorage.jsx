@@ -103,10 +103,6 @@ export const useLocationLocalStorage = () => {
     return coords;
   };
 
-  const fetchMode = () => {
-    return mode;
-  };
-
   return {
     fetchLocation,
     updateLocation,
@@ -119,6 +115,5 @@ export const useLocationLocalStorage = () => {
     fetchRestaurantId,
     updateGPSCoords,
     fetchGPSCoords,
-    fetchMode,
   };
 };

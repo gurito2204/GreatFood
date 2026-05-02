@@ -2,14 +2,13 @@ import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { api } from "../../services/api";
 
 const useAvailableRestaurants = () => {
-  const { fetchPincode, fetchGPSCoords, fetchMode } = useLocationLocalStorage();
+  const { fetchPincode, fetchGPSCoords } = useLocationLocalStorage();
 
   const AvailableRestaurantsData = async () => {
     const gpsCoords = fetchGPSCoords();
-    const mode = fetchMode();
 
-    // Nếu mode là gps và có GPS coords → gọi /nearbyrestaurants
-    if (mode === "gps" && gpsCoords) {
+    // Nếu có GPS coords → gọi /nearbyrestaurants (không cần pincode)
+    if (gpsCoords) {
       const { lat, lng } = gpsCoords;
       const data = await api.get(`/nearbyrestaurants?lat=${lat}&lng=${lng}`)
         .catch((err) => { console.error(err); return []; });
