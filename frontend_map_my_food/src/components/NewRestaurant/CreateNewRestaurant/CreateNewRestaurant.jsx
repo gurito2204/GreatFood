@@ -109,7 +109,9 @@ const CreateNewRestaurant = () => {
             question !== "ratingCount" &&
             question !== "address" &&
             question !== "location" &&
-            question !== "pincode"
+            question !== "pincode" &&
+            question !== "lat" &&
+            question !== "lng"
           )
           .map(([question, value]) => (
             <Question

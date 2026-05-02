@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { api } from "../../services/api";
+import VietnamCity from "../TemporaryData/VietnamCity.json";
 
 /**
  * useGPSLocation – SIMPLIFIED
@@ -17,6 +18,7 @@ const useGPSLocation = () => {
   const [status, setStatus] = useState("idle");
   const [coords, setCoords] = useState(null);
   const [displayAddress, setDisplayAddress] = useState(null);
+  const [matchedCity, setMatchedCity] = useState(null);
   const [error, setError] = useState(null);
 
   const getGPSLocation = () => {
@@ -59,13 +61,39 @@ const useGPSLocation = () => {
           }
 
           // Fix case đặc biệt: Thành phố Thủ Đức
-          if (province.includes("Thủ Đức") || district.includes("Thủ Đức")) {
-            district = district.includes("Thủ Đức") ? district : province;
+          // Nominatim có thể trả về "Phường Thủ Đức" ở ward, hoặc "Thành phố Thủ Đức" ở city/state
+          // Để tránh cảm giác "to bằng TPHCM", ta ép về "Quận Thủ Đức" (địa chỉ trước sáp nhập)
+          if (ward.includes("Thủ Đức") || province.includes("Thủ Đức") || district.includes("Thủ Đức")) {
+            district = "Quận Thủ Đức";
             province = "Thành phố Hồ Chí Minh";
+            
+            // Xóa phường ảo do Nominatim tự tạo
+            if (ward === "Phường Thủ Đức" || ward === "Thủ Đức") {
+              ward = "";
+            }
           }
 
           // Gom nhóm lại, bỏ các phần bị trống
           const parts = [road, ward, district, province].filter(Boolean);
+
+          // Khớp dữ liệu với VietnamCity.json cho ShopLocationPicker
+          const stateStr = `${district}, ${province}`;
+          let match = null;
+          if (ward) {
+            match = VietnamCity.find((c) => c.state === stateStr && c.name === ward);
+          }
+          if (!match) {
+            // Lấy đại diện phường đầu tiên trong quận nếu không khớp phường
+            match = VietnamCity.find((c) => c.state === stateStr);
+          }
+          if (!match) {
+            // Fallback nếu vị trí ở tỉnh khác
+            match = {
+              name: ward || district || "Khu vực",
+              state: stateStr || province || "Việt Nam",
+              pincode: "700000"
+            };
+          }
 
           // Nếu parts có data thì nối lại, không thì fallback sang display_name
           const display = parts.length > 0
@@ -74,11 +102,13 @@ const useGPSLocation = () => {
 
           console.log("[GPS] coords:", lat, lng, "| display:", display);
           setDisplayAddress(display);
+          setMatchedCity(match);
           setStatus("success");
         } catch (err) {
           // Nominatim thất bại nhưng vẫn có tọa độ → dùng tọa độ thô
           console.warn("[GPS] Nominatim failed, using raw coords:", err);
           setDisplayAddress(`${lat.toFixed(5)}, ${lng.toFixed(5)}`);
+          setMatchedCity({ name: "Tọa độ", state: "Việt Nam", pincode: "700000" });
           setStatus("success");
         }
       },
@@ -98,7 +128,7 @@ const useGPSLocation = () => {
     );
   };
 
-  return { status, coords, displayAddress, error, getGPSLocation };
+  return { status, coords, displayAddress, matchedCity, error, getGPSLocation };
 };
 
 export default useGPSLocation;
