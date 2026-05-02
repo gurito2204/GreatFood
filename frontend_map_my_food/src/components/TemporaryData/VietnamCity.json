@@ -1,69 +1,1886 @@
 [
-  {"id": "1", "name": "Ký túc xá Khu A ĐHQG", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "2", "name": "Ký túc xá Khu B ĐHQG", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "3", "name": "Chợ đêm Làng Đại Học", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "4", "name": "Đại học Bách Khoa CS2", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "5", "name": "Đại học KHTN CS2", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "6", "name": "Đại học CNTT (UIT)", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "7", "name": "Đại học Quốc Tế", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "8", "name": "Đại học KHXH&NV CS2", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "9", "name": "Đại học Kinh tế - Luật", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "10", "name": "Đại học Nông Lâm", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "11", "name": "Đại học SPKT TPHCM", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "12", "name": "Khu Du lịch Suối Tiên", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "13", "name": "Khu Công nghệ cao", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "14", "name": "Gigamall Phạm Văn Đồng", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "15", "name": "Vincom Plaza Thủ Đức", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "16", "name": "Phường Linh Trung", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "17", "name": "Phường Linh Chiểu", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "18", "name": "Phường Linh Tây", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "19", "name": "Phường Linh Xuân", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "20", "name": "Phường Linh Đông", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "21", "name": "Phường Bình Thọ", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "22", "name": "Phường Bình Chiểu", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "23", "name": "Phường Hiệp Bình Chánh", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "24", "name": "Phường Hiệp Bình Phước", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "25", "name": "Phường Tam Bình", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "26", "name": "Phường Tam Phú", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "27", "name": "Phường Trường Thọ", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "28", "name": "Phường Hiệp Phú", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "29", "name": "Phường Tăng Nhơn Phú A", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "30", "name": "Phường Tăng Nhơn Phú B", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "31", "name": "Phường Phước Long A", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "32", "name": "Phường Phước Long B", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "33", "name": "Phường Phú Hữu", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "34", "name": "Phường Long Bình", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "35", "name": "Phường Long Thạnh Mỹ", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "36", "name": "Phường Tân Phú", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "37", "name": "Phường Thảo Điền", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "38", "name": "Phường An Phú", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "39", "name": "Phường Bình Trưng Đông", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "40", "name": "Phường Bình Trưng Tây", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "41", "name": "Phường Thủ Thiêm", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "42", "name": "Phường Đông Hòa", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "43", "name": "Phường Dĩ An", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "44", "name": "Phường An Bình", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "45", "name": "Phường Bình An", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "46", "name": "Phường Bình Thắng", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "47", "name": "Phường Tân Bình", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "48", "name": "Phường Tân Đông Hiệp", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "49", "name": "Big C Dĩ An", "state": "Dĩ An, Bình Dương", "pincode": "820000"},
-  {"id": "50", "name": "Phường Lái Thiêu", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "51", "name": "Phường An Phú", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "52", "name": "Phường Bình Chuẩn", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "53", "name": "Phường Bình Hòa", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "54", "name": "Phường Thuận Giao", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "55", "name": "Phường Hưng Định", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "56", "name": "AEON Mall Bình Dương", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "57", "name": "KCN VSIP 1", "state": "Thuận An, Bình Dương", "pincode": "820000"},
-  {"id": "58", "name": "Phường Phú Cường", "state": "Thủ Dầu Một, Bình Dương", "pincode": "820000"},
-  {"id": "59", "name": "Phường Chánh Nghĩa", "state": "Thủ Dầu Một, Bình Dương", "pincode": "820000"},
-  {"id": "60", "name": "Phường Hiệp Thành", "state": "Thủ Dầu Một, Bình Dương", "pincode": "820000"},
-  {"id": "61", "name": "Phường Phú Lợi", "state": "Thủ Dầu Một, Bình Dương", "pincode": "820000"},
-  {"id": "62", "name": "Phường Phú Hòa", "state": "Thủ Dầu Một, Bình Dương", "pincode": "820000"},
-  {"id": "63", "name": "Phường 25 (Bình Thạnh)", "state": "Bình Thạnh, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "64", "name": "Phường 26 (Bình Thạnh)", "state": "Bình Thạnh, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "65", "name": "Khu đô thị Vạn Phúc", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "66", "name": "Bến xe Miền Đông Mới", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"},
-  {"id": "67", "name": "Bệnh viện Ung Bướu CS2", "state": "Quận Thủ Đức, Hồ Chí Minh", "pincode": "700000"}
+  {
+    "id": "1",
+    "name": "Ký túc xá Khu A ĐHQG",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "2",
+    "name": "Ký túc xá Khu B ĐHQG",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "3",
+    "name": "Chợ đêm Làng Đại Học",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "4",
+    "name": "Đại học Bách Khoa CS2",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "5",
+    "name": "Đại học KHTN CS2",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "6",
+    "name": "Đại học CNTT (UIT)",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "7",
+    "name": "Đại học Quốc Tế",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "8",
+    "name": "Đại học KHXH&NV CS2",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "9",
+    "name": "Đại học Kinh tế - Luật",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "10",
+    "name": "Đại học Nông Lâm",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "11",
+    "name": "Đại học SPKT TPHCM",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "12",
+    "name": "Khu Du lịch Suối Tiên",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "13",
+    "name": "Khu Công nghệ cao",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "14",
+    "name": "Gigamall Phạm Văn Đồng",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "15",
+    "name": "Vincom Plaza Thủ Đức",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "16",
+    "name": "Phường Linh Trung",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "17",
+    "name": "Phường Linh Chiểu",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "18",
+    "name": "Phường Linh Tây",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "19",
+    "name": "Phường Linh Xuân",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "20",
+    "name": "Phường Linh Đông",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "21",
+    "name": "Phường Bình Thọ",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "22",
+    "name": "Phường Bình Chiểu",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "23",
+    "name": "Phường Hiệp Bình Chánh",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "24",
+    "name": "Phường Hiệp Bình Phước",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "25",
+    "name": "Phường Tam Bình",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "26",
+    "name": "Phường Tam Phú",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "27",
+    "name": "Phường Trường Thọ",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "28",
+    "name": "Phường Hiệp Phú",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "29",
+    "name": "Phường Tăng Nhơn Phú A",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "30",
+    "name": "Phường Tăng Nhơn Phú B",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "31",
+    "name": "Phường Phước Long A",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "32",
+    "name": "Phường Phước Long B",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "33",
+    "name": "Phường Phú Hữu",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "34",
+    "name": "Phường Long Bình",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "35",
+    "name": "Phường Long Thạnh Mỹ",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "36",
+    "name": "Phường Tân Phú",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "37",
+    "name": "Phường Thảo Điền",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "38",
+    "name": "Phường An Phú",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "39",
+    "name": "Phường Bình Trưng Đông",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "40",
+    "name": "Phường Bình Trưng Tây",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "41",
+    "name": "Phường Thủ Thiêm",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "42",
+    "name": "Phường Đông Hòa",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "43",
+    "name": "Phường Dĩ An",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "44",
+    "name": "Phường An Bình",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "45",
+    "name": "Phường Bình An",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "46",
+    "name": "Phường Bình Thắng",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "47",
+    "name": "Phường Tân Bình",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "48",
+    "name": "Phường Tân Đông Hiệp",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "49",
+    "name": "Big C Dĩ An",
+    "state": "Dĩ An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "50",
+    "name": "Phường Lái Thiêu",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "51",
+    "name": "Phường An Phú",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "52",
+    "name": "Phường Bình Chuẩn",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "53",
+    "name": "Phường Bình Hòa",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "54",
+    "name": "Phường Thuận Giao",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "55",
+    "name": "Phường Hưng Định",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "56",
+    "name": "AEON Mall Bình Dương",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "57",
+    "name": "KCN VSIP 1",
+    "state": "Thuận An, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "58",
+    "name": "Phường Phú Cường",
+    "state": "Thủ Dầu Một, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "59",
+    "name": "Phường Chánh Nghĩa",
+    "state": "Thủ Dầu Một, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "60",
+    "name": "Phường Hiệp Thành",
+    "state": "Thủ Dầu Một, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "61",
+    "name": "Phường Phú Lợi",
+    "state": "Thủ Dầu Một, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "62",
+    "name": "Phường Phú Hòa",
+    "state": "Thủ Dầu Một, Bình Dương",
+    "pincode": "820000"
+  },
+  {
+    "id": "63",
+    "name": "Phường 25 (Bình Thạnh)",
+    "state": "Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "64",
+    "name": "Phường 26 (Bình Thạnh)",
+    "state": "Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "65",
+    "name": "Khu đô thị Vạn Phúc",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "66",
+    "name": "Bến xe Miền Đông Mới",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "67",
+    "name": "Bệnh viện Ung Bướu CS2",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "68",
+    "name": "Phường Tân Định",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "69",
+    "name": "Phường Đa Kao",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "70",
+    "name": "Phường Bến Nghé",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "71",
+    "name": "Phường Bến Thành",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "72",
+    "name": "Phường Nguyễn Thái Bình",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "73",
+    "name": "Phường Phạm Ngũ Lão",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "74",
+    "name": "Phường Cầu Ông Lãnh",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "75",
+    "name": "Phường Cô Giang",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "76",
+    "name": "Phường Nguyễn Cư Trinh",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "77",
+    "name": "Phường Cầu Kho",
+    "state": "Quận 1, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "78",
+    "name": "Phường Thạnh Xuân",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "79",
+    "name": "Phường Thạnh Lộc",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "80",
+    "name": "Phường Hiệp Thành",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "81",
+    "name": "Phường Thới An",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "82",
+    "name": "Phường Tân Chánh Hiệp",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "83",
+    "name": "Phường An Phú Đông",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "84",
+    "name": "Phường Tân Thới Hiệp",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "85",
+    "name": "Phường Trung Mỹ Tây",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "86",
+    "name": "Phường Tân Hưng Thuận",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "87",
+    "name": "Phường Đông Hưng Thuận",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "88",
+    "name": "Phường Tân Thới Nhất",
+    "state": "Quận 12, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "89",
+    "name": "Phường 15",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "90",
+    "name": "Phường 17",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "91",
+    "name": "Phường 6",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "92",
+    "name": "Phường 16",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "93",
+    "name": "Phường 12",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "94",
+    "name": "Phường 14",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "95",
+    "name": "Phường 10",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "96",
+    "name": "Phường 5",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "97",
+    "name": "Phường 1",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "98",
+    "name": "Phường 8",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "99",
+    "name": "Phường 11",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "100",
+    "name": "Phường 3",
+    "state": "Quận Gò Vấp, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "101",
+    "name": "Phường 13",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "102",
+    "name": "Phường 11",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "103",
+    "name": "Phường 27",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "104",
+    "name": "Phường 26",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "105",
+    "name": "Phường 12",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "106",
+    "name": "Phường 25",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "107",
+    "name": "Phường 5",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "108",
+    "name": "Phường 7",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "109",
+    "name": "Phường 14",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "110",
+    "name": "Phường 2",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "111",
+    "name": "Phường 1",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "112",
+    "name": "Phường 17",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "113",
+    "name": "Phường 22",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "114",
+    "name": "Phường 19",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "115",
+    "name": "Phường 28",
+    "state": "Quận Bình Thạnh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "116",
+    "name": "Phường 2",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "117",
+    "name": "Phường 4",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "118",
+    "name": "Phường 12",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "119",
+    "name": "Phường 13",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "120",
+    "name": "Phường 1",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "121",
+    "name": "Phường 3",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "122",
+    "name": "Phường 11",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "123",
+    "name": "Phường 7",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "124",
+    "name": "Phường 5",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "125",
+    "name": "Phường 10",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "126",
+    "name": "Phường 6",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "127",
+    "name": "Phường 8",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "128",
+    "name": "Phường 9",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "129",
+    "name": "Phường 14",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "130",
+    "name": "Phường 15",
+    "state": "Quận Tân Bình, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "131",
+    "name": "Phường Tân Sơn Nhì",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "132",
+    "name": "Phường Tây Thạnh",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "133",
+    "name": "Phường Sơn Kỳ",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "134",
+    "name": "Phường Tân Quý",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "135",
+    "name": "Phường Tân Thành",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "136",
+    "name": "Phường Phú Thọ Hòa",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "137",
+    "name": "Phường Phú Thạnh",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "138",
+    "name": "Phường Phú Trung",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "139",
+    "name": "Phường Hòa Thạnh",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "140",
+    "name": "Phường Hiệp Tân",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "141",
+    "name": "Phường Tân Thới Hòa",
+    "state": "Quận Tân Phú, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "142",
+    "name": "Phường 4",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "143",
+    "name": "Phường 5",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "144",
+    "name": "Phường 9",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "145",
+    "name": "Phường 7",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "146",
+    "name": "Phường 1",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "147",
+    "name": "Phường 2",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "148",
+    "name": "Phường 8",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "149",
+    "name": "Phường 15",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "150",
+    "name": "Phường 10",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "151",
+    "name": "Phường 11",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "152",
+    "name": "Phường 13",
+    "state": "Quận Phú Nhuận, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "153",
+    "name": "Phường Trường Thạnh",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "154",
+    "name": "Phường Long Phước",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "155",
+    "name": "Phường Long Trường",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "156",
+    "name": "Phường Phước Bình",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "157",
+    "name": "Phường An Khánh",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "158",
+    "name": "Phường Cát Lái",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "159",
+    "name": "Phường Thạnh Mỹ Lợi",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "160",
+    "name": "Phường An Lợi Đông",
+    "state": "Quận Thủ Đức, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "161",
+    "name": "Phường 14",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "162",
+    "name": "Phường 12",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "163",
+    "name": "Phường 11",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "164",
+    "name": "Phường Võ Thị Sáu",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "165",
+    "name": "Phường 9",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "166",
+    "name": "Phường 4",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "167",
+    "name": "Phường 5",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "168",
+    "name": "Phường 3",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "169",
+    "name": "Phường 2",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "170",
+    "name": "Phường 1",
+    "state": "Quận 3, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "171",
+    "name": "Phường 15",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "172",
+    "name": "Phường 13",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "173",
+    "name": "Phường 14",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "174",
+    "name": "Phường 12",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "175",
+    "name": "Phường 10",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "176",
+    "name": "Phường 9",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "177",
+    "name": "Phường 1",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "178",
+    "name": "Phường 8",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "179",
+    "name": "Phường 2",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "180",
+    "name": "Phường 4",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "181",
+    "name": "Phường 6",
+    "state": "Quận 10, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "182",
+    "name": "Phường 15",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "183",
+    "name": "Phường 5",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "184",
+    "name": "Phường 14",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "185",
+    "name": "Phường 11",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "186",
+    "name": "Phường 3",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "187",
+    "name": "Phường 10",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "188",
+    "name": "Phường 8",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "189",
+    "name": "Phường 7",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "190",
+    "name": "Phường 1",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "191",
+    "name": "Phường 16",
+    "state": "Quận 11, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "192",
+    "name": "Phường 13",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "193",
+    "name": "Phường 9",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "194",
+    "name": "Phường 8",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "195",
+    "name": "Phường 18",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "196",
+    "name": "Phường 4",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "197",
+    "name": "Phường 3",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "198",
+    "name": "Phường 16",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "199",
+    "name": "Phường 2",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "200",
+    "name": "Phường 15",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "201",
+    "name": "Phường 1",
+    "state": "Quận 4, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "202",
+    "name": "Phường 4",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "203",
+    "name": "Phường 9",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "204",
+    "name": "Phường 2",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "205",
+    "name": "Phường 12",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "206",
+    "name": "Phường 7",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "207",
+    "name": "Phường 1",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "208",
+    "name": "Phường 11",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "209",
+    "name": "Phường 14",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "210",
+    "name": "Phường 5",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "211",
+    "name": "Phường 13",
+    "state": "Quận 5, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "212",
+    "name": "Phường 14",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "213",
+    "name": "Phường 13",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "214",
+    "name": "Phường 9",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "215",
+    "name": "Phường 12",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "216",
+    "name": "Phường 2",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "217",
+    "name": "Phường 11",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "218",
+    "name": "Phường 8",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "219",
+    "name": "Phường 1",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "220",
+    "name": "Phường 7",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "221",
+    "name": "Phường 10",
+    "state": "Quận 6, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "222",
+    "name": "Phường Rạch Ông",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "223",
+    "name": "Phường Hưng Phú",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "224",
+    "name": "Phường 4",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "225",
+    "name": "Phường Xóm Củi",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "226",
+    "name": "Phường 5",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "227",
+    "name": "Phường 14",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "228",
+    "name": "Phường 6",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "229",
+    "name": "Phường 15",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "230",
+    "name": "Phường 16",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "231",
+    "name": "Phường 7",
+    "state": "Quận 8, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "232",
+    "name": "Phường Bình Hưng Hòa",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "233",
+    "name": "Phường Bình Hưng Hoà A",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "234",
+    "name": "Phường Bình Hưng Hoà B",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "235",
+    "name": "Phường Bình Trị Đông",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "236",
+    "name": "Phường Bình Trị Đông A",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "237",
+    "name": "Phường Bình Trị Đông B",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "238",
+    "name": "Phường Tân Tạo",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "239",
+    "name": "Phường Tân Tạo A",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "240",
+    "name": "Phường An Lạc",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "241",
+    "name": "Phường An Lạc A",
+    "state": "Quận Bình Tân, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "242",
+    "name": "Phường Tân Thuận Đông",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "243",
+    "name": "Phường Tân Thuận Tây",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "244",
+    "name": "Phường Tân Kiểng",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "245",
+    "name": "Phường Tân Hưng",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "246",
+    "name": "Phường Bình Thuận",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "247",
+    "name": "Phường Tân Quy",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "248",
+    "name": "Phường Phú Thuận",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "249",
+    "name": "Phường Tân Phú",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "250",
+    "name": "Phường Tân Phong",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "251",
+    "name": "Phường Phú Mỹ",
+    "state": "Quận 7, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "252",
+    "name": "Thị trấn Củ Chi",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "253",
+    "name": "Xã Phú Mỹ Hưng",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "254",
+    "name": "Xã An Phú",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "255",
+    "name": "Xã Trung Lập Thượng",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "256",
+    "name": "Xã An Nhơn Tây",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "257",
+    "name": "Xã Nhuận Đức",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "258",
+    "name": "Xã Phạm Văn Cội",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "259",
+    "name": "Xã Phú Hòa Đông",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "260",
+    "name": "Xã Trung Lập Hạ",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "261",
+    "name": "Xã Trung An",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "262",
+    "name": "Xã Phước Thạnh",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "263",
+    "name": "Xã Phước Hiệp",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "264",
+    "name": "Xã Tân An Hội",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "265",
+    "name": "Xã Phước Vĩnh An",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "266",
+    "name": "Xã Thái Mỹ",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "267",
+    "name": "Xã Tân Thạnh Tây",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "268",
+    "name": "Xã Hòa Phú",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "269",
+    "name": "Xã Tân Thạnh Đông",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "270",
+    "name": "Xã Bình Mỹ",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "271",
+    "name": "Xã Tân Phú Trung",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "272",
+    "name": "Xã Tân Thông Hội",
+    "state": "Huyện Củ Chi, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "273",
+    "name": "Thị trấn Hóc Môn",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "274",
+    "name": "Xã Tân Hiệp",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "275",
+    "name": "Xã Nhị Bình",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "276",
+    "name": "Xã Đông Thạnh",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "277",
+    "name": "Xã Tân Thới Nhì",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "278",
+    "name": "Xã Thới Tam Thôn",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "279",
+    "name": "Xã Xuân Thới Sơn",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "280",
+    "name": "Xã Tân Xuân",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "281",
+    "name": "Xã Xuân Thới Đông",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "282",
+    "name": "Xã Trung Chánh",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "283",
+    "name": "Xã Xuân Thới Thượng",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "284",
+    "name": "Xã Bà Điểm",
+    "state": "Huyện Hóc Môn, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "285",
+    "name": "Thị trấn Tân Túc",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "286",
+    "name": "Xã Phạm Văn Hai",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "287",
+    "name": "Xã Vĩnh Lộc A",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "288",
+    "name": "Xã Vĩnh Lộc B",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "289",
+    "name": "Xã Bình Lợi",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "290",
+    "name": "Xã Lê Minh Xuân",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "291",
+    "name": "Xã Tân Nhựt",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "292",
+    "name": "Xã Tân Kiên",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "293",
+    "name": "Xã Bình Hưng",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "294",
+    "name": "Xã Phong Phú",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "295",
+    "name": "Xã An Phú Tây",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "296",
+    "name": "Xã Hưng Long",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "297",
+    "name": "Xã Đa Phước",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "298",
+    "name": "Xã Tân Quý Tây",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "299",
+    "name": "Xã Bình Chánh",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "300",
+    "name": "Xã Quy Đức",
+    "state": "Huyện Bình Chánh, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "301",
+    "name": "Thị trấn Nhà Bè",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "302",
+    "name": "Xã Phước Kiển",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "303",
+    "name": "Xã Phước Lộc",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "304",
+    "name": "Xã Nhơn Đức",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "305",
+    "name": "Xã Phú Xuân",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "306",
+    "name": "Xã Long Thới",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "307",
+    "name": "Xã Hiệp Phước",
+    "state": "Huyện Nhà Bè, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "308",
+    "name": "Thị trấn Cần Thạnh",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "309",
+    "name": "Xã Bình Khánh",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "310",
+    "name": "Xã Tam Thôn Hiệp",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "311",
+    "name": "Xã An Thới Đông",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "312",
+    "name": "Xã Thạnh An",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "313",
+    "name": "Xã Long Hòa",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  },
+  {
+    "id": "314",
+    "name": "Xã Lý Nhơn",
+    "state": "Huyện Cần Giờ, Hồ Chí Minh",
+    "pincode": "700000"
+  }
 ]
