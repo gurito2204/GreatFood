@@ -42,10 +42,11 @@ export const useLocationState = () => {
     setCoords({ lat, lng });
     saveState("gpsCoords", { lat, lng });
     try {
-      const json = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
+      const response = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
+      const json = response.data;
       const address = json.address || {};
       const ward = address.suburb || address.quarter || address.neighbourhood;
-      const province = address.state;
+      const province = address.state || address.city;
       const parts = [ward, province].filter(Boolean);
       const display = parts.length > 0
         ? parts.join(", ")
