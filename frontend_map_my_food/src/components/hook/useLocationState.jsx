@@ -18,7 +18,11 @@ export const useLocationState = () => {
   const [mode, setMode] = useState(() => getSavedState("locationMode", "manual"));
   const [coords, setCoords] = useState(() => getSavedState("gpsCoords", null));
   const [pincode, setPincode] = useState(() => getSavedState("pincode", ""));
-  const [displayAddress, setDisplayAddress] = useState(() => getSavedState("displayAddress", ""));
+  const [displayAddress, setDisplayAddress] = useState(() => {
+    const saved = getSavedState("displayAddress", "");
+    if (/^[0-9.-]+,\s*[0-9.-]+$/.test(saved)) return "";
+    return saved;
+  });
 
   useEffect(() => {
     saveState("locationMode", mode);
@@ -39,18 +43,35 @@ export const useLocationState = () => {
   const updateGPSLocation = async (lat, lng) => {
     setMode("gps");
     saveState("locationMode", "gps");
-    setCoords({ lat, lng });
-    saveState("gpsCoords", { lat, lng });
     try {
       const response = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
       const json = response.data;
       const address = json.address || {};
-      const ward = address.suburb || address.quarter || address.neighbourhood;
-      const province = address.state || address.city;
+      
+      let ward = address.suburb || address.quarter || address.neighbourhood;
+      let province = address.state || address.city;
+
+      // Sửa lỗi Nominatim map sai Quận Phú Nhuận thành Phường Phú Nhuận và nhét vào Thủ Đức
+      if (ward && ward.includes("Phú Nhuận")) {
+        ward = "Quận Phú Nhuận";
+        province = "Hồ Chí Minh";
+      }
+      if (ward && ward.includes("Bình Thạnh")) {
+        ward = "Quận Bình Thạnh";
+        province = "Hồ Chí Minh";
+      }
+      if (province === "Thành phố Thủ Đức" && json.display_name?.includes("Hồ Chí Minh")) {
+        // Thuộc HCMC nhưng Nominatim hay gán lầm city là Thủ Đức cho các quận khác
+        if (ward && !ward.includes("Thủ Đức") && !ward.includes("Quận 2") && !ward.includes("Quận 9")) {
+          province = "Hồ Chí Minh";
+        }
+      }
+
       const parts = [ward, province].filter(Boolean);
       const display = parts.length > 0
         ? parts.join(", ")
         : json.display_name?.split(",").slice(0, 2).join(",").trim() || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+      
       setDisplayAddress(display);
       saveState("displayAddress", display);
     } catch (err) {

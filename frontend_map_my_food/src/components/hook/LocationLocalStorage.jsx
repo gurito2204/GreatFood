@@ -11,7 +11,10 @@ export const useLocationLocalStorage = () => {
   const fetchLocation = () => {
     try {
       const storedData = localStorage.getItem("recentLocationSearch");
-      return storedData ? JSON.parse(storedData) : [];
+      if (!storedData) return [];
+      const parsed = JSON.parse(storedData);
+      // Lọc bỏ những địa chỉ bị dính lỗi tọa độ (VD: "📍 10.79062, 106.67634")
+      return parsed.filter(loc => !/^📍\s*[0-9.-]+,\s*[0-9.-]+$/.test(loc));
     } catch {
       return [];
     }
