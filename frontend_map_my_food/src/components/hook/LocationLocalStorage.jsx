@@ -43,10 +43,26 @@ export const useLocationLocalStorage = () => {
     let newPincode = "";
     let nameToMatch = newLocation.split(",")[0].trim();
     nameToMatch = nameToMatch.replace("📍 ", "");
+    
+    // Thử match chính xác theo tên trước
     for (let i = 0; i < VietnamCity.length; i++) {
       if (VietnamCity[i].name === nameToMatch) {
         newPincode = VietnamCity[i].pincode;
         break;
+      }
+    }
+    
+    // Nếu không tìm thấy, thử tìm xem trong chuỗi newLocation có chứa tên quận nào không
+    if (!newPincode) {
+      const locationLower = newLocation.toLowerCase();
+      for (let i = 0; i < VietnamCity.length; i++) {
+        const stateLower = VietnamCity[i].state ? VietnamCity[i].state.toLowerCase() : "";
+        // Extract district from state (e.g. "quận phú nhuận" from "quận phú nhuận, hồ chí minh")
+        const district = stateLower.split(",")[0].trim();
+        if (district && locationLower.includes(district.replace("quận ", "").replace("huyện ", ""))) {
+          newPincode = VietnamCity[i].pincode;
+          break;
+        }
       }
     }
 
