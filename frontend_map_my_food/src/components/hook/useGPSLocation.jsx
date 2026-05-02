@@ -60,40 +60,72 @@ const useGPSLocation = () => {
             }
           }
 
-          // Fix case đặc biệt: Thành phố Thủ Đức
-          // Nominatim có thể trả về "Phường Thủ Đức" ở ward, hoặc "Thành phố Thủ Đức" ở city/state
-          // Để tránh cảm giác "to bằng TPHCM", ta ép về "Quận Thủ Đức" (địa chỉ trước sáp nhập)
-          if (ward.includes("Thủ Đức") || province.includes("Thủ Đức") || district.includes("Thủ Đức")) {
-            district = "Quận Thủ Đức";
-            province = "Thành phố Hồ Chí Minh";
-            
-            // Xóa phường ảo do Nominatim tự tạo
-            if (ward === "Phường Thủ Đức" || ward === "Thủ Đức") {
-              ward = "";
+          // Khớp dữ liệu với VietnamCity.json bằng Fuzzy Match thông minh
+          // Thu thập tất cả các "gợi ý" từ Nominatim để đoán Phường/Quận
+          const hints = [
+            address.suburb, 
+            address.quarter, 
+            address.neighbourhood, 
+            address.city_district, 
+            address.county, 
+            address.town, 
+            address.city,
+            address.state
+          ].filter(Boolean);
+
+          let match = null;
+
+          // 1. Thử tìm chính xác Phường (ward)
+          for (const hint of hints) {
+            const possibleWards = VietnamCity.filter(c => c.name === hint || c.name === hint.replace("Phường ", ""));
+            if (possibleWards.length === 1) {
+              match = possibleWards[0];
+              break;
+            } else if (possibleWards.length > 1) {
+              // Nhiều phường trùng tên (VD: "Phường 1"), dùng hint khác để lọc Quận
+              for (const w of possibleWards) {
+                if (hints.some(h => h !== hint && w.state.includes(h.replace("Quận ", "").replace("Thành phố ", "")))) {
+                  match = w;
+                  break;
+                }
+              }
+              if (match) break;
             }
+          }
+
+          // 2. Nếu không tìm thấy Phường, thử tìm Quận (district)
+          if (!match) {
+            for (const hint of hints) {
+              const cleanHint = hint.replace("Phường ", "").replace("Quận ", "").replace("Thành phố ", "").replace("TP ", "");
+              if (cleanHint.length > 2) {
+                const possibleDistricts = VietnamCity.filter(c => c.state.includes(cleanHint));
+                if (possibleDistricts.length > 0) {
+                  match = possibleDistricts[0]; // Lấy đại diện phường đầu tiên của Quận
+                  break;
+                }
+              }
+            }
+          }
+
+          if (match) {
+            // Ghi đè bằng dữ liệu chuẩn
+            const stateParts = match.state.split(",");
+            if (stateParts.length >= 2) {
+              district = stateParts[0].trim();
+              province = stateParts[1].trim();
+            }
+            ward = match.name; // Cập nhật lại ward cho chuẩn
+          } else {
+            // Fallback
+            match = {
+              name: ward || district || "Khu vực",
+              state: `${district ? district + ", " : ""}${province || "Việt Nam"}`,
+              pincode: "700000"
+            };
           }
 
           // Gom nhóm lại, bỏ các phần bị trống
           const parts = [road, ward, district, province].filter(Boolean);
-
-          // Khớp dữ liệu với VietnamCity.json cho ShopLocationPicker
-          const stateStr = `${district}, ${province}`;
-          let match = null;
-          if (ward) {
-            match = VietnamCity.find((c) => c.state === stateStr && c.name === ward);
-          }
-          if (!match) {
-            // Lấy đại diện phường đầu tiên trong quận nếu không khớp phường
-            match = VietnamCity.find((c) => c.state === stateStr);
-          }
-          if (!match) {
-            // Fallback nếu vị trí ở tỉnh khác
-            match = {
-              name: ward || district || "Khu vực",
-              state: stateStr || province || "Việt Nam",
-              pincode: "700000"
-            };
-          }
 
           // Nếu parts có data thì nối lại, không thì fallback sang display_name
           const display = parts.length > 0
