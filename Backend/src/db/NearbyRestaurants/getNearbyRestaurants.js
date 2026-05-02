@@ -20,7 +20,7 @@ const haversineKm = (lat1, lng1, lat2, lng2) => {
  * Lấy TẤT CẢ nhà hàng, tính distanceKm từ userLat/userLng,
  * sort gần nhất lên đầu. Không cần pincode.
  */
-module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 50) => {
+module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 15) => {
   try {
     const connection = await getDb();
     const foods = await connection.collection("restaurantFood").find().toArray();
@@ -47,18 +47,21 @@ module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 50) 
           distanceKm: null,
         };
 
-        // Tính khoảng cách nếu nhà hàng có lat/lng
-        if (restaurant.lat != null && restaurant.lng != null) {
-          const d = haversineKm(
-            parseFloat(userLat),
-            parseFloat(userLng),
-            parseFloat(restaurant.lat),
-            parseFloat(restaurant.lng)
-          );
-          temp.distanceKm = parseFloat(d.toFixed(1));
-          // Lọc theo bán kính (mặc định 50km – rộng để không bỏ sót)
-          if (temp.distanceKm > radiusKm) return;
+        // Bỏ qua các nhà hàng không có tọa độ
+        if (restaurant.lat == null || restaurant.lng == null) {
+          return;
         }
+
+        const d = haversineKm(
+          parseFloat(userLat),
+          parseFloat(userLng),
+          parseFloat(restaurant.lat),
+          parseFloat(restaurant.lng)
+        );
+        temp.distanceKm = parseFloat(d.toFixed(1));
+        
+        // Lọc theo bán kính (15km cho food delivery)
+        if (temp.distanceKm > radiusKm) return;
 
         results.push(temp);
       })
