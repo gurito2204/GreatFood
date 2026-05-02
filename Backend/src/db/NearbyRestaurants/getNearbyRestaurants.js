@@ -58,9 +58,12 @@ module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 5) =
           parseFloat(restaurant.lat),
           parseFloat(restaurant.lng)
         );
+
+        if (isNaN(d)) return; // Bỏ qua nếu tọa độ không hợp lệ
+
         temp.distanceKm = parseFloat(d.toFixed(1));
         
-        // Lọc theo bán kính (15km cho food delivery)
+        // Lọc theo bán kính
         if (temp.distanceKm > radiusKm) return;
 
         results.push(temp);
