@@ -42,10 +42,27 @@ const useGPSLocation = () => {
           const address = json.address || {};
 
           // Trích xuất các thành phần địa chỉ từ Nominatim
-          const road = address.road || "";
-          const ward = address.suburb || address.quarter || address.neighbourhood || "";
-          const district = address.city_district || address.county || address.town || "";
-          const province = address.city || address.state || "";
+          let road = address.road || "";
+          let ward = address.suburb || address.quarter || address.neighbourhood || "";
+          let district = address.city_district || address.county || address.town || "";
+          let province = address.state || address.province || "";
+
+          // Nominatim thường map các Thành phố trực thuộc tỉnh vào `city`
+          // và các Thành phố trực thuộc TW vào `state` hoặc `city`
+          if (address.city) {
+            if (!province) {
+              province = address.city;
+            } else if (address.city !== province) {
+              // Có cả city và state -> city thường là Quận/Huyện/Thành phố trực thuộc tỉnh
+              district = address.city;
+            }
+          }
+
+          // Fix case đặc biệt: Thành phố Thủ Đức
+          if (province.includes("Thủ Đức") || district.includes("Thủ Đức")) {
+            district = district.includes("Thủ Đức") ? district : province;
+            province = "Thành phố Hồ Chí Minh";
+          }
 
           // Gom nhóm lại, bỏ các phần bị trống
           const parts = [road, ward, district, province].filter(Boolean);

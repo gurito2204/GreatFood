@@ -28,6 +28,7 @@ const Location = () => {
       // Lưu địa chỉ GPS vào recentLocationSearch để hiện ở danh sách
       updateLocation(`📍 ${displayAddress}`);
       locationCtx.onHide();
+      window.location.reload();
     }
   }, [gpsStatus, coords, displayAddress]);
 
@@ -35,6 +36,7 @@ const Location = () => {
     updateLocation(customerLocation);
     setLocation("");
     locationCtx.onHide();
+    window.location.reload();
   };
 
   return (
