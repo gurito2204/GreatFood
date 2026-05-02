@@ -10,7 +10,7 @@ module.exports = getNearbyRestaurantsRoute = {
       if (!lat || !lng) {
         return res.status(400).json({ error: "lat và lng là bắt buộc" });
       }
-      const response = await getNearbyRestaurants(lat, lng, radius ? parseFloat(radius) : 15);
+      const response = await getNearbyRestaurants(lat, lng, radius ? parseFloat(radius) : 5);
       res.status(200).json(response);
     } catch (err) {
       res.status(400).json([]);

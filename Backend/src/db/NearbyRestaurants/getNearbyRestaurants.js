@@ -20,7 +20,7 @@ const haversineKm = (lat1, lng1, lat2, lng2) => {
  * Lấy TẤT CẢ nhà hàng, tính distanceKm từ userLat/userLng,
  * sort gần nhất lên đầu. Không cần pincode.
  */
-module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 15) => {
+module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 5) => {
   try {
     const connection = await getDb();
     const foods = await connection.collection("restaurantFood").find().toArray();
