@@ -9,7 +9,7 @@ import useGPSLocation from "../hook/useGPSLocation";
 const Location = () => {
   const locationCtx = useContext(LocationContext);
   const open = locationCtx.open;
-  const { fetchLocation, updateLocation, updateGPSCoords } = useLocationLocalStorage();
+  const { fetchLocation, updateLocation, updateGPSCoords, addToRecentSearch } = useLocationLocalStorage();
   const pastSearchLocation = fetchLocation();
   const [location, setLocation] = useState("");
   const [showSearchLocation, setSearchLocation] = useState({ newVietnamCity: [] });
@@ -26,7 +26,7 @@ const Location = () => {
     if (gpsStatus === "success" && coords && displayAddress) {
       updateGPSCoords(coords.lat, coords.lng);
       // Lưu địa chỉ GPS vào recentLocationSearch để hiện ở danh sách
-      updateLocation(`📍 ${displayAddress}`);
+      addToRecentSearch(`📍 ${displayAddress}`);
       locationCtx.onHide();
       window.location.reload();
     }

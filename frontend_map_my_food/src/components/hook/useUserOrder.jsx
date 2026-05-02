@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CartContext from "../store/cart/Cart-context";
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
 import { api } from "../../services/api";
@@ -5,6 +7,7 @@ import { api } from "../../services/api";
 const useUserOrder = () => {
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+  const cartContextCtx = useContext(CartContext);
 
   const userOrderData = async (
     cartItems,
@@ -26,6 +29,8 @@ const useUserOrder = () => {
       deliveryCost,
       GST,
       address,
+      restaurantId: cartContextCtx.RestaurantId,
+      restaurantName: cartContextCtx.hotal,
     };
 
     try {

@@ -18,24 +18,26 @@ export const useLocationLocalStorage = () => {
   };
 
   /**
+   * addToRecentSearch — Thêm địa chỉ vào mảng recentLocationSearch KHÔNG chạm state GPS
+   */
+  const addToRecentSearch = (displayStr) => {
+    let current = [];
+    try {
+      const stored = localStorage.getItem("recentLocationSearch");
+      if (stored) current = JSON.parse(stored);
+    } catch { /* ignore */ }
+    
+    current = current.filter(x => x !== displayStr);
+    current.unshift(displayStr);
+    localStorage.setItem("recentLocationSearch", JSON.stringify(current));
+  };
+
+  /**
    * updateLocation — thêm địa chỉ mới vào đầu mảng recent searches
    * Đồng thời cập nhật pincode và useLocationState.
    */
   const updateLocation = (newLocation) => {
-    // 1. Cập nhật recentLocationSearch array
-    let currentLocation = [];
-    try {
-      const pastLocation = localStorage.getItem("recentLocationSearch");
-      if (pastLocation) currentLocation = JSON.parse(pastLocation);
-    } catch { /* ignore */ }
-    
-    const isLocationExists = currentLocation.includes(newLocation);
-    if (isLocationExists) {
-      const index = currentLocation.indexOf(newLocation);
-      currentLocation.splice(index, 1);
-    }
-    currentLocation.unshift(newLocation);
-    localStorage.setItem("recentLocationSearch", JSON.stringify(currentLocation));
+    addToRecentSearch(newLocation);
 
     // 2. Tìm pincode từ VietnamCity
     let newPincode = "";
@@ -57,8 +59,8 @@ export const useLocationLocalStorage = () => {
 
   const updatePersonalDetails = (data) => {
     localStorage.setItem("PersonalDetails", JSON.stringify(data));
-    if (data && data.data && data.data.ResturentId) {
-      updateRestaurantId(data.data.ResturentId);
+    if (data && data.data && data.data.restaurantId) {
+      updateRestaurantId(data.data.restaurantId);
     } else {
       localStorage.removeItem("restaurantId");
     }
@@ -104,6 +106,7 @@ export const useLocationLocalStorage = () => {
   return {
     fetchLocation,
     updateLocation,
+    addToRecentSearch,
     fetchPincode,
     updatePersonalDetails,
     fetchPersonalDetails,

@@ -7,7 +7,13 @@ module.exports = insertUserOrder = async (userId, order) => {
     const orderId = v4();
     const { insertId } = await connection
       .collection("orders")
-      .insertOne({ userId, order, orderId });
+      .insertOne({ 
+        userId, 
+        ...order, 
+        orderId, 
+        status: "pending", 
+        createdAt: new Date() 
+      });
     return orderId;
   } catch (err) {
     console.log(err.message);

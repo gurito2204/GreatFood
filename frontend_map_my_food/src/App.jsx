@@ -8,19 +8,21 @@ import Auth from "./components/Authentication/Auth";
 import Footer from "./components/Footer/Footer";
 import LocationContext from "./components/store/location/Location-context";
 import { useLocationLocalStorage } from "./components/hook/LocationLocalStorage";
+import { useLocationState } from "./components/hook/useLocationState";
 
 function App() {
   const locationContextCtx = useContext(LocationContext);
   const { fetchLocation, fetchPersonalDetails } = useLocationLocalStorage();
+  const { displayAddress } = useLocationState();
   const locations = fetchLocation();
   const [isLocation, setIsLocation] = useState(locations && locations.length > 0);
-  // const islogIn = fetchPersonalDetails();
   const [islogIn, setIslogIn] = useState(fetchPersonalDetails());
+  
   useEffect(() => {
     const locs = fetchLocation();
     setIsLocation(locs && locs.length > 0);
     setIslogIn(fetchPersonalDetails());
-  }, [locationContextCtx.localStorageLocation]);
+  }, [displayAddress]);
 
   return (
     <div className={classes.App}>

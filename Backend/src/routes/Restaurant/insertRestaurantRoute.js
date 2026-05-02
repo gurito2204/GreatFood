@@ -9,8 +9,8 @@ module.exports = insertRestaurantRoute = {
     try {
       const { userId, data } = req.body;
       const Restaurant = JSON.parse(data);
-      const RestaurantId = v4();
-      Restaurant.RestaurantId = RestaurantId;
+      const restaurantId = v4();
+      Restaurant.restaurantId = restaurantId;
       if (req.files != null) {
         const { file } = req.files;
         const image = await Uploads(file);

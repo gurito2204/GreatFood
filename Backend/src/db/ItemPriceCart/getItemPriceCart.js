@@ -23,6 +23,7 @@ module.exports = getItemPriceCart = async (RestaurantId, itemId) => {
     }
     newObj[itemId] = {
       hotal: Restaurant.Restaurant,
+      city: Restaurant.location || "Hồ Chí Minh",
       name: matchingFoodItem.name,
       price: matchingFoodItem.price,
       image: matchingFoodItem.image,

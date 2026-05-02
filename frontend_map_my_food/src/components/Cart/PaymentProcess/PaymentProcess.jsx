@@ -24,7 +24,7 @@ const PaymentProcess = () => {
     <div className={classes.box}>
       <h1>Payment</h1>
       <div className={classes.location}>
-        <img src="/logo.jpg" alt="" />
+        <img src="/greatfood/Logo/logo_2022.png" alt="" />
       </div>
       {address && <h1>Address :- {address}</h1>}
       <div className={classes.buttons}>

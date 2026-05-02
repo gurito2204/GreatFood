@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("BizMsgAdsMACCSensitiveStrings",["fbt"],(function(t,n,r,o,a,i,l,s){"use strict";var e=Object.freeze({connectProfile:s._(/*BTDS*/"Connect profile"),manageProfiles:s._(/*BTDS*/"Manage profiles"),metaAccounts:s._(/*BTDS*/"Meta accounts"),metaAccount:s._(/*BTDS*/"Meta account")});l.default=e}),226);

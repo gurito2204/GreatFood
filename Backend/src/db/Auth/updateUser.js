@@ -8,7 +8,8 @@ module.exports = async function updateUser(number, token) {
     const filter = { _id: user._id };
     const update = { $set: { token: token } };
     const result = await collection.updateOne(filter, update);
-    return user;
+    const updatedUser = await collection.findOne({ _id: user._id });
+    return updatedUser;
   } catch (err) {
     console.log(err.message);
     throw err;

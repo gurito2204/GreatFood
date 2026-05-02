@@ -9,6 +9,7 @@ import CartContext from "../store/cart/Cart-context";
 import LocationContext from "../store/location/Location-context";
 import AuthenticationContext from "../store/authentication/Authentication-context";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
+import { useLocationState } from "../hook/useLocationState";
 import { api } from "../../services/api";
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
   const locationCtx = useContext(LocationContext);
   const authenticationContextCtx = useContext(AuthenticationContext);
   const { fetchLocation, fetchPersonalDetails, fetchRestaurantId } = useLocationLocalStorage();
+  const { displayAddress } = useLocationState();
   const place = fetchLocation();
   const personalDetails = fetchPersonalDetails();
   const restaurantId = fetchRestaurantId();
@@ -61,7 +63,9 @@ const Header = () => {
             locationCtx.onShow();
           }}
         >
-          {place.length > 0 ? place[0].split(",")[0].trim() : "Chọn địa điểm"}
+          {displayAddress 
+            ? displayAddress.split(",")[0].trim().replace("📍 ", "") 
+            : (place.length > 0 ? place[0].split(",")[0].trim().replace("📍 ", "") : "Chọn địa điểm")}
         </div>
         <div
           className={classes.left_place}
@@ -69,7 +73,11 @@ const Header = () => {
             locationCtx.onShow();
           }}
         >
-          <span>{place.length > 0 ? place[0].split(",").slice(1).join(",").trim() : ""} </span>
+          <span>
+            {displayAddress 
+              ? displayAddress.split(",").slice(1).join(",").trim() 
+              : (place.length > 0 ? place[0].split(",").slice(1).join(",").trim() : "")}
+          </span>
         </div>
         <i
           className={classes.left_image_arrow}

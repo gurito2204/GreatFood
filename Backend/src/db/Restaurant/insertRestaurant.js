@@ -1,14 +1,14 @@
 const getDb = require("../db").getDb;
-const updateUserResturentId = require("../Auth/updateUserResturentId");
+const updateUserRestaurantId = require("../Auth/updateUserRestaurantId");
 module.exports = insertRestaurant = async (userId, Restaurant) => {
   try {
     const connection = await getDb();
     const { insertedId } = await connection.collection("restaurant").insertOne({
       ...Restaurant,
     });
-    const response = await updateUserResturentId(
+    const response = await updateUserRestaurantId(
       userId,
-      Restaurant.RestaurantId
+      Restaurant.restaurantId
     );
     return {
       data: response,

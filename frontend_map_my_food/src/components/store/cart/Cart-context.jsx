@@ -35,7 +35,7 @@ export const CartContextProvider = (props) => {
   const AddItemsHandler = (RestaurantId, itemId, verifiedData) => {
     setRestaurantId(RestaurantId);
     setHotal(verifiedData.hotal);
-    setPlace(verifiedData.place || "Hồ Chí Minh");
+    setPlace(verifiedData.city || "Hồ Chí Minh");
     const newItemPrice = +verifiedData.price;
     const updatedTotalAmount = totalAmount + newItemPrice;
     const existingCartItemIndex = addItems.findIndex(

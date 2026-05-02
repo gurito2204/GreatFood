@@ -4,12 +4,15 @@ import SvgHome from "../../ui/User/SvgHome";
 import useGetUserAddresses from "../../hook/useGetUserAddresses";
 import useInsertUserAddresses from "../../hook/useInsertUserAddresses";
 import CartContext from "../../store/cart/Cart-context";
+import { useLocationState } from "../../hook/useLocationState";
 
 const AddressesCart = () => {
   const cartContextCtx = useContext(CartContext);
   const { getUserAddressesData } = useGetUserAddresses();
   const { insertUserAddressesData } = useInsertUserAddresses();
+  const { displayAddress } = useLocationState();
   const [address, setAddress] = useState([]);
+  
   useEffect(() => {
     const callAddress = async () => {
       const response = await getUserAddressesData();
@@ -17,7 +20,8 @@ const AddressesCart = () => {
     };
     callAddress();
   }, []);
-  const [textareaValue, setTextareaValue] = useState("");
+  
+  const [textareaValue, setTextareaValue] = useState(displayAddress || "");
   const handleTextareaChange = (event) => {
     setTextareaValue(event.target.value);
   };
