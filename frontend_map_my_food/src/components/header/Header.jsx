@@ -9,6 +9,7 @@ import CartContext from "../store/cart/Cart-context";
 import LocationContext from "../store/location/Location-context";
 import AuthenticationContext from "../store/authentication/Authentication-context";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
+import { api } from "../../services/api";
 
 const Header = () => {
   const cartContextCtx = useContext(CartContext);
@@ -35,8 +36,7 @@ const Header = () => {
 
   useEffect(() => {
     if (restaurantId) {
-      fetch(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/seller/inbox/${restaurantId}`)
-        .then(res => res.json())
+      api.get(`/api/seller/inbox/${restaurantId}`)
         .then(data => {
           if (data && data.totalUnread !== undefined) {
             setUnreadCount(data.totalUnread);
@@ -61,7 +61,7 @@ const Header = () => {
             locationCtx.onShow();
           }}
         >
-          Other
+          {place.length > 0 ? place[0].split(",")[0].trim() : "Chọn địa điểm"}
         </div>
         <div
           className={classes.left_place}
@@ -69,8 +69,7 @@ const Header = () => {
             locationCtx.onShow();
           }}
         >
-          <span>Other </span>
-          {place[0]}
+          <span>{place.length > 0 ? place[0].split(",").slice(1).join(",").trim() : ""} </span>
         </div>
         <i
           className={classes.left_image_arrow}

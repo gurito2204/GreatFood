@@ -7,7 +7,7 @@ import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 const HomePage = () => {
   const { fetchLocation } = useLocationLocalStorage();
   const locationContextCtx = useContext(LocationContext);
-  const isLocation = fetchLocation();
+  const isLocation = fetchLocation().length > 0;
   
   return <>{isLocation ? <Restaurants /> : <Home />}</>;
 };

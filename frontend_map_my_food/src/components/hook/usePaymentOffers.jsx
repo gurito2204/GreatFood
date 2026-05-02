@@ -1,7 +1,7 @@
 import { api } from "../../services/api";
 
 const usePaymentOffers = () => {
-  const PaymentOffersData = async (pincode) => {
+  const data = async (pincode) => {
     try {
       return await api.get(`/offers/${pincode}`);
     } catch (err) {
@@ -9,7 +9,7 @@ const usePaymentOffers = () => {
       return null;
     }
   };
-  return { PaymentOffersData };
+  return { data };
 };
 
 export default usePaymentOffers;

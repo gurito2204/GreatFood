@@ -1,7 +1,7 @@
 import { api } from "../../services/api";
 
 const useSmallSearch = () => {
-  const SmallSearchData = async (search) => {
+  const smallSearch = async (search) => {
     try {
       return await api.get(`/smallSearch/${search}`);
     } catch (err) {
@@ -9,7 +9,7 @@ const useSmallSearch = () => {
       return [];
     }
   };
-  return { SmallSearchData };
+  return { smallSearch };
 };
 
 export default useSmallSearch;

@@ -1,7 +1,7 @@
 import { api } from "../../services/api";
 
 const useGetUserAddresses = () => {
-  const GetUserAddressesData = async (userId) => {
+  const getUserAddressesData = async (userId) => {
     try {
       return await api.get(`/user/addresses/${userId}`);
     } catch (err) {
@@ -9,7 +9,7 @@ const useGetUserAddresses = () => {
       return [];
     }
   };
-  return { GetUserAddressesData };
+  return { getUserAddressesData };
 };
 
 export default useGetUserAddresses;

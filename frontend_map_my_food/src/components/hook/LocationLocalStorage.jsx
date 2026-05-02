@@ -4,19 +4,50 @@ import VietnamCity from "../TemporaryData/VietnamCity.json";
 export const useLocationLocalStorage = () => {
   const { mode, coords, pincode, displayAddress, updateGPSLocation, updateManualLocation } = useLocationState();
 
+  /**
+   * fetchLocation — trả về ARRAY các địa chỉ gần đây (recent searches)
+   * Đây là contract gốc mà Location.jsx dùng .map() trên kết quả.
+   */
   const fetchLocation = () => {
-    return displayAddress || pincode || null;
+    try {
+      const storedData = localStorage.getItem("recentLocationSearch");
+      return storedData ? JSON.parse(storedData) : [];
+    } catch {
+      return [];
+    }
   };
 
+  /**
+   * updateLocation — thêm địa chỉ mới vào đầu mảng recent searches
+   * Đồng thời cập nhật pincode và useLocationState.
+   */
   const updateLocation = (newLocation) => {
+    // 1. Cập nhật recentLocationSearch array
+    let currentLocation = [];
+    try {
+      const pastLocation = localStorage.getItem("recentLocationSearch");
+      if (pastLocation) currentLocation = JSON.parse(pastLocation);
+    } catch { /* ignore */ }
+    
+    const isLocationExists = currentLocation.includes(newLocation);
+    if (isLocationExists) {
+      const index = currentLocation.indexOf(newLocation);
+      currentLocation.splice(index, 1);
+    }
+    currentLocation.unshift(newLocation);
+    localStorage.setItem("recentLocationSearch", JSON.stringify(currentLocation));
+
+    // 2. Tìm pincode từ VietnamCity
     let newPincode = "";
-    const nameToMatch = newLocation.split(",")[0].trim(); 
+    const nameToMatch = newLocation.split(",")[0].trim();
     for (let i = 0; i < VietnamCity.length; i++) {
       if (VietnamCity[i].name === nameToMatch) {
         newPincode = VietnamCity[i].pincode;
         break;
       }
     }
+
+    // 3. Cập nhật useLocationState (lưu pincode + displayAddress)
     updateManualLocation(newPincode, newLocation);
   };
 
