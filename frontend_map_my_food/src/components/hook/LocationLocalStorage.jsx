@@ -41,7 +41,8 @@ export const useLocationLocalStorage = () => {
 
     // 2. Tìm pincode từ VietnamCity
     let newPincode = "";
-    const nameToMatch = newLocation.split(",")[0].trim();
+    let nameToMatch = newLocation.split(",")[0].trim();
+    nameToMatch = nameToMatch.replace("📍 ", "");
     for (let i = 0; i < VietnamCity.length; i++) {
       if (VietnamCity[i].name === nameToMatch) {
         newPincode = VietnamCity[i].pincode;

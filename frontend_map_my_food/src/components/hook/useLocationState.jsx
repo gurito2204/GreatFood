@@ -38,7 +38,9 @@ export const useLocationState = () => {
 
   const updateGPSLocation = async (lat, lng) => {
     setMode("gps");
+    saveState("locationMode", "gps");
     setCoords({ lat, lng });
+    saveState("gpsCoords", { lat, lng });
     try {
       const json = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
       const address = json.address || {};
@@ -49,17 +51,24 @@ export const useLocationState = () => {
         ? parts.join(", ")
         : json.display_name?.split(",").slice(0, 2).join(",").trim() || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
       setDisplayAddress(display);
+      saveState("displayAddress", display);
     } catch (err) {
       console.warn("Proxy Nominatim failed", err);
-      setDisplayAddress(`${lat.toFixed(5)}, ${lng.toFixed(5)}`);
+      const display = `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+      setDisplayAddress(display);
+      saveState("displayAddress", display);
     }
   };
 
   const updateManualLocation = (newPincode, newDisplay) => {
     setMode("manual");
+    saveState("locationMode", "manual");
     setPincode(newPincode);
+    saveState("pincode", newPincode);
     setDisplayAddress(newDisplay);
+    saveState("displayAddress", newDisplay);
     setCoords(null);
+    saveState("gpsCoords", null);
   };
 
   const fetchAvailableRestaurants = async () => {
