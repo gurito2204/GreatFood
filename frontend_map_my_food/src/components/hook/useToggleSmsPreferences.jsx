@@ -1,28 +1,22 @@
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
+import { api } from "../../services/api";
 
 const useToggleSmsPreferences = () => {
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+
   const ToggleSmsPreferencesData = async () => {
-    const id = fetchPersonalDetails().data.id;
+    const details = fetchPersonalDetails();
+    if (!details || !details.data || !details.data.id) return "";
+
+    const id = details.data.id;
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_REACT_BACKEND_URL}/smsPreferences/${id}`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: "",
-        }
-      );
-      const responsedata = await response.json();
-      NotificationHandler(responsedata.message, "Info");
-      return responsedata.response;
+      const data = await api.post(`/smsPreferences/${id}`, {});
+      NotificationHandler(data.message, "Info");
+      return data.response || "";
     } catch (err) {
-      console.log(err);
+      console.error(err);
       NotificationHandler("Check your connection!", "Error");
       return "";
     }

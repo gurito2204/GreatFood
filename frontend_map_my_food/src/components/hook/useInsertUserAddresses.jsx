@@ -1,29 +1,35 @@
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
+import { api } from "../../services/api";
 
 const useInsertUserAddresses = () => {
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+
   const insertUserAddressesData = async (address, type) => {
-    const id = fetchPersonalDetails().data.id;
-    const data = { address: address };
+    const details = fetchPersonalDetails();
+    if (!details || !details.data || !details.data.id) {
+      NotificationHandler("Vui lòng đăng nhập để lưu địa chỉ.", "Error");
+      return [];
+    }
+    const id = details.data.id;
+    const body = { address };
+
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_REACT_BACKEND_URL}/useraddresses/${id}`,
-        {
-          method: type,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-      const responsedata = await response.json();
-      NotificationHandler(responsedata.message, "Info");
-      return responsedata.response;
+      const path = `/useraddresses/${id}`;
+      let data;
+      if (type.toUpperCase() === "POST") {
+        data = await api.post(path, body);
+      } else if (type.toUpperCase() === "PUT") {
+        data = await api.put(path, body);
+      } else {
+        data = await api.delete(path);
+      }
+      
+      NotificationHandler(data.message, "Info");
+      return data.response || [];
     } catch (err) {
-      console.log(err);
+      console.error(err);
       NotificationHandler("Check your connection!", "Error");
       return [];
     }

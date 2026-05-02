@@ -1,19 +1,13 @@
-import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { api } from "../../services/api";
 
 const useGetFoodsAndOffers = () => {
-  const { fetchRestaurantId } = useLocationLocalStorage();
-  const GetFoodsAndOffersData = async (type) => {
-    const RestaurantId = fetchRestaurantId();
-    const data = await api.get(/${type}/${RestaurantId}`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .catch((err) => {
-        return [];
-      });).catch(err => { console.error(err); return []; });
-    return data;
+  const GetFoodsAndOffersData = async (id) => {
+    try {
+      return await api.get(`/restaurant/all/${id}`);
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
   };
   return { GetFoodsAndOffersData };
 };

@@ -13,13 +13,14 @@ const FlavorPreviewBar = ({ flavors, showTop = 2 }) => {
     salty: { icon: '🧂', name: 'Mặn' },
     sweet: { icon: '🍯', name: 'Ngọt' },
     sour:  { icon: '🍋', name: 'Chua' },
-    bitter:{ icon: '🍵', name: 'Chát' }
+    spicy: { icon: '🌶️', name: 'Cay' },
+    bitter:{ icon: '🍵', name: 'Đắng' }
   };
 
   const renderBars = (score) => {
     const filled = Math.round(score);
     let str = '';
-    for(let i=0; i<5; i++) {
+    for(let i=0; i<10; i++) {
       str += i < filled ? '▓' : '░';
     }
     return str;
@@ -27,13 +28,14 @@ const FlavorPreviewBar = ({ flavors, showTop = 2 }) => {
 
   // Sort flavors by score descending and take top N
   const topFlavors = Object.entries(flavors)
+    .filter(([key]) => flavorLabels[key]) // only known flavors
     .sort((a, b) => b[1] - a[1])
     .slice(0, showTop);
 
   return (
     <div style={{ display: 'flex', gap: '15px', fontSize: '0.85rem', color: '#555', marginTop: '8px' }}>
       {topFlavors.map(([key, score]) => (
-        <span key={key} title={`${score}/5`}>
+        <span key={key} title={`${score}/10`}>
           {flavorLabels[key].icon} {flavorLabels[key].name}: <span style={{letterSpacing: '2px', color: '#fc8019'}}>{renderBars(score)}</span>
         </span>
       ))}

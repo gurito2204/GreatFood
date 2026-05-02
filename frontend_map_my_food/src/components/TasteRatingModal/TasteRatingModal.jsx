@@ -3,36 +3,37 @@ import { calibrateScore } from '../../utils/tasteCalibration';
 import classes from './TasteRatingModal.module.css';
 import { useLocationLocalStorage } from '../hook/LocationLocalStorage';
 import { useNotification } from '../hook/useNotification';
+import { api } from '../../services/api';
 
 const FLAVORS = [
   { id: 'salty', label: 'Mặn', icon: '🧂' },
   { id: 'sweet', label: 'Ngọt', icon: '🍯' },
   { id: 'sour', label: 'Chua', icon: '🍋' },
-  { id: 'bitter', label: 'Chát', icon: '🍵' },
+  { id: 'spicy', label: 'Cay', icon: '🌶️' },
+  { id: 'bitter', label: 'Đắng', icon: '🍵' },
 ];
 
 const TasteRatingModal = ({ isOpen, onClose, menuItem, onSubmit }) => {
   const [ratings, setRatings] = useState({
-    salty: 3,
-    sweet: 3,
-    sour: 3,
-    bitter: 3,
+    salty: 5,
+    sweet: 5,
+    sour: 5,
+    spicy: 5,
+    bitter: 5,
   });
   const [calibratedRatings, setCalibratedRatings] = useState(null);
 
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
   const personalDetails = fetchPersonalDetails();
-  const userHistory = personalDetails?.data?.tasteHistory || undefined;
+  const userHistory = personalDetails?.data?.tasteHistory || {};
 
   useEffect(() => {
     if (!isOpen) return;
-    const calibrated = {
-      salty: calibrateScore(ratings.salty, 'salty', userHistory?.salty?.avgRating),
-      sweet: calibrateScore(ratings.sweet, 'sweet', userHistory?.sweet?.avgRating),
-      sour: calibrateScore(ratings.sour, 'sour', userHistory?.sour?.avgRating),
-      bitter: calibrateScore(ratings.bitter, 'bitter', userHistory?.bitter?.avgRating),
-    };
+    const calibrated = {};
+    for (const f of FLAVORS) {
+      calibrated[f.id] = calibrateScore(ratings[f.id], f.id, userHistory[f.id]?.bias);
+    }
     setCalibratedRatings(calibrated);
   }, [ratings, isOpen]);
 
@@ -50,27 +51,22 @@ const TasteRatingModal = ({ isOpen, onClose, menuItem, onSubmit }) => {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_REACT_BACKEND_URL}/restaurant/food/${menuItem.itemId}/rating`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: personalDetails.data.id,
-          ratings: ratings
-        })
+      const data = await api.post(`/restaurant/food/${menuItem.itemId}/rating`, {
+        userId: personalDetails.data.id,
+        ratings: ratings,
       });
 
-      if (response.ok) {
-        const resData = await response.json();
+      if (data.success) {
         NotificationHandler("Đã gửi đánh giá thành công!", "Info");
-        
-        // Optional: Update local storage tasteHistory to reflect the change immediately
-        if (resData.tasteHistory) {
+
+        // Update local tasteHistory to reflect the change immediately
+        if (data.tasteHistory) {
           const updatedDetails = { ...personalDetails };
-          updatedDetails.data.tasteHistory = resData.tasteHistory;
+          updatedDetails.data.tasteHistory = data.tasteHistory;
           localStorage.setItem("PersonalDetails", JSON.stringify(updatedDetails));
         }
-        
-        if(onSubmit) onSubmit(ratings, calibratedRatings);
+
+        if (onSubmit) onSubmit(ratings, calibratedRatings);
       } else {
         NotificationHandler("Có lỗi xảy ra, thử lại sau!", "Error");
       }
@@ -100,17 +96,17 @@ const TasteRatingModal = ({ isOpen, onClose, menuItem, onSubmit }) => {
               <div className={classes.sliderWrapper}>
                 <input 
                   type="range" 
-                  min="1" max="5" step="1" 
+                  min="1" max="10" step="1" 
                   value={ratings[flavor.id]} 
                   onChange={(e) => handleChange(flavor.id, e.target.value)}
                   className={classes.slider}
                 />
                 <div className={classes.sliderMarks}>
-                  <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                  {[1,2,3,4,5,6,7,8,9,10].map(n => <span key={n}>{n}</span>)}
                 </div>
               </div>
               <div className={classes.scoreBox}>
-                {ratings[flavor.id]}/5
+                {ratings[flavor.id]}/10
               </div>
             </div>
           ))}
@@ -118,10 +114,9 @@ const TasteRatingModal = ({ isOpen, onClose, menuItem, onSubmit }) => {
           <div className={classes.infoBox}>
             <p>💡 Dựa trên khẩu vị thường ngày của bạn, hệ thống điều chỉnh (chuẩn hóa) điểm đánh giá món này như sau:</p>
             <ul>
-               <li>Mặn: {calibratedRatings?.salty}/5</li>
-               <li>Ngọt: {calibratedRatings?.sweet}/5</li>
-               <li>Chua: {calibratedRatings?.sour}/5</li>
-               <li>Chát: {calibratedRatings?.bitter}/5</li>
+               {FLAVORS.map(f => (
+                 <li key={f.id}>{f.icon} {f.label}: {calibratedRatings?.[f.id]}/10</li>
+               ))}
             </ul>
           </div>
         </div>

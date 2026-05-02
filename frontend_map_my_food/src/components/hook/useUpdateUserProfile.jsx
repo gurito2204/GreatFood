@@ -1,43 +1,33 @@
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
+import { api } from "../../services/api";
 
 const useUpdateUserProfile = () => {
-  const { fetchPersonalDetails, updatePersonalDetails } =
-    useLocationLocalStorage();
+  const { fetchPersonalDetails, updatePersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+
   const UpdateUserProfileData = async (place, newdata) => {
-    const id = fetchPersonalDetails().data.id;
+    const details = fetchPersonalDetails();
+    if (!details || !details.data || !details.data.id) return "";
+
+    const id = details.data.id;
     try {
-      console.log(place, newdata);
-      const response = await fetch(
-        `${
-          import.meta.env.VITE_REACT_BACKEND_URL
-        }/updateprofile/${id}/${place}/${newdata}`,
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: "",
-        }
-      );
-      const responsedata = await response.json();
-      NotificationHandler(place + responsedata.message, "Info");
-      if (response.status == 200) {
-        var persondetail = fetchPersonalDetails();
-        if (place == "number") {
-          persondetail.data.number = newdata;
-          updatePersonalDetails(persondetail);
-        }
-        if (place == "email") {
-          persondetail.data.number = newdata;
-          updatePersonalDetails(persondetail);
-        }
+      const data = await api.post(`/updateprofile/${id}/${place}/${newdata}`, {});
+      NotificationHandler(place + " " + data.message, "Info");
+      
+      // Update local state if successful
+      const updatedDetails = { ...details };
+      if (place === "number") {
+        updatedDetails.data.number = newdata;
+        updatePersonalDetails(updatedDetails);
+      } else if (place === "email") {
+        updatedDetails.data.email = newdata; // Fixed: was using .number before
+        updatePersonalDetails(updatedDetails);
       }
-      return responsedata.response;
+      
+      return data.response || "";
     } catch (err) {
-      console.log(err);
+      console.error(err);
       NotificationHandler("Check your connection!", "Error");
       return "";
     }

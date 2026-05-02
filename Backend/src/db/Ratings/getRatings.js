@@ -1,59 +1,56 @@
 const getDb = require("../db").getDb;
 
-const GLOBAL_AVERAGE = {
-  salty: 3.0,
-  sweet: 3.0,
-  sour: 3.0,
-  bitter: 3.0,
-};
+const FLAVORS = ["salty", "sweet", "sour", "bitter", "spicy"];
 
-function calibrateScore(rawScore, flavorType, userAvg) {
+/**
+ * calibrateScore — Mean-Centering Calibration
+ * 
+ * Spec: calibrated = rawScore + (globalAvg - userBias) * WEIGHT
+ * Where userBias = B_u = avg(R_u,i - S̄_i) per flavor
+ * 
+ * If user tends to rate higher than average (positive bias),
+ * we subtract to normalize. Scale: 1-10.
+ */
+function calibrateScore(rawScore, userBias) {
   const WEIGHT = 0.5;
-  const globalAvg = GLOBAL_AVERAGE[flavorType];
-  const bias = globalAvg - (userAvg ?? 3.0);
-  const calibratedScore = rawScore + (bias * WEIGHT);
-  return Math.min(5, Math.max(1, Math.round(calibratedScore * 10) / 10));
+  const calibratedScore = rawScore - (userBias * WEIGHT);
+  return Math.min(10, Math.max(1, Math.round(calibratedScore * 10) / 10));
 }
 
 module.exports = getRatings = async (itemId) => {
   try {
     const connection = await getDb();
-    
+
     const ratings = await connection.collection("foodRatings").find({ itemId }).toArray();
-    
+
     if (ratings.length === 0) return null;
 
-    let sums = { salty: 0, sweet: 0, sour: 0, bitter: 0 };
-    let counts = { salty: 0, sweet: 0, sour: 0, bitter: 0 };
+    let sums = {};
+    let counts = {};
+    for (const f of FLAVORS) { sums[f] = 0; counts[f] = 0; }
 
     for (const r of ratings) {
+      // Get user's taste bias
       const user = await connection.collection("users").findOne({ id: r.userId });
       const tasteHistory = user?.tasteHistory || {};
 
-      if (r.ratings.salty) {
-        sums.salty += calibrateScore(r.ratings.salty, 'salty', tasteHistory.salty?.avgRating);
-        counts.salty++;
-      }
-      if (r.ratings.sweet) {
-        sums.sweet += calibrateScore(r.ratings.sweet, 'sweet', tasteHistory.sweet?.avgRating);
-        counts.sweet++;
-      }
-      if (r.ratings.sour) {
-        sums.sour += calibrateScore(r.ratings.sour, 'sour', tasteHistory.sour?.avgRating);
-        counts.sour++;
-      }
-      if (r.ratings.bitter) {
-        sums.bitter += calibrateScore(r.ratings.bitter, 'bitter', tasteHistory.bitter?.avgRating);
-        counts.bitter++;
+      for (const flavor of FLAVORS) {
+        if (r.ratings[flavor] != null) {
+          const userBias = tasteHistory[flavor]?.bias ?? 0;
+          sums[flavor] += calibrateScore(r.ratings[flavor], userBias);
+          counts[flavor]++;
+        }
       }
     }
 
-    return {
-      salty: counts.salty ? Math.round((sums.salty / counts.salty) * 10) / 10 : 0,
-      sweet: counts.sweet ? Math.round((sums.sweet / counts.sweet) * 10) / 10 : 0,
-      sour:  counts.sour ? Math.round((sums.sour / counts.sour) * 10) / 10 : 0,
-      bitter:counts.bitter ? Math.round((sums.bitter / counts.bitter) * 10) / 10 : 0,
-    };
+    const result = {};
+    for (const flavor of FLAVORS) {
+      result[flavor] = counts[flavor]
+        ? Math.round((sums[flavor] / counts[flavor]) * 10) / 10
+        : 0;
+    }
+
+    return result;
   } catch (err) {
     console.log(err.message);
     throw err;

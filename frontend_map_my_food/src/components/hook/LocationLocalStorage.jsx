@@ -1,5 +1,5 @@
 import { useLocationState } from "./useLocationState";
-import { VietnamCity } from "../TemporaryData/VietnamCity";
+import VietnamCity from "../TemporaryData/VietnamCity.json";
 
 export const useLocationLocalStorage = () => {
   const { mode, coords, pincode, displayAddress, updateGPSLocation, updateManualLocation } = useLocationState();

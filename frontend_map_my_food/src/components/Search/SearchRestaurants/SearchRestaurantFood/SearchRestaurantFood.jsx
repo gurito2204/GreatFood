@@ -8,6 +8,7 @@ import TasteRatingModal from "../../../TasteRatingModal/TasteRatingModal";
 
 import { useLocationLocalStorage } from "../../../hook/LocationLocalStorage";
 import useItemPriceCart from "../../../hook/useItemPriceCart";
+import { api } from "../../../../services/api";
 
 const SearchRestaurantFood = ({ items, veg, data }) => {
   const cartContextCtx = useContext(CartContext);
@@ -42,12 +43,9 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
       const newFlavorData = {};
       for (const item of items || []) {
         try {
-          const res = await fetch(`${import.meta.env.VITE_REACT_BACKEND_URL}/restaurant/food/${item.itemId}/rating`);
-          if (res.ok) {
-            const json = await res.json();
-            if (json.data) {
-              newFlavorData[item.itemId] = json.data;
-            }
+          const json = await api.get(`/restaurant/food/${item.itemId}/rating`);
+          if (json.data) {
+            newFlavorData[item.itemId] = json.data;
           }
         } catch (err) {
           console.error("Failed to fetch ratings for", item.itemId);

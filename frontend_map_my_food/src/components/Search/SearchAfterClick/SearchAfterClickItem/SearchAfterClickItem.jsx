@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import useItemPriceCart from "../../../../hook/useItemPriceCart";
+import useItemPriceCart from "../../../hook/useItemPriceCart";
 import { Link } from "react-router-dom";
 import classes from "./SearchAfterClickItem.module.css";
 import SvgArrow from "../../../ui/Svg/SvgArrow";

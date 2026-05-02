@@ -1,6 +1,6 @@
 const BASE = import.meta.env.VITE_REACT_BACKEND_URL;
 
-const getHeaders = () => {
+const getHeaders = (isFormData = false) => {
   const personalDetails = localStorage.getItem("PersonalDetails");
   let token = "";
   if (personalDetails) {
@@ -10,27 +10,34 @@ const getHeaders = () => {
       console.error("Failed to parse PersonalDetails", e);
     }
   }
-  return {
-    "Content-Type": "application/json",
+  const headers = {
     AuthToken: token,
   };
+  if (!isFormData) {
+    headers["Content-Type"] = "application/json";
+  }
+  return headers;
 };
 
 export const api = {
   get: (path) =>
     fetch(`${BASE}${path}`, { headers: getHeaders() }).then((r) => r.json()),
-  post: (path, body) =>
-    fetch(`${BASE}${path}`, {
+  post: (path, body) => {
+    const isFormData = body instanceof FormData;
+    return fetch(`${BASE}${path}`, {
       method: "POST",
-      headers: getHeaders(),
-      body: JSON.stringify(body),
-    }).then((r) => r.json()),
-  put: (path, body) =>
-    fetch(`${BASE}${path}`, {
+      headers: getHeaders(isFormData),
+      body: isFormData ? body : JSON.stringify(body),
+    }).then((r) => r.json());
+  },
+  put: (path, body) => {
+    const isFormData = body instanceof FormData;
+    return fetch(`${BASE}${path}`, {
       method: "PUT",
-      headers: getHeaders(),
-      body: JSON.stringify(body),
-    }).then((r) => r.json()),
+      headers: getHeaders(isFormData),
+      body: isFormData ? body : JSON.stringify(body),
+    }).then((r) => r.json());
+  },
   delete: (path) =>
     fetch(`${BASE}${path}`, {
       method: "DELETE",

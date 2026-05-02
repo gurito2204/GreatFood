@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import useItemPriceCart from "../../hook/useItemPriceCart";
+
 import { useNotification } from "../../hook/useNotification";
 import { DELIVERY_BASE_COST, DELIVERY_DISCOUNT_RATE, GST_RATE } from "../../../constants/pricing";
 
@@ -20,7 +20,7 @@ const CartContext = React.createContext({
 });
 
 export const CartContextProvider = (props) => {
-  const { ItemPriceCartData } = useItemPriceCart();
+
   const [addItems, setAddItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [deliveryCost, setDeliveryCost] = useState(0);

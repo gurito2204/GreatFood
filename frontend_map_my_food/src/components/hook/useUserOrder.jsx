@@ -1,9 +1,11 @@
 import { useLocationLocalStorage } from "./LocationLocalStorage";
 import { useNotification } from "./useNotification";
+import { api } from "../../services/api";
 
 const useUserOrder = () => {
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+
   const userOrderData = async (
     cartItems,
     totalAmount,
@@ -11,31 +13,27 @@ const useUserOrder = () => {
     GST,
     address
   ) => {
-    const userid = fetchPersonalDetails().data.id;
-    const data = {
+    const details = fetchPersonalDetails();
+    if (!details || !details.data || !details.data.id) {
+      NotificationHandler("Vui lòng đăng nhập để đặt hàng.", "Error");
+      return "";
+    }
+
+    const userid = details.data.id;
+    const body = {
       order: cartItems,
-      totalAmount: totalAmount,
-      deliveryCost: deliveryCost,
-      GST: GST,
-      address: address,
+      totalAmount,
+      deliveryCost,
+      GST,
+      address,
     };
+
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_REACT_BACKEND_URL}/userorder/${userid}`,
-        {
-          method: "post",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-      const responsedata = await response.json();
-      NotificationHandler(responsedata.message, "Info");
-      return responsedata.response;
+      const data = await api.post(`/userorder/${userid}`, body);
+      NotificationHandler(data.message, "Info");
+      return data.response || "";
     } catch (err) {
-      console.log(err);
+      console.error(err);
       NotificationHandler("Check your connection!", "Error");
       return "";
     }
