@@ -41,16 +41,19 @@ const useGPSLocation = () => {
           const json = await api.get(`/reverse-geocode?lat=${lat}&lng=${lng}`);
           const address = json.address || {};
 
-          // Chỉ lấy cấp phường/xã + tỉnh/thành → bỏ cấp quận/thành phố ở giữa
-          // vì Nominatim vẫn dùng đơn vị cũ trước sáp nhập (VD: "Thành phố Thủ Đức")
-          const ward    = address.suburb || address.quarter || address.neighbourhood;
-          const province = address.state;
+          // Trích xuất các thành phần địa chỉ từ Nominatim
+          const road = address.road || "";
+          const ward = address.suburb || address.quarter || address.neighbourhood || "";
+          const district = address.city_district || address.county || address.town || "";
+          const province = address.city || address.state || "";
 
-          const parts = [ward, province].filter(Boolean);
+          // Gom nhóm lại, bỏ các phần bị trống
+          const parts = [road, ward, district, province].filter(Boolean);
 
+          // Nếu parts có data thì nối lại, không thì fallback sang display_name
           const display = parts.length > 0
             ? parts.join(", ")
-            : json.display_name?.split(",").slice(0, 2).join(",").trim() || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+            : json.display_name?.split(",").slice(0, 3).join(",").trim() || `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
 
           console.log("[GPS] coords:", lat, lng, "| display:", display);
           setDisplayAddress(display);

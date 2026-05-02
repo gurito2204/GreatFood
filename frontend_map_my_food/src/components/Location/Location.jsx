@@ -34,6 +34,7 @@ const Location = () => {
   const setCustomerLocation = (customerLocation) => {
     updateLocation(customerLocation);
     setLocation("");
+    locationCtx.onHide();
   };
 
   return (
@@ -48,8 +49,8 @@ const Location = () => {
               <Svgcross />
             </div>
 
-            {/* Nút GPS */}
             <button
+              type="button"
               className={`${classes.gps_btn} ${gpsStatus === "loading" ? classes.gps_loading : ""} ${gpsStatus === "success" ? classes.gps_success : ""}`}
               onClick={getGPSLocation}
             >
