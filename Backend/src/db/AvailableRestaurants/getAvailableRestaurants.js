@@ -12,6 +12,7 @@ module.exports = getAvailableRestaurants = async (pincode) => {
     await Promise.all(
       response.map(async (restaurant, index) => {
         const Restaurant = await getRestaurant(restaurant.RestaurantId);
+        if (!Restaurant) return;
         if (Restaurant.pincode == pincode) {
           var temp = {
             itemId: "",

@@ -1,8 +1,10 @@
 import React from "react";
 import classes from "./SellerSubscription.module.css";
 import { Link } from "react-router-dom";
+import { useNotification } from "../hook/useNotification";
 
 const SellerSubscription = () => {
+  const { NotificationHandler } = useNotification();
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>Nâng Cấp Gian Hàng</h1>
@@ -35,7 +37,7 @@ const SellerSubscription = () => {
             <li>✔️ <b>Huy hiệu Premium 👑 nổi bật</b></li>
             <li>✔️ <b>Ưu tiên hiển thị trên cùng</b></li>
           </ul>
-          <button className={classes.upgradeBtn} onClick={() => alert("Chức năng thanh toán Momo/ZaloPay sẽ được cập nhật trong Phase 4!")}>
+          <button className={classes.upgradeBtn} onClick={() => NotificationHandler("Tính năng thanh toán sẽ ra mắt sớm!", "Info")}>
             Nâng cấp ngay
           </button>
         </div>

@@ -5,13 +5,13 @@ const Favourites = () => {
   return (
     <div className={classes.container}>
       <img src="/greatfood/User/empty404.webp" alt="" />
-      <h1>Page not found</h1>
+      <h1>Tính năng đang phát triển</h1>
       <p>
-        Uh-oh! Looks like the page you are trying to access, doesn't exist.
-        Please start afresh.
+        Tính năng nhà hàng yêu thích sẽ sớm ra mắt trong các phiên bản tiếp theo.
+        Vui lòng quay lại sau!
       </p>
       <Link to={"/"}>
-        <button>GO HOME</button>
+        <button>QUAY VỀ TRANG CHỦ</button>
       </Link>
     </div>
   );

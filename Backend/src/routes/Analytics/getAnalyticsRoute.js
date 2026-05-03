@@ -24,7 +24,8 @@ module.exports = {
         salty: 0,
         sweet: 0,
         sour: 0,
-        bitter: 0
+        bitter: 0,
+        spicy: 0
       };
       
       if (totalRatings > 0) {
@@ -34,6 +35,7 @@ module.exports = {
             categories.sweet += doc.ratings.sweet || 0;
             categories.sour += doc.ratings.sour || 0;
             categories.bitter += doc.ratings.bitter || 0;
+            categories.spicy += doc.ratings.spicy || 0;
           }
         });
         
@@ -41,10 +43,12 @@ module.exports = {
         categories.sweet = (categories.sweet / totalRatings).toFixed(1);
         categories.sour = (categories.sour / totalRatings).toFixed(1);
         categories.bitter = (categories.bitter / totalRatings).toFixed(1);
+        categories.spicy = (categories.spicy / totalRatings).toFixed(1);
       }
       
-      // Mock views as totalRatings * 42 + 15 for a realistic looking number
-      const views = totalRatings * 42 + 15;
+      // Replace fake views with real views if available, else 0
+      const restaurant = await connection.collection("restaurant").findOne({ RestaurantId: restaurantId });
+      const views = restaurant?.views || 0;
       
       res.status(200).json({
         views,

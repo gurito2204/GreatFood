@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 import classes from "./SellerDashboard.module.css";
+import { api } from "../../services/api";
 
 const SellerDashboard = () => {
   const { fetchRestaurantId } = useLocationLocalStorage();
@@ -16,9 +17,8 @@ const SellerDashboard = () => {
     }
     const fetchAnalytics = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_BACKEND_URL}/api/seller/analytics/${restaurantId}`);
-        const result = await response.json();
-        setData(result);
+        const response = await api.get(`/api/seller/analytics/${restaurantId}`);
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching analytics:", error);
       } finally {
@@ -38,17 +38,17 @@ const SellerDashboard = () => {
     );
   }
 
-  const tastes = data?.averageTaste || { salty: 0, sweet: 0, sour: 0, bitter: 0 };
+  const tastes = data?.averageTaste || { salty: 0, sweet: 0, sour: 0, bitter: 0, spicy: 0 };
   
   // Helper to render simple CSS progress bar
   const renderBar = (label, value) => {
-    // Value is 0-5
-    const percentage = (value / 5) * 100;
+    // Value is 0-10
+    const percentage = Math.min((value / 10) * 100, 100);
     return (
       <div className={classes.barContainer}>
         <div className={classes.barLabel}>
           <span>{label}</span>
-          <span>{value} / 5</span>
+          <span>{value} / 10</span>
         </div>
         <div className={classes.barTrack}>
           <div className={classes.barFill} style={{ width: `${percentage}%` }}></div>
@@ -86,6 +86,7 @@ const SellerDashboard = () => {
           {renderBar("Ngọt", tastes.sweet)}
           {renderBar("Chua", tastes.sour)}
           {renderBar("Đắng", tastes.bitter)}
+          {renderBar("Cay", tastes.spicy)}
         </div>
       </div>
     </div>

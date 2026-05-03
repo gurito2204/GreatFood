@@ -174,8 +174,8 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
         isOpen={!!activeChatItem} 
         onClose={() => setActiveChatItem(null)}
         seller={{
-          name: "Nguyễn Văn A", // Mock seller
-          phone: "0901 234 567",
+          name: data.Restaurant || "Nhà hàng", 
+          phone: data.phone_number || "Đang cập nhật",
           isOnline: true,
           restaurantId: data.RestaurantId
         }}

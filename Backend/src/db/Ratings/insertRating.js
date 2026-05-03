@@ -26,9 +26,9 @@ module.exports = insertRating = async (userId, itemId, ratings) => {
     }
 
     // Update flavorAvg on the food item in restaurantFood collection
-    await connection.collection("restaurantFood").updateMany(
-      { "items.itemId": itemId },
-      { $set: { [`items.$.flavorAvg`]: flavorAvg } }
+    await connection.collection("restaurantFood").updateOne(
+      { "food.itemId": itemId },
+      { $set: { [`food.$.flavorAvg`]: flavorAvg } }
     );
 
     // 3. Recalculate user's taste bias B_u = avg(R_u,i - S̄_i) for each flavor
