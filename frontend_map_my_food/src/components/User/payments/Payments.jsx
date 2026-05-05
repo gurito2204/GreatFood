@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./Payments.module.css";
 import usegetUserOrder from "../../hook/usegetUserOrder";
+import { formatPrice } from "../../../utils/formatPrice";
 
 const Payments = () => {
   const { userOrderData } = usegetUserOrder();
@@ -33,7 +34,7 @@ const Payments = () => {
                   <span style={{ color: "#28a745", fontWeight: "bold" }}>Thành công</span>
                 </div>
                 <p style={{ margin: "5px 0" }}>Ngày: {new Date(payment.createdAt || Date.now()).toLocaleDateString("vi-VN")}</p>
-                <p style={{ margin: "5px 0" }}>Tổng tiền: <span style={{ color: "#fc8019", fontWeight: "bold" }}>{total.toLocaleString("vi-VN")}₫</span></p>
+                <p style={{ margin: "5px 0" }}>Tổng tiền: <span style={{ color: "#fc8019", fontWeight: "bold" }}>{formatPrice(total)}</span></p>
                 <p style={{ margin: "5px 0", fontSize: "0.9em", color: "#666" }}>Phương thức: Thanh toán khi nhận hàng (COD)</p>
               </div>
             );

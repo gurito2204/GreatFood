@@ -4,6 +4,7 @@ import { useNotification } from "../hook/useNotification";
 import GoogleMapsLink from "../ui/GoogleMapsLink/GoogleMapsLink";
 import { api } from "../../services/api";
 import { io } from "socket.io-client";
+import { formatPrice } from "../../utils/formatPrice";
 import classes from "./SellerOrders.module.css";
 
 const STATUS_CONFIG = {
@@ -168,7 +169,7 @@ const SellerOrders = () => {
                         {item.items?.name || item.name || `Món ${idx + 1}`}
                       </span>
                       <span className={classes.itemPrice}>
-                        {(+item.items?.price || 0).toLocaleString("vi-VN")}₫
+                        {formatPrice(+item.items?.price || 0)}
                       </span>
                     </div>
                   ))}
@@ -178,7 +179,7 @@ const SellerOrders = () => {
                 <div className={classes.orderTotal}>
                   <span>Tổng cộng:</span>
                   <span className={classes.totalAmount}>
-                    {total.toLocaleString("vi-VN")}₫
+                    {formatPrice(total)}
                   </span>
                 </div>
 

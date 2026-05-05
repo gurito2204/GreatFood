@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import classes from "./SearchAfterClickItem.module.css";
 import SvgArrow from "../../../ui/Svg/SvgArrow";
 import CartContext from "../../../store/cart/Cart-context";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
   const cartContextCtx = useContext(CartContext);
@@ -68,7 +69,7 @@ const SearchAfterClickItem = ({ searchItemAfterClickData }) => {
                           {each_item.name}
                         </div>
                         <div className={classes.item_part3_price}>
-                          {each_item.price}
+                          {formatPrice(each_item.price)}
                         </div>
                         <div className={classes.item_part3_para}>
                           {each_item.description}

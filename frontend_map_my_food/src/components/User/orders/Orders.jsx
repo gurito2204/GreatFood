@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./Orders.module.css";
 import usegetUserOrder from "../../hook/usegetUserOrder";
 import TasteRatingModal from "../../TasteRatingModal/TasteRatingModal";
+import { formatPrice } from "../../../utils/formatPrice";
 
 const Orders = () => {
   const { userOrderData } = usegetUserOrder();
@@ -41,9 +42,9 @@ const Orders = () => {
                 </div>
                 <p>Địa chỉ: {order.address || "—"}</p>
                 <h2>
-                  Tổng: {(
+                  Tổng: {formatPrice(
                     (+order.GST || 0) + (+order.totalAmount || 0) + (+order.deliveryCost || 0)
-                  ).toLocaleString("vi-VN")}₫
+                  )}
                 </h2>
                 <p>Số món: {items.length}</p>
 

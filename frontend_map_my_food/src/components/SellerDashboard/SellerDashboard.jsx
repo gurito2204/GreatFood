@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 import classes from "./SellerDashboard.module.css";
 import { api } from "../../services/api";
+import { formatPrice } from "../../utils/formatPrice";
 
 const SellerDashboard = () => {
   const { fetchRestaurantId } = useLocationLocalStorage();
@@ -107,7 +108,7 @@ const SellerDashboard = () => {
       <div className={classes.statsRow}>
         <div className={classes.statCard}>
           <div className={classes.statValue}>
-            {(data?.totalRevenue || 0).toLocaleString("vi-VN")}₫
+            {formatPrice(data?.totalRevenue || 0)}
           </div>
           <div className={classes.statLabel}>Tổng doanh thu</div>
         </div>
@@ -124,7 +125,7 @@ const SellerDashboard = () => {
         </div>
         <div className={classes.statCard}>
           <div className={classes.statValue}>
-            {(data?.todayRevenue || 0).toLocaleString("vi-VN")}₫
+            {formatPrice(data?.todayRevenue || 0)}
           </div>
           <div className={classes.statLabel}>Doanh thu hôm nay</div>
         </div>

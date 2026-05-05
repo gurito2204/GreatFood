@@ -9,6 +9,7 @@ import TasteRatingModal from "../../../TasteRatingModal/TasteRatingModal";
 import { useLocationLocalStorage } from "../../../hook/LocationLocalStorage";
 import useItemPriceCart from "../../../hook/useItemPriceCart";
 import { api } from "../../../../services/api";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 const SearchRestaurantFood = ({ items, veg, data }) => {
   const cartContextCtx = useContext(CartContext);
@@ -89,7 +90,7 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
                   {each_item.name}
                 </div>
                 <div className={classes.item_part3_price}>
-                  {each_item.price}
+                  {formatPrice(each_item.price)}
                 </div>
                 
                 <FlavorPreviewBar flavors={flavorData[each_item.itemId]} showTop={2} />

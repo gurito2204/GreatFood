@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./CartNotification.module.css";
 import CartContext from "../store/cart/Cart-context";
+import { formatPrice } from "../../utils/formatPrice";
 
 const CartNotification = () => {
   const cartContextCtx = useContext(CartContext);
@@ -13,7 +14,7 @@ const CartNotification = () => {
             <div className={classes.left_1_a}>
               {cartContextCtx.addItems.length} Items
             </div>
-            <div className={classes.left_1_b}>{cartContextCtx.totalAmount}</div>
+            <div className={classes.left_1_b}>{formatPrice(cartContextCtx.totalAmount)}</div>
           </div>
           <Link to={"/checkout"} className={classes.right}>
             VIEW CART

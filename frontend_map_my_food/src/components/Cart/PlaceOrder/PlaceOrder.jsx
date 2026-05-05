@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import classes from "./PlaceOrder.module.css";
 import CartContext from "../../store/cart/Cart-context";
 import useItemPriceCart from "../../hook/useItemPriceCart";
+import { formatPrice } from "../../../utils/formatPrice";
 
 const PlaceOrder = () => {
   const cartContextCtx = useContext(CartContext);
@@ -89,7 +90,7 @@ const PlaceOrder = () => {
                     +
                   </div>
                 </div>
-                <div className={classes.item_cost}>{item.items.price}</div>
+                <div className={classes.item_cost}>{formatPrice(item.items.price)}</div>
               </div>
             ))}
           </div>
@@ -125,7 +126,7 @@ const PlaceOrder = () => {
                 Item Total
               </div>
               <div className={classes.top_part2_bill_details_h2_b}>
-                {cartContextCtx.totalAmount.toFixed(2)}
+                {formatPrice(cartContextCtx.totalAmount)}
               </div>
             </div>
             <div className={classes.top_part2_bill_details_h3}>
@@ -133,7 +134,7 @@ const PlaceOrder = () => {
                 Delivery partner fee
               </div>
               <div className={classes.top_part2_bill_details_h3_b}>
-                {cartContextCtx.deliveryCost.toFixed(2)}
+                {formatPrice(cartContextCtx.deliveryCost)}
               </div>
             </div>
             <div className={classes.top_part2_bill_details_h4}>
@@ -141,7 +142,7 @@ const PlaceOrder = () => {
                 GST and Restaurant Charges
               </div>
               <div className={classes.top_part2_bill_details_h4_b}>
-                {cartContextCtx.GST.toFixed(2)}
+                {formatPrice(cartContextCtx.GST)}
               </div>
             </div>
           </div>
@@ -149,9 +150,11 @@ const PlaceOrder = () => {
         <div className={classes.top_part3}>
           <div className={classes.top_part3_a}>TO PAY</div>
           <div className={classes.top_part3_b}>
-            {cartContextCtx.GST +
+            {formatPrice(
+              cartContextCtx.GST +
               cartContextCtx.deliveryCost +
-              cartContextCtx.totalAmount}
+              cartContextCtx.totalAmount
+            )}
           </div>
         </div>
       </div>
