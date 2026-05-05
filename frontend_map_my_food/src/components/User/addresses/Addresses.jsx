@@ -3,6 +3,7 @@ import classes from "./Addresses.module.css";
 import SvgHome from "../../ui/User/SvgHome";
 import useGetUserAddresses from "../../hook/useGetUserAddresses";
 import useInsertUserAddresses from "../../hook/useInsertUserAddresses";
+import GoogleMapsLink from "../../ui/GoogleMapsLink/GoogleMapsLink";
 
 const Addresses = () => {
   const { getUserAddressesData } = useGetUserAddresses();
@@ -30,7 +31,11 @@ const Addresses = () => {
             </div>
             <div className={classes.box_right}>
               <h1>Home</h1>
-              <p>{data}</p>
+              <p>
+                <GoogleMapsLink address={data}>
+                  {data}
+                </GoogleMapsLink>
+              </p>
               <div className={classes.right_buttons}>
                 <button
                   onClick={() => {

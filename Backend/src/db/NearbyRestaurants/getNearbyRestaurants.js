@@ -45,6 +45,9 @@ module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 5) =
           },
           subscriptionTier: restaurant.subscriptionTier || "BASIC",
           distanceKm: null,
+          lat: restaurant.lat || null,
+          lng: restaurant.lng || null,
+          address: restaurant.address || null,
         };
 
         // Bỏ qua các nhà hàng không có tọa độ

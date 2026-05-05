@@ -5,6 +5,7 @@ import useGetUserAddresses from "../../hook/useGetUserAddresses";
 import useInsertUserAddresses from "../../hook/useInsertUserAddresses";
 import CartContext from "../../store/cart/Cart-context";
 import { useLocationState } from "../../hook/useLocationState";
+import GoogleMapsLink from "../../ui/GoogleMapsLink/GoogleMapsLink";
 
 const AddressesCart = () => {
   const cartContextCtx = useContext(CartContext);
@@ -49,7 +50,11 @@ const AddressesCart = () => {
             </div>
             <div className={classes.box_right}>
               <h1>Home</h1>
-              <p>{data}</p>
+              <p>
+                <GoogleMapsLink address={data}>
+                  {data}
+                </GoogleMapsLink>
+              </p>
               <p>__ MIN</p>
               <div className={classes.right_buttons}>
                 <button

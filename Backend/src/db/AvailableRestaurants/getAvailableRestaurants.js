@@ -29,6 +29,10 @@ module.exports = getAvailableRestaurants = async (pincode) => {
           temp.last.star = Restaurant.rating;
           temp.last.time = Restaurant.time;
           temp.last.cost = Restaurant.price;
+          temp.lat = Restaurant.lat || null;
+          temp.lng = Restaurant.lng || null;
+          temp.address = Restaurant.address || null;
+          temp.isOpen = Restaurant.isOpen !== undefined ? Restaurant.isOpen : true;
           AvailableRestaurants.push(temp);
         }
       })

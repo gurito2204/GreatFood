@@ -3,23 +3,23 @@ import classes from "./SearchRestaurantHeading.module.css";
 import Svgsearch from "../../../ui/Svg/Svgsearch";
 import SvgDuration from "../../../ui/Svg/SvgDuration";
 import SvgPrice from "../../../ui/Svg/SvgPrice";
-import ChatModal from "../../../ChatModal/ChatModal"; // We will create this component
-
-// Mock Data for C2C Phase 1
-const MOCK_SELLER = {
-  sellerName: "Nguyễn Văn A",
-  sellerType: "Hộ kinh doanh cá nhân",
-  phone: "0901 234 567",
-  isOpen: true,
-};
+import ChatModal from "../../../ChatModal/ChatModal";
+import GoogleMapsLink from "../../../ui/GoogleMapsLink/GoogleMapsLink";
 
 const SearchRestaurantHeading = ({ data }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
+  // Dùng data thật từ DB thay vì MOCK_SELLER
+  const shopIsOpen = data.isOpen !== undefined ? data.isOpen : true;
+
   return (
     <div className={classes.container}>
       <div className={classes.part1}>
-        <div className={classes.address}>{data.address || "123 Đường ABC, TP.HCM"}</div>
+        <div className={classes.address}>
+            <GoogleMapsLink lat={data.lat} lng={data.lng} address={data.address}>
+              {data.address || "Đang cập nhật địa chỉ"}
+            </GoogleMapsLink>
+          </div>
         <div className={classes.search_logo}>
           <Svgsearch />
         </div>
@@ -30,17 +30,29 @@ const SearchRestaurantHeading = ({ data }) => {
             <h1>
               {data.Restaurant}
               <span className={classes.statusBadge}>
-                {MOCK_SELLER.isOpen ? " 🟢 Đang mở" : " 🔴 Đóng cửa"}
+                {shopIsOpen ? " 🟢 Đang mở" : " 🔴 Đóng cửa"}
               </span>
             </h1>
-            <h4>👤 {MOCK_SELLER.sellerName} ({MOCK_SELLER.sellerType})</h4>
-            <p>📍 {data.location} , {data.distance}</p>
-            <p className={classes.phoneNumber}>📞 {data.phone_number || MOCK_SELLER.phone}</p>
+            <p>
+              <GoogleMapsLink lat={data.lat} lng={data.lng} address={data.address || data.location}>
+                📍 {data.location} {data.distance && `, ${data.distance}`}
+              </GoogleMapsLink>
+            </p>
+            <p className={classes.phoneNumber}>📞 {data.phone_number || "Đang cập nhật"}</p>
+            {data.opening_hours && (
+              <p className={classes.openingHours}>🕐 {data.opening_hours}</p>
+            )}
           </div>
           <div className={classes.part2_left_bottom}>
-             <button className={classes.chatBtn} onClick={() => setIsChatOpen(true)}>
+            {shopIsOpen ? (
+              <button className={classes.chatBtn} onClick={() => setIsChatOpen(true)}>
                 💬 Nhắn tin để deal giá / hỏi freeship
-             </button>
+              </button>
+            ) : (
+              <div className={classes.closedBanner}>
+                🔴 Quán đang đóng cửa — Không thể đặt hàng lúc này
+              </div>
+            )}
           </div>
         </div>
         <div className={classes.part2_right}>
@@ -82,9 +94,9 @@ const SearchRestaurantHeading = ({ data }) => {
         isOpen={isChatOpen} 
         onClose={() => setIsChatOpen(false)} 
         seller={{
-          name: MOCK_SELLER.sellerName,
-          phone: data.phone_number || MOCK_SELLER.phone,
-          isOnline: MOCK_SELLER.isOpen,
+          name: data.Restaurant || "Nhà hàng",
+          phone: data.phone_number || "Đang cập nhật",
+          isOnline: shopIsOpen,
           restaurantId: data.RestaurantId
         }}
       />

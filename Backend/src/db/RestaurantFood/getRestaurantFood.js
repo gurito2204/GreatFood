@@ -11,8 +11,10 @@ module.exports = getRestaurantFood = async (id) => {
     const Restaurant = await getRestaurant(id);
     const foodItems = (response && response.length > 0 && response[0].food) ? response[0].food : [];
     
-    const vegFood = foodItems.filter((item) => String(item.veg).toLowerCase().trim() === "true");
-    const nonVegFood = foodItems.filter((item) => String(item.veg).toLowerCase().trim() !== "true");
+    // Filter out unavailable food for buyer view
+    const activeFoods = foodItems.filter(item => item.available !== false);
+    const vegFood = activeFoods.filter((item) => String(item.veg).toLowerCase().trim() === "true");
+    const nonVegFood = activeFoods.filter((item) => String(item.veg).toLowerCase().trim() !== "true");
 
     const combinedData = {
       ...Restaurant,

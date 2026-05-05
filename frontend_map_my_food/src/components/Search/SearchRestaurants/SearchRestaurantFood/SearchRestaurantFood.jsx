@@ -17,6 +17,9 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
   const { ItemPriceCartData } = useItemPriceCart();
   const [loadingItems, setLoadingItems] = useState({});
   
+  // Check if restaurant is open
+  const shopIsOpen = data.isOpen !== undefined ? data.isOpen : true;
+  
   // State for Modals
   const [activeTasteItem, setActiveTasteItem] = useState(null);
   const [activeChatItem, setActiveChatItem] = useState(null);
@@ -123,7 +126,11 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
                     event.target.src = each_item.image;
                   }}
                 />
-                {cartContextCtx.addItems.length !== 0 &&
+                {!shopIsOpen ? (
+                  <div className={classes.soldOutBadge}>ĐÓNG CỬA</div>
+                ) : each_item.available === false ? (
+                  <div className={classes.soldOutBadge}>HẾT HÀNG</div>
+                ) : cartContextCtx.addItems.length !== 0 &&
                 cartContextCtx.addItems.some(
                   (item) => item.itemId === each_item.itemId
                 ) ? (

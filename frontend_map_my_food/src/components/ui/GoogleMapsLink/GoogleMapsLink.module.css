@@ -1,0 +1,27 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  border-bottom: 1px dashed transparent;
+}
+
+.link:hover {
+  color: #fc8019;
+  border-bottom-color: #fc8019;
+  opacity: 0.9;
+}
+
+.icon {
+  font-size: 0.85em;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.link:hover .icon {
+  opacity: 1;
+  transform: scale(1.15);
+}

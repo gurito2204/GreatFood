@@ -209,3 +209,20 @@
 }
 .chatBtn:hover { background: #0056d6; }
 
+.closedBanner {
+  background: #fff2f0;
+  color: #f44336;
+  border: 1px solid #ffcdd2;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.openingHours {
+  font-size: 0.75rem;
+  color: #7e808c;
+}

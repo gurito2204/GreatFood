@@ -23,6 +23,9 @@ module.exports = updateRestaurant = async (RestaurantId, Restaurant, userId) => 
           price: Restaurant.price,
           pincode: Restaurant.pincode,
           image: Restaurant.image,
+          lat: Restaurant.lat ?? null,
+          lng: Restaurant.lng ?? null,
+          isOpen: Restaurant.isOpen !== undefined ? Restaurant.isOpen : true,
         },
       },
       (err, result) => {

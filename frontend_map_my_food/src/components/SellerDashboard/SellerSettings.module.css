@@ -1,0 +1,138 @@
+.container {
+  max-width: 800px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #93959f;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #282c3f;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #93959f;
+  margin: 0 0 24px;
+}
+
+/* ─── Image Section ─── */
+.imageSection {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.shopImage {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #f0f0f0;
+}
+
+.imageHint {
+  font-size: 12px;
+  color: #93959f;
+  margin-top: 8px;
+}
+
+/* ─── Section ─── */
+.section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid #f0f0f0;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #282c3f;
+  margin: 0 0 12px;
+}
+
+.currentAddress {
+  font-size: 13px;
+  color: #7e808c;
+  line-height: 1.6;
+  padding: 10px 14px;
+  background: #fafafa;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* ─── Fields Grid ─── */
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #93959f;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.fieldInput {
+  padding: 10px 14px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #282c3f;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.fieldInput:focus {
+  border-color: #fc8019;
+}
+
+/* ─── Save Row ─── */
+.saveRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.saveBtn {
+  background: #fc8019;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.saveBtn:hover {
+  background: #e06b00;
+}
+
+.saveBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .fieldsGrid {
+    grid-template-columns: 1fr;
+  }
+}

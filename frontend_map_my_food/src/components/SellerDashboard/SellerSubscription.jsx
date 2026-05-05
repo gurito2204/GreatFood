@@ -42,10 +42,6 @@ const SellerSubscription = () => {
           </button>
         </div>
       </div>
-      
-      <div className={classes.backLink}>
-        <Link to="/seller/dashboard">← Quay lại Dashboard</Link>
-      </div>
     </div>
   );
 };

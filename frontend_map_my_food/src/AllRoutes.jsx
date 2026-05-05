@@ -10,14 +10,26 @@ import User from "./components/User/User";
 import NewRestaurant from "./components/NewRestaurant/NewRestaurant";
 import PrivateRoute from "./PrivateRoutes";
 import PageNotFound from "./components/PageNotFound/PageNotFound";
+import SellerLayout from "./components/SellerDashboard/SellerLayout";
 import SellerDashboard from "./components/SellerDashboard/SellerDashboard";
 import SellerSubscription from "./components/SellerDashboard/SellerSubscription";
 import SellerInbox from "./components/SellerDashboard/SellerInbox";
+import SellerOrders from "./components/SellerDashboard/SellerOrders";
+import SellerInventory from "./components/SellerDashboard/SellerInventory";
+import SellerSettings from "./components/SellerDashboard/SellerSettings";
 
-const routes = [
-  { path: "/seller/dashboard", Component: SellerDashboard, private: true },
-  { path: "/seller/subscription", Component: SellerSubscription, private: true },
-  { path: "/seller/inbox", Component: SellerInbox, private: true },
+// Seller routes sử dụng SellerLayout chung
+const sellerRoutes = [
+  { path: "/seller/dashboard",    Component: SellerDashboard },
+  { path: "/seller/subscription", Component: SellerSubscription },
+  { path: "/seller/inbox",        Component: SellerInbox },
+  { path: "/seller/orders",       Component: SellerOrders },
+  { path: "/seller/inventory",    Component: SellerInventory },
+  { path: "/seller/settings",     Component: SellerSettings },
+];
+
+// Public & other private routes
+const otherRoutes = [
   { path: "/", Component: HomePage, exact: true },
   { path: "/offers/:page", Component: Offers },
   { path: "/supports", Component: Support },
@@ -32,21 +44,38 @@ const routes = [
 
 export const AllRoutes = ({ islogIn }) => (
   <Routes>
-    {routes.map((route, index) => {
-      return (
-        <Route
-          key={index}
-          path={route.path}
-          exact={route.exact}
-          element={
-            route.private ? (
-              <PrivateRoute islogIn={islogIn} Component={route.Component} />
-            ) : (
-              <route.Component />
-            )
-          }
-        ></Route>
-      );
-    })}
+    {/* Seller routes: wrapped in SellerLayout */}
+    {sellerRoutes.map((route, index) => (
+      <Route
+        key={`seller-${index}`}
+        path={route.path}
+        element={
+          <PrivateRoute
+            islogIn={islogIn}
+            Component={() => (
+              <SellerLayout>
+                <route.Component />
+              </SellerLayout>
+            )}
+          />
+        }
+      />
+    ))}
+
+    {/* Other routes */}
+    {otherRoutes.map((route, index) => (
+      <Route
+        key={`other-${index}`}
+        path={route.path}
+        exact={route.exact}
+        element={
+          route.private ? (
+            <PrivateRoute islogIn={islogIn} Component={route.Component} />
+          ) : (
+            <route.Component />
+          )
+        }
+      />
+    ))}
   </Routes>
 );

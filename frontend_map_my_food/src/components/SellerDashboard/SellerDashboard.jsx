@@ -9,24 +9,45 @@ const SellerDashboard = () => {
   const restaurantId = fetchRestaurantId();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
+  const [toggling, setToggling] = useState(false);
 
   useEffect(() => {
     if (!restaurantId) {
       setLoading(false);
       return;
     }
-    const fetchAnalytics = async () => {
+
+    const fetchAll = async () => {
       try {
-        const response = await api.get(`/api/seller/analytics/${restaurantId}`);
-        setData(response.data);
+        // Fetch analytics
+        const analytics = await api.get(`/api/seller/analytics/${restaurantId}`);
+        setData(analytics);
+
+        // Fetch restaurant info for isOpen
+        const restaurant = await api.get(`/restaurant/${restaurantId}`);
+        setIsOpen(restaurant?.isOpen !== undefined ? restaurant.isOpen : true);
       } catch (error) {
         console.error("Error fetching analytics:", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchAnalytics();
+    fetchAll();
   }, [restaurantId]);
+
+  const handleToggleOpen = async () => {
+    setToggling(true);
+    try {
+      const newState = !isOpen;
+      await api.put(`/api/seller/restaurant/${restaurantId}/toggle-open`, { isOpen: newState });
+      setIsOpen(newState);
+    } catch (err) {
+      console.error("Toggle failed:", err);
+    } finally {
+      setToggling(false);
+    }
+  };
 
   if (loading) return <div className={classes.loading}>Đang tải thống kê...</div>;
 
@@ -59,14 +80,66 @@ const SellerDashboard = () => {
 
   return (
     <div className={classes.dashboardContainer}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-        <h1 className={classes.title} style={{ marginBottom: 0 }}>Thống Kê Gian Hàng</h1>
-        <Link to="/seller/subscription" style={{ background: '#fc8019', color: 'white', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
-          ⭐ Nâng Cấp Premium
-        </Link>
+      {/* Header with toggle */}
+      <div className={classes.headerRow}>
+        <h1 className={classes.title}>Thống Kê Gian Hàng</h1>
+        <div className={classes.headerActions}>
+          {/* Toggle Open/Close */}
+          <div className={classes.toggleContainer}>
+            <span className={classes.toggleLabel}>
+              {isOpen ? "🟢 Đang mở" : "🔴 Đã đóng"}
+            </span>
+            <button
+              className={`${classes.toggleSwitch} ${isOpen ? classes.toggleOn : classes.toggleOff}`}
+              onClick={handleToggleOpen}
+              disabled={toggling}
+            >
+              <span className={classes.toggleKnob}></span>
+            </button>
+          </div>
+          <Link to="/seller/subscription" className={classes.premiumBtn}>
+            ⭐ Nâng Cấp Premium
+          </Link>
+        </div>
       </div>
-      
+
+      {/* Revenue Stats */}
       <div className={classes.statsRow}>
+        <div className={classes.statCard}>
+          <div className={classes.statValue}>
+            {(data?.totalRevenue || 0).toLocaleString("vi-VN")}₫
+          </div>
+          <div className={classes.statLabel}>Tổng doanh thu</div>
+        </div>
+        <div className={classes.statCard}>
+          <div className={classes.statValue}>{data?.completedOrders || 0}</div>
+          <div className={classes.statLabel}>Đơn hoàn thành</div>
+        </div>
+        <div className={`${classes.statCard} ${(data?.pendingOrders || 0) > 0 ? classes.statCardPending : ""}`}>
+          <div className={classes.statValue}>{data?.pendingOrders || 0}</div>
+          <div className={classes.statLabel}>Đơn chờ xử lý</div>
+          {(data?.pendingOrders || 0) > 0 && (
+            <Link to="/seller/orders" className={classes.statAction}>Xem ngay →</Link>
+          )}
+        </div>
+        <div className={classes.statCard}>
+          <div className={classes.statValue}>
+            {(data?.todayRevenue || 0).toLocaleString("vi-VN")}₫
+          </div>
+          <div className={classes.statLabel}>Doanh thu hôm nay</div>
+        </div>
+      </div>
+
+      {/* Secondary Stats */}
+      <div className={classes.statsRow}>
+        <div className={classes.statCard}>
+          <div className={classes.statValue}>{data?.todayOrders || 0}</div>
+          <div className={classes.statLabel}>Đơn hôm nay</div>
+        </div>
+        <div className={classes.statCard}>
+          <div className={classes.statValue}>{data?.totalOrders || 0}</div>
+          <div className={classes.statLabel}>Tổng số đơn</div>
+        </div>
         <div className={classes.statCard}>
           <div className={classes.statValue}>{data?.views || 0}</div>
           <div className={classes.statLabel}>Lượt tương tác</div>

@@ -46,14 +46,48 @@ module.exports = {
         categories.spicy = (categories.spicy / totalRatings).toFixed(1);
       }
       
-      // Replace fake views with real views if available, else 0
+      // 4. Views
       const restaurant = await connection.collection("restaurant").findOne({ RestaurantId: restaurantId });
       const views = restaurant?.views || 0;
+      
+      // 5. Order statistics
+      const allOrders = await connection.collection("orders").find({ restaurantId }).toArray();
+      const totalOrders = allOrders.length;
+      const completedOrders = allOrders.filter(o => o.status === "completed").length;
+      const pendingOrders = allOrders.filter(o => (o.status || "pending") === "pending").length;
+      
+      // 6. Revenue (chỉ từ đơn completed)
+      let totalRevenue = 0;
+      allOrders.filter(o => o.status === "completed").forEach(order => {
+        totalRevenue += (+order.totalAmount || 0) + (+order.deliveryCost || 0) + (+order.GST || 0);
+      });
+
+      // 7. Today stats
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const todayOrders = allOrders.filter(o => {
+        const created = new Date(o.createdAt);
+        return created >= today;
+      }).length;
+
+      let todayRevenue = 0;
+      allOrders.filter(o => {
+        const created = new Date(o.createdAt);
+        return o.status === "completed" && created >= today;
+      }).forEach(order => {
+        todayRevenue += (+order.totalAmount || 0) + (+order.deliveryCost || 0) + (+order.GST || 0);
+      });
       
       res.status(200).json({
         views,
         totalRatings,
-        averageTaste: categories
+        averageTaste: categories,
+        totalOrders,
+        completedOrders,
+        pendingOrders,
+        totalRevenue,
+        todayOrders,
+        todayRevenue,
       });
       
     } catch (err) {

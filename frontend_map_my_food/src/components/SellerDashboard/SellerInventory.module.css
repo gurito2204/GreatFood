@@ -1,0 +1,243 @@
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #282c3f;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  color: #93959f;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #686b78;
+  font-size: 1.1rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #93959f;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Table */
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.table th {
+  background: #f9f9fb;
+  color: #535665;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.8rem 0.6rem;
+  text-align: left;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.table td {
+  padding: 0.7rem 0.6rem;
+  border-bottom: 1px solid #f0f0f5;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover {
+  background: #fafafa;
+}
+
+.rowDisabled {
+  opacity: 0.55;
+}
+
+.rowDisabled:hover {
+  opacity: 0.7;
+}
+
+.thNum { width: 40px; text-align: center; }
+.thImage { width: 50px; }
+.thName { min-width: 150px; }
+.thPrice { width: 100px; }
+.thStock { width: 120px; }
+.thStatus { width: 110px; }
+.thAction { width: 80px; text-align: center; }
+
+.tdNum { text-align: center; color: #93959f; font-size: 0.85rem; }
+
+.tdImage img {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.foodName {
+  font-weight: 600;
+  color: #282c3f;
+}
+
+.foodCat {
+  font-size: 0.78rem;
+  color: #93959f;
+  margin-top: 2px;
+}
+
+.tdPrice {
+  font-weight: 600;
+  color: #535665;
+}
+
+/* Price input */
+.priceInput {
+  display: flex;
+  align-items: center;
+}
+
+.priceField {
+  width: 80px;
+  padding: 4px 6px;
+  border: 1px solid #d4d5d9;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  text-align: left;
+  transition: border-color 0.2s;
+  font-weight: 600;
+  color: #535665;
+}
+
+.priceField:focus {
+  outline: none;
+  border-color: #fc8019;
+  box-shadow: 0 0 0 2px rgba(252, 128, 25, 0.15);
+}
+
+/* Stock input */
+.stockInput {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stockField {
+  width: 60px;
+  padding: 4px 6px;
+  border: 1px solid #d4d5d9;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.stockField:focus {
+  outline: none;
+  border-color: #fc8019;
+  box-shadow: 0 0 0 2px rgba(252, 128, 25, 0.15);
+}
+
+.stockInf {
+  font-size: 1.1rem;
+  color: #4caf50;
+  font-weight: 700;
+}
+
+.stockZero {
+  font-size: 0.75rem;
+  color: #f44336;
+  font-weight: 700;
+  background: #ffebee;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* Status */
+.statusDot {
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.statusOn { color: #4caf50; }
+.statusOff { color: #f44336; }
+
+/* Toggle button */
+.toggleBtn {
+  padding: 4px 14px;
+  border: 1px solid;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toggleOff {
+  color: #f44336;
+  border-color: #f44336;
+  background: white;
+}
+.toggleOff:hover {
+  background: #ffebee;
+}
+
+.toggleOn {
+  color: #4caf50;
+  border-color: #4caf50;
+  background: white;
+}
+.toggleOn:hover {
+  background: #e8f5e9;
+}
+
+.toggleBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Legend */
+.legend {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f9f9fb;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #686b78;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  .container { padding: 0 0.5rem; margin-top: 1rem; }
+  .table th, .table td { padding: 0.5rem 0.3rem; font-size: 0.82rem; }
+  .thImage, .tdImage { display: none; }
+  .stockField { width: 50px; }
+}

@@ -10,6 +10,7 @@ import LocationContext from "../store/location/Location-context";
 import AuthenticationContext from "../store/authentication/Authentication-context";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 import { useLocationState } from "../hook/useLocationState";
+import GoogleMapsLink from "../ui/GoogleMapsLink/GoogleMapsLink";
 import { api } from "../../services/api";
 
 const Header = () => {
@@ -17,12 +18,13 @@ const Header = () => {
   const locationCtx = useContext(LocationContext);
   const authenticationContextCtx = useContext(AuthenticationContext);
   const { fetchLocation, fetchPersonalDetails, fetchRestaurantId } = useLocationLocalStorage();
-  const { displayAddress } = useLocationState();
+  const { displayAddress, coords } = useLocationState();
   const place = fetchLocation();
   const personalDetails = fetchPersonalDetails();
   const restaurantId = fetchRestaurantId();
   const [number, setNumber] = useState(cartContextCtx.addItems.length);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [pendingCount, setPendingCount] = useState(0);
   const [authState, setAuthState] = useState(Date.now());
   const location = useLocation();
 
@@ -43,6 +45,14 @@ const Header = () => {
           if (data && data.totalUnread !== undefined) {
             setUnreadCount(data.totalUnread);
           }
+        })
+        .catch(err => console.error(err));
+
+      // Fetch pending orders count
+      api.get(`/api/seller/orders/${restaurantId}`)
+        .then(data => {
+          const pending = (data.orders || []).filter(o => (o.status || "pending") === "pending").length;
+          setPendingCount(pending);
         })
         .catch(err => console.error(err));
     }
@@ -84,7 +94,19 @@ const Header = () => {
           onClick={() => {
             locationCtx.onShow();
           }}
-        ></i>
+                ></i>
+        {/* Nút mở Google Maps cho vị trí hiện tại */}
+        {(coords || displayAddress) && (
+          <GoogleMapsLink
+            lat={coords?.lat}
+            lng={coords?.lng}
+            address={displayAddress}
+            showIcon={false}
+            className={classes.left_map_btn}
+          >
+            🗺️
+          </GoogleMapsLink>
+        )}
       </div>
       <div className={classes.right}>
         <Link to={"/search"} className={classes.right_part}>
@@ -169,6 +191,49 @@ const Header = () => {
                 }`}
               >
                 Tin nhắn
+              </div>
+            </Link>
+            <Link to={"/seller/orders"} className={classes.right_part}>
+              <div className={classes.right_image} style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontSize: '18px', lineHeight: 1 }}>📋</span>
+                {pendingCount > 0 && (
+                  <span style={{
+                    position: 'absolute',
+                    top: '-6px',
+                    right: '-8px',
+                    background: '#f44336',
+                    color: 'white',
+                    borderRadius: '50%',
+                    padding: '2px 5px',
+                    fontSize: '9px',
+                    fontWeight: 'bold'
+                  }}>
+                    {pendingCount}
+                  </span>
+                )}
+              </div>
+              <div
+                className={`${
+                  isActive("/seller/orders")
+                    ? classes.active
+                    : classes.right_text
+                }`}
+              >
+                Đơn hàng
+              </div>
+            </Link>
+            <Link to={"/seller/inventory"} className={classes.right_part}>
+              <div className={classes.right_image} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span style={{ fontSize: '18px', lineHeight: 1 }}>📦</span>
+              </div>
+              <div
+                className={`${
+                  isActive("/seller/inventory")
+                    ? classes.active
+                    : classes.right_text
+                }`}
+              >
+                Kho hàng
               </div>
             </Link>
             <Link to={"/my-account/orders"} className={classes.right_part}>

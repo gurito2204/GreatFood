@@ -20,6 +20,8 @@ module.exports = updateRestaurantFood = async (itemId, food) => {
             "food.$.category": food.category,
             "food.$.timeRequired": food.timeRequired,
             "food.$.image": food.image,
+            "food.$.stock": food.stock ?? -1,
+            "food.$.available": food.available !== undefined ? food.available : true,
           },
         },
         (err, result) => {

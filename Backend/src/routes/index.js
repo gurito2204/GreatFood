@@ -36,6 +36,11 @@ const getInboxRoute = require("./Chat/getInboxRoute");
 const markReadRoute = require("./Chat/markReadRoute");
 const getNearbyRestaurantsRoute = require("./NearbyRestaurants/getNearbyRestaurantsRoute");
 const getReverseGeocodeRoute = require("./Location/getReverseGeocodeRoute");
+const getSellerOrdersRoute = require("./UserOrder/getSellerOrdersRoute");
+const updateOrderStatusRoute = require("./UserOrder/updateOrderStatusRoute");
+const updateFoodStockRoute = require("./RestaurantFood/updateFoodStockRoute");
+const toggleRestaurantOpenRoute = require("./Restaurant/toggleRestaurantOpenRoute");
+const updateSellerRestaurantRoute = require("./Restaurant/updateSellerRestaurantRoute");
 
 module.exports = routes = [
   getPaymentOffersRoute,
@@ -75,4 +80,9 @@ module.exports = routes = [
   markReadRoute,
   getNearbyRestaurantsRoute,
   getReverseGeocodeRoute,
+  getSellerOrdersRoute,
+  updateOrderStatusRoute,
+  updateFoodStockRoute,
+  toggleRestaurantOpenRoute,
+  updateSellerRestaurantRoute,
 ];

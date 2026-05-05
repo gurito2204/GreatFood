@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./AvailableRestaurantsContainer.module.css";
+import GoogleMapsLink from "../../../ui/GoogleMapsLink/GoogleMapsLink";
 
 const AvailableRestaurantsContainer = ({ datas }) => {
   const navigate = useNavigate();
@@ -35,7 +36,11 @@ const AvailableRestaurantsContainer = ({ datas }) => {
             </div>
             <div className={classes.bottom_box_last_time}>• {data.last.time}</div>
             {data.distanceKm != null && (
-              <div className={classes.bottom_box_last_distance}>📍 {data.distanceKm} km</div>
+              <div className={classes.bottom_box_last_distance}>
+                <GoogleMapsLink lat={data.lat} lng={data.lng} address={data.address}>
+                  📍 {data.distanceKm} km
+                </GoogleMapsLink>
+              </div>
             )}
             <div className={classes.bottom_box_last_cost}>{data.last.cost}</div>
           </div>
