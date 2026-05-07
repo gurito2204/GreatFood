@@ -95,4 +95,14 @@ Distributed under the ISC License.
 
 ---
 
+## 🎖️ Credits & Acknowledgments
+
+This project was built as part of the **Đồ án TMDT** (E-commerce Course Project).
+
+Special thanks and credits to:
+- **Map-My-Food**: This project is built upon the foundational architecture and inspired by the concepts of [Map-My-Food](https://github.com/shreyashshukla22/map-my-food).
+- **Core Contributors**: Developed and enhanced by the GreatFood team.
+
+---
+
 Developed with ❤️ for the **GreatFood (Đồ án TMDT)** project.
