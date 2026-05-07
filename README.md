@@ -1,79 +1,86 @@
-# 🍴 Map-My-Food
+# 🍲 GreatFood
 
 [![Status](https://img.shields.io/badge/status-active-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/license-ISC-blue.svg)]()
 [![React](https://img.shields.io/badge/React-18.2-blue.svg)]()
 [![Node](https://img.shields.io/badge/Node-16+-green.svg)]()
 
-> A modern, location-based food marketplace connecting hungry users with the best local flavors.
+> A premium, hyper-local food discovery and C2C marketplace platform.
 
-Map-My-Food is a comprehensive C2C platform that simplifies how users discover and order food. Built with a focus on real-time interaction and location precision, it offers a seamless experience for both buyers and sellers.
-
----
-
-## ✨ Key Features
-
-- 📍 **Smart Location Services**: Real-time GPS tracking and address matching to find the nearest restaurants.
-- 🛍️ **Comprehensive Marketplace**: Browse diverse food categories, view detailed menus, and manage carts effortlessly.
-- 💬 **Real-time Chat**: Integrated communication between buyers and sellers using Socket.io.
-- 🔐 **Secure Authentication**: Robust user and seller management with JWT-based security.
-- 📊 **Seller Dashboard**: Advanced tools for sellers to manage inventory, track orders, and analyze performance.
-- 🔔 **Instant Notifications**: Stay updated with order status changes and new messages.
-- 💳 **Seamless Payments**: Integrated payment processing for a smooth checkout experience.
+**GreatFood** is not just another food delivery app. It is a sophisticated ecosystem designed to bridge the gap between local food vendors and discerning customers through advanced location services, real-time engagement, and data-driven personalization.
 
 ---
 
-## 🛠️ Technology Stack
+## 🌟 Advanced Features
+
+### 🛒 For Buyers
+- 📍 **Precision Geo-Location**: Leverages Google Maps and reverse geocoding to suggest the most relevant nearby restaurants.
+- 👅 **Taste Calibration System**: A unique Mean-Centering algorithm that adjusts food ratings based on individual user bias, ensuring more objective and personalized recommendations.
+- 💬 **Direct Real-time Chat**: Connect directly with sellers via integrated Socket.io rooms for order inquiries and customizations.
+- 🥘 **Recipe & Category Discovery**: Explore food by category or discover new recipes directly within the platform.
+- 🎫 **Smart Offers**: Context-aware payment and restaurant-specific promotional offers.
+
+### 🏢 For Sellers
+- 📊 **Business Analytics Dashboard**: Track sales, performance metrics, and customer engagement in a centralized view.
+- 📦 **Inventory & Stock Management**: Real-time control over food availability, pricing, and restaurant status (Open/Closed).
+- 🏷️ **Dynamic Offer Management**: Create, update, and delete promotional campaigns on the fly.
+- 📥 **Centralized Inbox**: Manage all customer interactions efficiently with read/unread tracking.
+- 💳 **Subscription Model**: Tiered access for sellers to unlock premium marketplace features.
+
+---
+
+## 🛠️ Technology Stack & Architecture
 
 ### Frontend
-- **Framework**: React 18
-- **Build Tool**: Vite
-- **Routing**: React Router DOM 6
-- **Styling**: CSS Modules
-- **Real-time**: Socket.io Client
+- **Framework**: React 18 with Vite for ultra-fast development and optimized builds.
+- **State & Context**: Context API for localized state management (Location, Auth).
+- **Communication**: `socket.io-client` for persistent, low-latency bi-directional communication.
+- **Styling**: Scoped CSS Modules for maintainable and collision-free UI design.
 
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express
-- **Database**: MongoDB
-- **Security**: JWT (jsonwebtoken), bcryptjs
-- **File Handling**: express-fileupload
-- **Real-time**: Socket.io
+### Backend (Modular Architecture)
+- **Runtime**: Node.js & Express.
+- **Database**: MongoDB (NoSQL) for flexible data schema (Users, Restaurants, Orders, Chat).
+- **Security**: JWT-based authentication with bcrypt hashing and OTP generation capabilities.
+- **API Design**: Modular route structure with over 40 specialized endpoints for high scalability.
+- **Real-time Engine**: Integrated Socket.io for notifications and chat orchestration.
+
+---
+
+## 📂 Project Structure
+
+```text
+├── Backend/                 # Express API & MongoDB Logic
+│   ├── src/
+│   │   ├── routes/          # Modular API endpoint definitions
+│   │   ├── db/              # Database schemas and seeders
+│   │   └── chatHandler.js   # Socket.io orchestration
+├── frontend_map_my_food/    # React SPA
+│   ├── src/
+│   │   ├── components/      # Atomic UI components & Dashboards
+│   │   ├── utils/           # Taste calibration & helper logic
+│   │   └── hooks/           # Custom React hooks (Location, Auth)
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Node.js (v16.x or higher)
-- MongoDB account (local or Atlas)
-- npm or yarn
-
 ### Installation
 
-1. **Clone the repository**:
+1. **Clone & Install**:
    ```bash
-   git clone https://github.com/your-repo/Map-My-Food.git
-   cd Map-My-Food
+   git clone https://github.com/your-repo/GreatFood.git
    ```
 
-2. **Setup Backend**:
+2. **Backend Setup**:
    ```bash
    cd Backend
    npm install
-   ```
-   Create a `.env` file in the `Backend` directory:
-   ```env
-   PORT=8080
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret
-   ```
-   Start the backend:
-   ```bash
+   # Configure your .env with MONGO_URI, JWT_SECRET, and PORT
    npm start
    ```
 
-3. **Setup Frontend**:
+3. **Frontend Setup**:
    ```bash
    cd ../frontend_map_my_food
    npm install
@@ -82,28 +89,10 @@ Map-My-Food is a comprehensive C2C platform that simplifies how users discover a
 
 ---
 
-## 📸 Preview
-
-*Images and walkthroughs of the application can be found in the documentation folder.*
-
----
-
-## 🤝 Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
-Distributed under the ISC License. See `LICENSE` for more information.
+Distributed under the ISC License.
 
 ---
 
-Developed with ❤️ for the **Đồ án TMDT** project.
+Developed with ❤️ for the **GreatFood (Đồ án TMDT)** project.
