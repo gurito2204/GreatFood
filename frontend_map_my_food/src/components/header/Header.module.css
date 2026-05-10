@@ -94,8 +94,11 @@
 }
 
 .right_image {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* === Similarity: nav text đồng nhất === */

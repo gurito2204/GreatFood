@@ -1,15 +1,15 @@
 import React from "react";
 import classes from "./Navigation.module.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SvgOrder from "../../ui/User/SvgOrder";
-import SvgSuper from "../../ui/User/SvgSuper";
-import SvgFavourites from "../../ui/User/SvgFavourites";
-import SvgPayment from "../../ui/User/SvgPayment";
-import SvgAddressess from "../../ui/User/SvgAddressess";
-import SvgSetting from "../../ui/User/SvgSetting";
-import SvgLogOut from "../../ui/User/SvgLogOut";
+import ListIcon from "@atlaskit/icon/core/list-bulleted";
+import StarIcon from "@atlaskit/icon/core/star-starred";
+import LikeIcon from "@atlaskit/icon/core/heart";
+import CreditCardIcon from "@atlaskit/icon/core/credit-card";
+import LocationIcon from "@atlaskit/icon/core/location";
+import SettingsIcon from "@atlaskit/icon/core/settings";
+import SignOutIcon from "@atlaskit/icon/core/log-out";
+import StoreIcon from "@atlaskit/icon/core/takeout-food";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
-import SvgRestaurant from "../../ui/User/SvgRestaurant";
 
 const Navigation = () => {
   const location = useLocation();
@@ -27,7 +27,7 @@ const Navigation = () => {
             isActive("/my-account/orders") ? classes.active : classes.item
           }`}
         >
-          <SvgOrder />
+          <ListIcon label="Orders" />
           Orders
         </Link>
         <Link
@@ -36,7 +36,7 @@ const Navigation = () => {
             isActive("/my-account/super") ? classes.active : classes.item
           }`}
         >
-          <SvgSuper />
+          <StarIcon label="Super" />
           Super
         </Link>
         <Link
@@ -45,7 +45,7 @@ const Navigation = () => {
             isActive("/my-account/favourites") ? classes.active : classes.item
           }`}
         >
-          <SvgFavourites />
+          <LikeIcon label="Favourites" />
           Favourites
         </Link>
         <Link
@@ -54,7 +54,7 @@ const Navigation = () => {
             isActive("/my-account/payments") ? classes.active : classes.item
           }`}
         >
-          <SvgPayment />
+          <CreditCardIcon label="Payments" />
           Payments
         </Link>
         <Link
@@ -65,7 +65,7 @@ const Navigation = () => {
               : classes.item
           }`}
         >
-          <SvgAddressess />
+          <LocationIcon label="Addresses" />
           Addresses
         </Link>
         <Link
@@ -74,7 +74,7 @@ const Navigation = () => {
             isActive("/my-account/settings") ? classes.active : classes.item
           }`}
         >
-          <SvgSetting />
+          <SettingsIcon label="Settings" />
           Settings
         </Link>
         <Link
@@ -83,7 +83,7 @@ const Navigation = () => {
             isActive("/new-restaurant") ? classes.active : classes.item
           }`}
         >
-          <SvgRestaurant />
+          <StoreIcon label="New Restaurant" />
           New Restaurant
         </Link>
         <div
@@ -95,7 +95,7 @@ const Navigation = () => {
             navigate("/");
           }}
         >
-          <SvgLogOut />
+          <SignOutIcon label="Log out" />
           Log out
         </div>
       </div>

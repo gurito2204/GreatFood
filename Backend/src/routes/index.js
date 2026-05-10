@@ -41,6 +41,7 @@ const updateOrderStatusRoute = require("./UserOrder/updateOrderStatusRoute");
 const updateFoodStockRoute = require("./RestaurantFood/updateFoodStockRoute");
 const toggleRestaurantOpenRoute = require("./Restaurant/toggleRestaurantOpenRoute");
 const updateSellerRestaurantRoute = require("./Restaurant/updateSellerRestaurantRoute");
+const cancelBuyerOrderRoute = require("./UserOrder/cancelBuyerOrderRoute");
 
 module.exports = routes = [
   getPaymentOffersRoute,
@@ -85,4 +86,5 @@ module.exports = routes = [
   updateFoodStockRoute,
   toggleRestaurantOpenRoute,
   updateSellerRestaurantRoute,
+  cancelBuyerOrderRoute,
 ];

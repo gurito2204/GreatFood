@@ -6,6 +6,7 @@ module.exports = getUserOrder = async (userId) => {
     const order = await connection
       .collection("orders")
       .find({ userId })
+      .sort({ createdAt: -1 })
       .toArray();
     return order;
   } catch (err) {

@@ -11,7 +11,7 @@ const Process = () => {
   const { fetchPersonalDetails } = useLocationLocalStorage();
   const personalDetails = fetchPersonalDetails();
   return (
-    <div className={classes.cotainer}>
+    <div className={classes.container}>
       <div className={classes.boxes}>
         <div className={classes.left_border}></div>
         {!personalDetails && (

@@ -46,3 +46,11 @@ module.exports.emitNewOrder = (restaurantId, orderData) => {
     ioInstance.to(sellerRoom).emit("new_order", orderData);
   }
 };
+
+// Export function to notify buyer when order status changes
+module.exports.emitOrderStatusChanged = (userId, data) => {
+  if (ioInstance) {
+    const buyerRoom = `buyer_${userId}`;
+    ioInstance.to(buyerRoom).emit("order_status_changed", data);
+  }
+};

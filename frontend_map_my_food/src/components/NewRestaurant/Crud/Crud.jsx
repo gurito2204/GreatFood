@@ -7,7 +7,7 @@ import useCreateNewRestaurantData from "../../hook/useCreateNewRestaurant";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
 import { useNotification } from "../../hook/useNotification";
 
-const Curd = ({ page, data, id, imageToBackend }) => {
+const Curd = ({ page, data, id, imageToBackend, onSuccess }) => {
   const { CreateNewRestaurantData } = useCreateNewRestaurantData();
   const { updateRestaurantId, updatePersonalDetails } =
     useLocationLocalStorage();
@@ -50,8 +50,9 @@ const Curd = ({ page, data, id, imageToBackend }) => {
       "",
       imageToBackend
     );
-    updateRestaurantId(response.data.ResturentId);
+    updateRestaurantId(response.data.restaurantId);
     updatePersonalDetails(response);
+    if (onSuccess) onSuccess();
   };
   const deleted = async () => {
     const checking = await chechData();

@@ -8,7 +8,7 @@ module.exports = insertRestaurant = async (userId, Restaurant) => {
     });
     const response = await updateUserRestaurantId(
       userId,
-      Restaurant.restaurantId
+      Restaurant.RestaurantId
     );
     return {
       data: response,

@@ -3,15 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 import { api } from "../../services/api";
 import classes from "./SellerLayout.module.css";
+import DashboardIcon from "@atlaskit/icon/core/dashboard";
+import ListIcon from "@atlaskit/icon/core/list-bulleted";
+import PakkageIcon from "@atlaskit/icon/core/takeout-food";
+import CommentIcon from "@atlaskit/icon/core/comment";
+import SettingsIcon from "@atlaskit/icon/core/settings";
+import StarIcon from "@atlaskit/icon/core/star-starred";
 
 const NAV_ITEMS = [
-  { path: "/seller/dashboard", icon: "📊", label: "Thống Kê" },
-  { path: "/seller/orders",    icon: "📋", label: "Đơn Hàng",   badgeKey: "pendingOrders" },
-  { path: "/seller/inventory", icon: "📦", label: "Kho Hàng" },
-  { path: "/seller/inbox",     icon: "💬", label: "Tin Nhắn",    badgeKey: "unreadMessages" },
+  { path: "/seller/dashboard", icon: <DashboardIcon label="Stats" />, label: "Thống Kê" },
+  { path: "/seller/orders",    icon: <ListIcon label="Orders" />, label: "Đơn Hàng",   badgeKey: "pendingOrders" },
+  { path: "/seller/inventory", icon: <PakkageIcon label="Inventory" />, label: "Kho Hàng" },
+  { path: "/seller/inbox",     icon: <CommentIcon label="Messages" />, label: "Tin Nhắn",    badgeKey: "unreadMessages" },
   { divider: true },
-  { path: "/seller/settings",  icon: "⚙️", label: "Quản Lý Quán" },
-  { path: "/seller/subscription", icon: "⭐", label: "Nâng Cấp" },
+  { path: "/seller/settings",  icon: <SettingsIcon label="Manage" />, label: "Quản Lý Quán" },
+  { path: "/seller/subscription", icon: <StarIcon label="Upgrade" />, label: "Nâng Cấp" },
 ];
 
 const SellerLayout = ({ children }) => {

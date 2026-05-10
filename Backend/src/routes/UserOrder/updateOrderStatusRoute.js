@@ -1,4 +1,5 @@
 const updateOrderStatus = require("../../db/UserOrder/updateOrderStatus");
+const { emitOrderStatusChanged } = require("../../chatHandler");
 
 module.exports = updateOrderStatusRoute = {
   path: "/api/seller/orders/:orderId/status",
@@ -11,6 +12,16 @@ module.exports = updateOrderStatusRoute = {
         return res.status(400).json({ message: "status là bắt buộc" });
       }
       const result = await updateOrderStatus(orderId, status);
+
+      // Thông báo buyer qua socket
+      if (result.userId) {
+        emitOrderStatusChanged(result.userId, {
+          orderId,
+          newStatus: status,
+          updatedAt: new Date(),
+        });
+      }
+
       return res.status(200).json({ message: "Cập nhật trạng thái thành công", result });
     } catch (err) {
       return res.status(400).json({ message: err.message || "Cập nhật thất bại" });

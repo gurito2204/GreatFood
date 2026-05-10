@@ -1,4 +1,5 @@
 const getDb = require("../db").getDb;
+const restoreOrderStock = require("./restoreOrderStock");
 
 /**
  * Cập nhật trạng thái đơn hàng.
@@ -32,7 +33,13 @@ module.exports = updateOrderStatus = async (orderId, newStatus) => {
         } 
       }
     );
-    return result.modifiedCount;
+
+    // Hoàn stock khi hủy đơn
+    if (newStatus === "cancelled") {
+      await restoreOrderStock(order);
+    }
+
+    return { modifiedCount: result.modifiedCount, userId: order.userId };
   } catch (err) {
     console.log(err.message);
     throw err;

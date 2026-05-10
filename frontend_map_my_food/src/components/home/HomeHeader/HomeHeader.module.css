@@ -1,19 +1,25 @@
 .box {
   display: flex;
-  flex-direction: row;
-  padding: 0rem 0rem;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  gap: 3rem;
-  height: 540px;
-  width: 94%;
+  justify-content: center;
+  height: 420px;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/greatfood/hero_banner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 .left {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
   width: 100%;
+  z-index: 2;
 }
 
 .part1 {
@@ -21,17 +27,26 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 1rem 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
 }
+
 .part1_img {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
+
 .part1_img img {
   width: 70px;
   height: 70px;
 }
+
 .part1_img h2 {
   font-size: 2rem;
   color: #fc8019;
@@ -39,47 +54,49 @@
   letter-spacing: 0.3px;
   text-transform: uppercase;
 }
+
 .buttons {
   display: flex;
   flex-direction: row;
   gap: 1rem;
 }
+
 .login {
   border: none;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   font-size: 1rem;
-  width: 100%;
-  text-decoration: none;
   cursor: pointer;
   text-align: center;
-  line-height: 50px;
-  height: 50px;
   padding: 0 2rem;
   color: #000;
-  letter-spacing: 0;
   font-weight: 600;
   height: 40px;
   line-height: 40px;
-  width: auto;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
+
+.login:hover {
+  background-color: #fff;
+}
+
 .signup {
-  border-radius: 1px;
+  border: none;
   cursor: pointer;
   font-size: 1rem;
-  width: 100%;
-  text-decoration: none;
   text-align: center;
-  line-height: 50px;
-  height: 50px;
   padding: 0 2rem;
-  color: #000;
-  letter-spacing: 0;
   color: #fff;
   background-color: #000;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
   font-weight: 600;
   height: 40px;
   line-height: 40px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.signup:hover {
+  background-color: #333;
 }
 
 .part2 {
@@ -88,135 +105,115 @@
   gap: 0.4rem;
 }
 
-.overflowPart {
-  overflow-y: hidden;
-}
 .part2 h2 {
   padding: 0;
   margin: 0;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.45px;
-  animation-name: my-animation;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-@keyframes my-animation {
-  0% {
-    transform: translateY(101%);
-  }
-  25% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-.part2 p {
-  padding: 0;
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 0;
-  line-height: 40px;
-  letter-spacing: -0.3px;
-  color: #686b78;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .part3 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-}
-.part3 .Input_searchLocations input {
-  border: 2px solid #ddd;
-  border-radius: 2px;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 600;
-  outline: none;
+  justify-content: center;
+  gap: 1rem;
   width: 100%;
-  padding: 1.2rem;
-  padding-left: 0.75rem;
-}
-.part3 .Input_searchLocations input:focus {
-  border: 1.2px solid #fc8019;
-  caret-color: #fc8019;
-}
-.part3 button {
-  padding: 1.3rem 0.8rem;
-  border: none;
-  color: white;
-  background-color: #fc8019;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 1rem;
-  outline: none;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  font-weight: 700;
-  letter-spacing: 0.53px;
-  width: auto;
-  white-space: nowrap;
+  max-width: 800px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
-.part4 h2 {
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: #a9abb2;
-  letter-spacing: -0.2px;
-  text-transform: uppercase;
-}
-.part4 p {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #93959f;
-  line-height: 1.5;
-  letter-spacing: -0.3px;
-}
-.part4 p span {
-  color: #686b78;
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 4px;
+  padding: 0 1rem;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.right {
-  height: 100%;
-  min-width: 50%;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-    url("/greatfood/Lunch1.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.locationIcon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }
 
-@media screen and (max-width: 880px) {
-  .box {
-    width: 100%;
-    flex-direction: column;
-  }
-  .left {
-    padding-left: 1rem;
-  }
-  .right {
-    min-width: 100%;
-  }
-}
 .Input_searchLocations {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
+  flex-grow: 1;
 }
+
+.Input_searchLocations input {
+  border: none;
+  box-sizing: border-box;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  padding: 1.2rem 0;
+  background: transparent;
+}
+
+.findFoodBtn {
+  padding: 1.2rem 2rem;
+  border: none;
+  color: white;
+  background-color: #fc8019;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 8px rgba(252, 128, 25, 0.4);
+}
+
+.findFoodBtn:hover {
+  background-color: #e67316;
+}
+
+.part4 h2 {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.part4 p {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.part4 p span {
+  color: #fff;
+  font-weight: 600;
+}
+
 .searchLocations {
-  width: 117.5%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 3.8rem;
+  top: 100%;
+  left: 0;
   background-color: white;
   z-index: 5;
-  padding: 1rem;
-  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 0.5rem;
 }
+
 .searchLocationBox {
   display: flex;
   flex-direction: row;
@@ -224,10 +221,12 @@
   align-items: center;
   gap: 1rem;
 }
+
 .searchLocationBox img {
   width: 35px;
   height: 35px;
 }
+
 .searchLocation {
   width: 100%;
   border-radius: 2px;
@@ -236,7 +235,6 @@
   font-size: 1rem;
   font-weight: 600;
   outline: none;
-  width: 100%;
   padding: 1.2rem;
   padding-left: 0.75rem;
   border-bottom: 1px dashed #bebfc5;
@@ -245,26 +243,37 @@
   text-overflow: ellipsis;
   color: #535665;
 }
+
 .searchLocation:hover {
   color: #fc8019;
 }
-@media screen and (max-width: 620px) {
-  .box {
-    height: auto;
+
+/* === Responsive === */
+@media screen and (max-width: 880px) {
+  .part2 h2 {
+    font-size: 28px;
+    padding: 0 1rem;
   }
-  .part1 {
-    flex-wrap: wrap;
-    justify-content: center;
+  .part3 {
+    flex-direction: column;
+    padding: 0 1rem;
   }
-  .right {
-    min-height: 200px;
+  .findFoodBtn {
+    width: 100%;
   }
 }
+
+@media screen and (max-width: 620px) {
+  .box {
+    height: 360px;
+  }
+  .part2 h2 {
+    font-size: 22px;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .part2 h2 {
-    font-size: 1.5rem;
-  }
-  .part1_img h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }

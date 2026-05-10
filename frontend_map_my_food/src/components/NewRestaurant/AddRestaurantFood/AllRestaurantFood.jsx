@@ -5,11 +5,13 @@ import SvgAddNew from "../../ui/User/SvgAddNew";
 import useGetFoodsAndOffers from "../../hook/useGetFoodsAndOffers";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
 import { useNotification } from "../../hook/useNotification";
+import { useNavigate } from "react-router-dom";
 
 const AllRestaurantFood = () => {
   const { GetFoodsAndOffersData } = useGetFoodsAndOffers();
   const { fetchRestaurantId } = useLocationLocalStorage();
   const { NotificationHandler } = useNotification();
+  const navigate = useNavigate();
   const isRestaurantId = fetchRestaurantId();
   const [allFoodData, setAllFoodData] = useState([]);
   const [isAddNew, setIsAddnew] = useState(false);
@@ -34,11 +36,17 @@ const AllRestaurantFood = () => {
         <AddRestaurantFood key={index} food={food} />
       ))}
       {isAddNew && <AddRestaurantFood />}
-      <div className={classes.buttons}>
+      <div className={classes.buttons} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div className={classes.button}>
           <div onClick={toggleForm}>
             <SvgAddNew />
           </div>
+        </div>
+        <div 
+          style={{ cursor: "pointer", background: "#fc8019", color: "#fff", padding: "10px 20px", borderRadius: "5px", fontWeight: "bold" }}
+          onClick={() => navigate("/seller/dashboard")}
+        >
+          Hoàn tất
         </div>
       </div>
     </div>

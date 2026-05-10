@@ -45,9 +45,9 @@
     "email": false
   },
   {
-    "Question": "I donâ€™t have an FSSAI licence for my restaurant. Can it still be onboarded?",
+    "Question": "I don't have an FSSAI licence for my restaurant. Can it still be onboarded?",
     "answer": [
-      "FSSAI licence is a mandatory requirement according to the governmentâ€™s policies. However, if you are yet to receive the licence at the time of onboarding, you can proceed with the acknowledgement number which you will have received from FSSAI for your registration."
+      "FSSAI licence is a mandatory requirement according to the government's policies. However, if you are yet to receive the licence at the time of onboarding, you can proceed with the acknowledgement number which you will have received from FSSAI for your registration."
     ],
     "email": false
   }

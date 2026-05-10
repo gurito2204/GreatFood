@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 import { api } from "../../services/api";
 import classes from "./SellerInventory.module.css";
+import AddIcon from "@atlaskit/icon/core/add";
+import PremiumIcon from "@atlaskit/icon/core/premium";
+import AddRestaurantFood from "../NewRestaurant/AddRestaurantFood/AddRestaurantFood";
+import AllRestaurantOffer from "../NewRestaurant/AddRestaurantOffer/AllRestaurantOffer";
 
 const SellerInventory = () => {
   const { fetchRestaurantId } = useLocationLocalStorage();
@@ -9,6 +13,8 @@ const SellerInventory = () => {
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState({});
+  const [showAddFood, setShowAddFood] = useState(false);
+  const [showAddOffer, setShowAddOffer] = useState(false);
 
   const fetchFoods = async () => {
     if (!restaurantId) return;
@@ -84,6 +90,38 @@ const SellerInventory = () => {
     <div className={classes.container}>
       <h1 className={classes.title}>📦 Quản Lý Kho Hàng</h1>
       <p className={classes.subtitle}>Bật/tắt món, điều chỉnh tồn kho và giá nhanh chóng</p>
+
+      <div className={classes.actionButtons}>
+        <button className={classes.actionBtn} onClick={() => setShowAddFood(true)}>
+          <AddIcon label="Add Food" />
+          <span>Thêm Món Ăn Mới</span>
+        </button>
+        <button className={classes.actionBtn} onClick={() => setShowAddOffer(true)}>
+          <PremiumIcon label="Offers" />
+          <span>Quản lý Khuyến Mãi</span>
+        </button>
+      </div>
+
+      {showAddFood && (
+        <div className={classes.modalOverlay}>
+          <div className={classes.modalContent}>
+            <button className={classes.closeBtn} onClick={() => setShowAddFood(false)}>✖</button>
+            <AddRestaurantFood onSuccess={() => {
+              setShowAddFood(false);
+              fetchFoods();
+            }} />
+          </div>
+        </div>
+      )}
+
+      {showAddOffer && (
+        <div className={classes.modalOverlay}>
+          <div className={classes.modalContent}>
+            <button className={classes.closeBtn} onClick={() => setShowAddOffer(false)}>✖</button>
+            <AllRestaurantOffer />
+          </div>
+        </div>
+      )}
 
       {foods.length === 0 ? (
         <div className={classes.empty}>

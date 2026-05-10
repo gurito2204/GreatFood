@@ -4,47 +4,31 @@ const getRestaurant = require("../Restaurant/getRestaurant");
 module.exports = getAvailableRestaurants = async (pincode) => {
   try {
     const connection = await getDb();
-    const response = await connection
-      .collection("restaurantFood")
-      .find()
-      .toArray();
-    var AvailableRestaurants = [];
-    await Promise.all(
-      response.map(async (restaurant, index) => {
-        const Restaurant = await getRestaurant(restaurant.RestaurantId);
-        if (!Restaurant) return;
-        if (Restaurant.pincode == pincode) {
-          var temp = {
-            itemId: "",
-            RestaurantId: "",
-            image: "",
-            about: { heading: "", name: "" },
-            last: { star: "", time: "", cost: "" },
-            subscriptionTier: Restaurant.subscriptionTier || 'BASIC'
-          };
-          temp.about.heading = Restaurant.Restaurant;
-          temp.RestaurantId = restaurant.RestaurantId;
-          temp.image = Restaurant.image; // Use the restaurant's uploaded image
-          temp.about.name = Restaurant.Restaurant_dish; 
-          temp.last.star = Restaurant.rating;
-          temp.last.time = Restaurant.time;
-          temp.last.cost = Restaurant.price;
-          temp.lat = Restaurant.lat || null;
-          temp.lng = Restaurant.lng || null;
-          temp.address = Restaurant.address || null;
-          temp.isOpen = Restaurant.isOpen !== undefined ? Restaurant.isOpen : true;
-          AvailableRestaurants.push(temp);
+    const pipeline = [
+      { $match: { pincode: String(pincode) } },
+      {
+        $project: {
+          _id: 0,
+          itemId: "",
+          RestaurantId: { $ifNull: ["$RestaurantId", "$restaurantId"] },
+          image: "$image",
+          about: { heading: "$Restaurant", name: "$Restaurant_dish" },
+          last: { star: "$rating", time: "$time", cost: "$price" },
+          subscriptionTier: { $ifNull: ["$subscriptionTier", "BASIC"] },
+          lat: { $ifNull: ["$lat", null] },
+          lng: { $ifNull: ["$lng", null] },
+          address: { $ifNull: ["$address", null] },
+          isOpen: { $ifNull: ["$isOpen", true] }
         }
-      })
-    );
-    
-    // Sort so PREMIUM restaurants appear first
-    AvailableRestaurants.sort((a, b) => {
-      if (a.subscriptionTier === 'PREMIUM' && b.subscriptionTier !== 'PREMIUM') return -1;
-      if (a.subscriptionTier !== 'PREMIUM' && b.subscriptionTier === 'PREMIUM') return 1;
-      return 0;
-    });
+      },
+      {
+        $sort: {
+          subscriptionTier: -1
+        }
+      }
+    ];
 
+    const AvailableRestaurants = await connection.collection("restaurant").aggregate(pipeline).toArray();
     return AvailableRestaurants;
   } catch (err) {
     console.log(err.message);

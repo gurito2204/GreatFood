@@ -4,11 +4,11 @@ import HomeMiddleTop from "./HomeMiddle/HomeMiddleTop";
 import HomeMiddleBottom from "./HomeMiddle/HomeMiddleBottom";
 import classes from "./Home.module.css";
 
-const Home = () => {
+const Home = ({ showHeader = true }) => {
   return (
     <div className={classes.box}>
       <div className={classes.home}>
-        <HomeHeader />
+        {showHeader && <HomeHeader />}
         <div className={classes.middle}>
           <HomeMiddleTop />
           <HomeMiddleBottom />

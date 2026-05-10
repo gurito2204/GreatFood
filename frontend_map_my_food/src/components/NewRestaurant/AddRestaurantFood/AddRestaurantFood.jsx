@@ -4,7 +4,7 @@ import Question from "../Question/Question";
 import UploadImage from "../UploadImage/UploadImage";
 import Curd from "../Crud/Crud";
 
-const AddRestaurantFood = ({ food }) => {
+const AddRestaurantFood = ({ food, onSuccess }) => {
   const [values, setValues] = useState({
     name: "",
     price: "",
@@ -61,6 +61,7 @@ const AddRestaurantFood = ({ food }) => {
               data={values}
               id={food.itemId}
               imageToBackend={imageToBackend}
+              onSuccess={onSuccess}
             />
           )}
           {!food && (
@@ -68,6 +69,7 @@ const AddRestaurantFood = ({ food }) => {
               page={"restaurantfood"}
               data={values}
               imageToBackend={imageToBackend}
+              onSuccess={onSuccess}
             />
           )}
         </div>

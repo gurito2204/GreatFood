@@ -6,7 +6,7 @@ module.exports = getRestaurant = async (id) => {
     const connection = await getDb();
     const restaurant = await connection
       .collection("restaurant")
-      .findOne({ RestaurantId: id });
+      .findOne({ $or: [{ RestaurantId: id }, { restaurantId: id }] });
     return restaurant;
   } catch (err) {
     console.log(err.message);

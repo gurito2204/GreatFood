@@ -6,23 +6,23 @@ module.exports = getItemPriceCart = async (RestaurantId, itemId) => {
     const connection = await getDb();
     const response = await connection
       .collection("restaurantFood")
-      .findOne({ RestaurantId: RestaurantId });
-    const matchingFoodItem = response.food.find(
-      (item) => item.itemId === itemId
-    );
-    const Restaurant = await getRestaurant(RestaurantId);
-    const newObj = {};
-    if (matchingFoodItem == null) {
-      newObj[itemId] = {
-        hotal: "Data not Found",
-        name: "",
-        price: "",
-        image: "",
-      };
+      .findOne({ $or: [{ RestaurantId: RestaurantId }, { restaurantId: RestaurantId }] });
+    
+    if (!response || !response.food) {
+      newObj[itemId] = { hotal: "Data not Found", name: "", price: "", image: "" };
       return newObj;
     }
+
+    const matchingFoodItem = response.food.find((item) => item.itemId === itemId);
+    const Restaurant = await getRestaurant(RestaurantId);
+    
+    if (!matchingFoodItem || !Restaurant) {
+      newObj[itemId] = { hotal: "Data not Found", name: "", price: "", image: "" };
+      return newObj;
+    }
+
     newObj[itemId] = {
-      hotal: Restaurant.Restaurant,
+      hotal: Restaurant.Restaurant || "Nhà hàng",
       city: Restaurant.location || "Hồ Chí Minh",
       name: matchingFoodItem.name,
       price: matchingFoodItem.price,

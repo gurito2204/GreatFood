@@ -24,7 +24,7 @@ const Restaurants = () => {
     setIsLoadingFood(true);
     const availableRestaurants = async () => {
       const responseAvailableRestaurantsData = await AvailableRestaurantsData();
-      const responseRecipesData = await RecipesData();
+      const responseRecipesData = await RecipesData(pincode);
       setdataAvailableRestaurants(responseAvailableRestaurantsData);
       setDataRecipes(responseRecipesData);
       setIsLoadingFood(false);

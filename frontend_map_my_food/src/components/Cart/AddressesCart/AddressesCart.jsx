@@ -36,7 +36,7 @@ const AddressesCart = () => {
   };
   return (
     <div className={classes.container}>
-      <div className={classes.heading}>Select delivey address </div>
+      <div className={classes.heading}>Chọn địa chỉ giao hàng</div>
       {address.length > 0 && (
         <div className={classes.heading1}>
           You have a saved address in the location
@@ -55,7 +55,7 @@ const AddressesCart = () => {
                   {data}
                 </GoogleMapsLink>
               </p>
-              <p>__ MIN</p>
+              <p>🕐 30-45 phút</p>
               <div className={classes.right_buttons}>
                 <button
                   onClick={() => {

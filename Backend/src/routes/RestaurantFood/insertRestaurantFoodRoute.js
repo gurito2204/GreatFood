@@ -14,11 +14,15 @@ module.exports = insertRestaurantFoodRoute = {
         const { file } = req.files;
         image = await Uploads(file);
       }
-      const foodWithId = food.map((food, index) => ({
-        itemId: v4(),
-        image: image,
-        ...food,
-      }));
+      const foodWithId = food.map((foodItem) => {
+        const newItem = { ...foodItem, itemId: v4() };
+        if (image !== "") {
+          newItem.image = image;
+        } else if (!newItem.image) {
+          newItem.image = "";
+        }
+        return newItem;
+      });
       const response = await insertRestaurantFood(RestaurantId, foodWithId);
       res
         .status(200)

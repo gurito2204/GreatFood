@@ -13,18 +13,19 @@ const QUICK_REPLIES = [
 const ChatModal = ({ isOpen, onClose, seller, prefillMessage }) => {
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [prefillShown, setPrefillShown] = useState(true);
   const socketRef = useRef(null);
   const chatBoxRef = useRef(null);
   const { fetchPersonalDetails } = useLocationLocalStorage();
 
   useEffect(() => {
-    if (!isOpen) return;
-
     const personalDetails = fetchPersonalDetails();
     if (!personalDetails) {
       setChatHistory([{ sender: "system", text: "Vui lòng đăng nhập để nhắn tin cho người bán." }]);
       return;
     }
+
+    if (!seller?.restaurantId) return;
 
     const userId = personalDetails.data.id;
     const roomId = `${userId}_${seller.restaurantId}`;
@@ -67,7 +68,7 @@ const ChatModal = ({ isOpen, onClose, seller, prefillMessage }) => {
         socketRef.current.disconnect();
       }
     };
-  }, [isOpen, seller.restaurantId]);
+  }, [seller?.restaurantId]);
 
   // Auto scroll to bottom
   useEffect(() => {
@@ -83,7 +84,7 @@ const ChatModal = ({ isOpen, onClose, seller, prefillMessage }) => {
     if (!message.trim()) return;
     
     const personalDetails = fetchPersonalDetails();
-    if (!personalDetails || !socketRef.current) return;
+    if (!personalDetails || !socketRef.current || !seller?.restaurantId) return;
 
     const userId = personalDetails.data.id;
     const roomId = `${userId}_${seller.restaurantId}`;
@@ -115,9 +116,15 @@ const ChatModal = ({ isOpen, onClose, seller, prefillMessage }) => {
         </div>
         
         <div className={classes.chatBox} ref={chatBoxRef}>
-          {prefillMessage && chatHistory.length <= 1 && (
+          {prefillMessage && prefillShown && (
             <div className={classes.systemMsg}>
               Bạn đang hỏi về: <strong>{prefillMessage}</strong>
+              <button 
+                onClick={() => setPrefillShown(false)} 
+                style={{ marginLeft: "10px", background: "none", border: "none", cursor: "pointer", color: "red" }}
+              >
+                ✕
+              </button>
             </div>
           )}
           {chatHistory.map((msg, idx) => (

@@ -61,3 +61,35 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(252, 128, 25, 0.4);
 }
+
+.buttonDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.successMsg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 1rem;
+  background: #e8f5e9;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.successMsg p {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.codNote {
+  font-size: 0.82rem;
+  color: #93959f;
+  margin-left: 12px;
+}

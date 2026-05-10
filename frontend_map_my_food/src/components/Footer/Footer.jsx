@@ -20,7 +20,7 @@ const Footer = () => {
           })}
         </div>
         <div className={classes.part}>
-          <h1>Legel</h1>
+          <h1>Legal</h1>
           {legel.map((data, index) => {
             return <div key={index}>{data}</div>;
           })}
@@ -37,7 +37,7 @@ const Footer = () => {
             <img src="/greatfood/Logo/logo_2022.png" alt="logo" />
             <h2>GreatFood</h2>
           </div>
-          <div className={classes.part2}>Â© 2023 GreatFood</div>
+          <div className={classes.part2}>&copy; 2023 GreatFood</div>
           <div className={classes.part3}>
             <div>
               <img src="/greatfood/Logo/Footer/facebook.png" alt="" />

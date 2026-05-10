@@ -8,6 +8,7 @@ const CartContext = React.createContext({
   addItems: [],
   onAddItems: (itemId) => {},
   onRemoveItem: (itemId) => {},
+  onClearCart: () => {},
   totalAmount: 0,
   deliveryCost: 0,
   GST: 0,
@@ -61,7 +62,7 @@ export const CartContextProvider = (props) => {
     if (restaurantId != null && RestaurantId != restaurantId) {
       setAddItems([updatedItems]);
       setTotalAmount(newItemPrice);
-      setDeliveryCost(DELIVERY_BASE_COST - newItemPrice * DELIVERY_DISCOUNT_RATE);
+      setDeliveryCost(Math.max(0, DELIVERY_BASE_COST - newItemPrice * DELIVERY_DISCOUNT_RATE));
       setGST(newItemPrice * GST_RATE);
       NotificationHandler(
         "Your cart contains items from other restaurant.Your cart had reset for adding items from this restaurant?",
@@ -75,7 +76,7 @@ export const CartContextProvider = (props) => {
     else updatedItemsAll.push(updatedItems);
     setAddItems(updatedItemsAll);
     setTotalAmount(updatedTotalAmount);
-    setDeliveryCost(DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE);
+    setDeliveryCost(Math.max(0, DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE));
     setGST(updatedTotalAmount * GST_RATE);
   };
 
@@ -101,8 +102,20 @@ export const CartContextProvider = (props) => {
     }
     setAddItems(updatedItems);
     setTotalAmount(updatedTotalAmount);
-    setDeliveryCost(DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE);
+    setDeliveryCost(Math.max(0, DELIVERY_BASE_COST - updatedTotalAmount * DELIVERY_DISCOUNT_RATE));
     setGST(updatedTotalAmount * GST_RATE);
+  };
+
+  const clearCartHandler = () => {
+    setAddItems([]);
+    setTotalAmount(0);
+    setDeliveryCost(0);
+    setGST(0);
+    setHotal("");
+    setPlace("");
+    setImage("/greatfood/AvailableRestaurants/5.webp");
+    setRestaurantId(null);
+    setDeliverHere(null);
   };
 
   const onDeliverHereHandler = (address) => {
@@ -116,6 +129,7 @@ export const CartContextProvider = (props) => {
         totalAmount: totalAmount,
         onAddItems: AddItemsHandler,
         onRemoveItem: onRemoveHandler,
+        onClearCart: clearCartHandler,
         deliveryCost: deliveryCost,
         GST: GST,
         hotal: hotal,

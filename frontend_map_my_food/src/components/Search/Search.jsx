@@ -4,13 +4,16 @@ import SearchBox from "./SearchBox/SearchBox";
 import SearchItems from "./SearchItems/SearchItems";
 import SearchAfterClickItems from "./SearchAfterClick/SearchAfterClickItems/SearchAfterClickItems";
 import useCategoryWiseFood from "../hook/useCategoryWiseFood";
+import { useLocationLocalStorage } from "../hook/LocationLocalStorage";
 
 const Search = () => {
   const { CategoryWiseFoodData } = useCategoryWiseFood();
+  const { fetchPincode } = useLocationLocalStorage();
   const [data, setData] = useState([]);
   useEffect(() => {
     const CategoryWiseFoodDataFunction = async () => {
-      const dataCategoryWiseFood = await CategoryWiseFoodData();
+      const pincode = fetchPincode();
+      const dataCategoryWiseFood = await CategoryWiseFoodData(pincode);
       setData(dataCategoryWiseFood);
     };
     CategoryWiseFoodDataFunction();

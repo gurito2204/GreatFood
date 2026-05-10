@@ -23,55 +23,55 @@ const haversineKm = (lat1, lng1, lat2, lng2) => {
 module.exports = getNearbyRestaurants = async (userLat, userLng, radiusKm = 5) => {
   try {
     const connection = await getDb();
-    const foods = await connection.collection("restaurantFood").find().toArray();
+    const restaurants = await connection.collection("restaurant").find().toArray();
 
     const results = [];
-    await Promise.all(
-      foods.map(async (food) => {
-        const restaurant = await getRestaurant(food.RestaurantId);
-        if (!restaurant) return;
+    
+    for (const restaurant of restaurants) {
+      const rId = restaurant.RestaurantId || restaurant.restaurantId;
+      if (!rId) continue;
 
-        const temp = {
-          RestaurantId: food.RestaurantId,
-          image: restaurant.image,
-          about: {
-            heading: restaurant.Restaurant,
-            name: restaurant.Restaurant_dish,
-          },
-          last: {
-            star: restaurant.rating,
-            time: restaurant.time,
-            cost: restaurant.price,
-          },
-          subscriptionTier: restaurant.subscriptionTier || "BASIC",
-          distanceKm: null,
-          lat: restaurant.lat || null,
-          lng: restaurant.lng || null,
-          address: restaurant.address || null,
-        };
+      const temp = {
+        RestaurantId: rId,
+        image: restaurant.image,
+        about: {
+          heading: restaurant.Restaurant,
+          name: restaurant.Restaurant_dish,
+        },
+        last: {
+          star: restaurant.rating,
+          time: restaurant.time,
+          cost: restaurant.price,
+        },
+        subscriptionTier: restaurant.subscriptionTier || "BASIC",
+        distanceKm: null,
+        lat: restaurant.lat || null,
+        lng: restaurant.lng || null,
+        address: restaurant.address || null,
+        isOpen: restaurant.isOpen !== undefined ? restaurant.isOpen : true,
+      };
 
-        // Bỏ qua các nhà hàng không có tọa độ
-        if (restaurant.lat == null || restaurant.lng == null) {
-          return;
-        }
+      // Bỏ qua các nhà hàng không có tọa độ
+      if (restaurant.lat == null || restaurant.lng == null) {
+        continue;
+      }
 
-        const d = haversineKm(
-          parseFloat(userLat),
-          parseFloat(userLng),
-          parseFloat(restaurant.lat),
-          parseFloat(restaurant.lng)
-        );
+      const d = haversineKm(
+        parseFloat(userLat),
+        parseFloat(userLng),
+        parseFloat(restaurant.lat),
+        parseFloat(restaurant.lng)
+      );
 
-        if (isNaN(d)) return; // Bỏ qua nếu tọa độ không hợp lệ
+      if (isNaN(d)) continue; // Bỏ qua nếu tọa độ không hợp lệ
 
-        temp.distanceKm = parseFloat(d.toFixed(1));
-        
-        // Lọc theo bán kính
-        if (temp.distanceKm > radiusKm) return;
+      temp.distanceKm = parseFloat(d.toFixed(1));
+      
+      // Lọc theo bán kính (tạm thời để 50km để test dễ hơn, hoặc giữ radiusKm)
+      if (temp.distanceKm > radiusKm) continue;
 
-        results.push(temp);
-      })
-    );
+      results.push(temp);
+    }
 
     // Sort: PREMIUM trước, rồi sort theo khoảng cách (null xuống cuối)
     results.sort((a, b) => {

@@ -118,13 +118,15 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
               </div>
               <div className={classes.item_part3_right}>
                 <img
-                  src={`${import.meta.env.VITE_REACT_BACKEND_URL}${
+                  src={
                     each_item.image
-                  }`}
+                      ? `${import.meta.env.VITE_REACT_BACKEND_URL}${each_item.image}`
+                      : "/greatfood/Search/logo/default-food.png" // Placeholder
+                  }
                   alt=""
                   onError={(event) => {
                     event.target.onerror = null;
-                    event.target.src = each_item.image;
+                    event.target.src = "/greatfood/Search/logo/default-food.png";
                   }}
                 />
                 {!shopIsOpen ? (

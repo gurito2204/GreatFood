@@ -19,28 +19,6 @@ const Steps = ({ setIsShow }) => {
             <img src="/greatfood/Logo/logo_2022.png" alt="" />
           </div>
         </div>
-        <div
-          className={classes.box}
-          onClick={() => {
-            setIsShow(1);
-          }}
-        >
-          <h1>Add Restaurant Food</h1>
-          <div className={classes.location}>
-            <SvgRestaurant />
-          </div>
-        </div>
-        <div
-          className={classes.box}
-          onClick={() => {
-            setIsShow(2);
-          }}
-        >
-          <h1>Add Restaurant Offer</h1>
-          <div className={classes.location}>
-            <Svgoffers />
-          </div>
-        </div>
       </div>
     </div>
   );

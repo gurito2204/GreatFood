@@ -18,6 +18,7 @@ module.exports = getRestaurantFood = async (id) => {
 
     const combinedData = {
       ...Restaurant,
+      RestaurantId: (Restaurant && Restaurant.RestaurantId) || (Restaurant && Restaurant.restaurantId) || id,
       veg: vegFood,
       nonveg: nonVegFood,
     };

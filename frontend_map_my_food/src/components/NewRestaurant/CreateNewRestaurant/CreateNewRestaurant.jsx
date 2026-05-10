@@ -7,7 +7,7 @@ import useGetFoodsAndOffers from "../../hook/useGetFoodsAndOffers";
 import { useLocationLocalStorage } from "../../hook/LocationLocalStorage";
 import ShopLocationPicker from "../ShopLocationPicker/ShopLocationPicker";
 
-const CreateNewRestaurant = () => {
+const CreateNewRestaurant = ({ setIsShow }) => {
   const { GetFoodsAndOffersData } = useGetFoodsAndOffers();
   const { fetchRestaurantId } = useLocationLocalStorage();
   const [image, setImage] = useState(null);
@@ -84,6 +84,10 @@ const CreateNewRestaurant = () => {
             data={values}
             id={fetchRestaurantId()}
             imageToBackend={imageToBackend}
+            onSuccess={() => {
+              if (setIsShow) setIsShow(0);
+              window.location.href = "/seller/dashboard";
+            }}
           />
         </div>
       </div>
