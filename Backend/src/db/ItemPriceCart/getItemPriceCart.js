@@ -4,6 +4,7 @@ const getRestaurant = require("../Restaurant/getRestaurant");
 module.exports = getItemPriceCart = async (RestaurantId, itemId) => {
   try {
     const connection = await getDb();
+    let newObj = {};
     const response = await connection
       .collection("restaurantFood")
       .findOne({ $or: [{ RestaurantId: RestaurantId }, { restaurantId: RestaurantId }] });
@@ -27,6 +28,7 @@ module.exports = getItemPriceCart = async (RestaurantId, itemId) => {
       name: matchingFoodItem.name,
       price: matchingFoodItem.price,
       image: matchingFoodItem.image,
+      stock: matchingFoodItem.stock ?? -1,
     };
     return newObj;
   } catch (err) {

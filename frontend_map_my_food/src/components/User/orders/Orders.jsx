@@ -76,6 +76,26 @@ const Orders = () => {
     }
   };
 
+  const handleComplete = async (orderId) => {
+    if (!window.confirm("Xác nhận bạn đã nhận được hàng?")) return;
+
+    const details = fetchPersonalDetails();
+    if (!details || !details.data) return;
+
+    setCancelling(prev => ({ ...prev, [orderId]: true }));
+    try {
+      const data = await api.put(`/api/buyer/orders/${orderId}/complete`, {
+        userId: details.data.id,
+      });
+      NotificationHandler(data.message || "Đã xác nhận thành công", "Success");
+      fetchOrders();
+    } catch (err) {
+      NotificationHandler(err.response?.data?.message || "Xác nhận thất bại", "Error");
+    } finally {
+      setCancelling(prev => ({ ...prev, [orderId]: false }));
+    }
+  };
+
   const formatTime = (dateStr) => {
     if (!dateStr) return "";
     const d = new Date(dateStr);
@@ -99,8 +119,8 @@ const Orders = () => {
       ) : (
         <div className={classes.orders}>
           {orders.map((orderItem, idx) => {
-            const order = orderItem.order || orderItem;
-            const items = order.order || [];
+            const order = orderItem;
+            const items = orderItem.order || [];
             const status = order.status || "pending";
             const config = STATUS_CONFIG[status] || STATUS_CONFIG.pending;
             const total = (+order.totalAmount || 0) + (+order.deliveryCost || 0) + (+order.GST || 0);
@@ -166,7 +186,21 @@ const Orders = () => {
                       onClick={() => handleCancel(order.orderId)}
                       disabled={cancelling[order.orderId]}
                     >
-                      {cancelling[order.orderId] ? "Đang hủy..." : "❌ Hủy đơn"}
+                      {cancelling[order.orderId] ? "Đang xử lý..." : "❌ Hủy đơn"}
+                    </button>
+                  </div>
+                )}
+                
+                {/* Complete button - khi confirmed */}
+                {status === "confirmed" && (
+                  <div className={classes.cancelRow}>
+                    <button
+                      className={classes.completeBtn || classes.cancelBtn}
+                      style={{ background: "#4caf50" }}
+                      onClick={() => handleComplete(order.orderId)}
+                      disabled={cancelling[order.orderId]}
+                    >
+                      {cancelling[order.orderId] ? "Đang xử lý..." : "✅ Đã nhận được hàng"}
                     </button>
                   </div>
                 )}

@@ -48,17 +48,32 @@ module.exports = insertUserOrder = async (userId, order) => {
       if (!foodItem) continue;
       // Chỉ trừ nếu stock > 0 (stock = -1 nghĩa là không giới hạn)
       const currentStock = foodItem.stock ?? -1;
+      const updateFields = {};
       if (currentStock > 0) {
         const newStock = Math.max(0, currentStock - qty);
-        const updateFields = { "food.$.stock": newStock };
+        updateFields["food.$.stock"] = newStock;
         if (newStock === 0) {
           updateFields["food.$.available"] = false;
         }
-        await connection.collection("restaurantFood").updateOne(
-          { "food.itemId": item.itemId },
-          { $set: updateFields }
-        );
       }
+
+      const updateOp = { $inc: { "food.$.soldCount": qty } };
+      if (Object.keys(updateFields).length > 0) {
+        updateOp.$set = updateFields;
+      }
+
+      await connection.collection("restaurantFood").updateOne(
+        { "food.itemId": item.itemId },
+        updateOp
+      );
+    }
+
+    // Tăng tổng số đơn hàng của quán
+    if (order.restaurantId) {
+      await connection.collection("restaurant").updateOne(
+        { RestaurantId: order.restaurantId },
+        { $inc: { totalOrders: 1 } }
+      );
     }
 
     return orderId;

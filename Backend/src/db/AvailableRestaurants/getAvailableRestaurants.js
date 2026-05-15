@@ -18,7 +18,8 @@ module.exports = getAvailableRestaurants = async (pincode) => {
           lat: { $ifNull: ["$lat", null] },
           lng: { $ifNull: ["$lng", null] },
           address: { $ifNull: ["$address", null] },
-          isOpen: { $ifNull: ["$isOpen", true] }
+          isOpen: { $ifNull: ["$isOpen", true] },
+          totalOrders: { $ifNull: ["$totalOrders", 0] }
         }
       },
       {

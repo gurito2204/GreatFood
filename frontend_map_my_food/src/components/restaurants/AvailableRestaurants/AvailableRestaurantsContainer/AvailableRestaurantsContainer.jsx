@@ -29,6 +29,11 @@ const AvailableRestaurantsContainer = ({ datas }) => {
             <div className={classes.bottom_box_about_para}>
               {data.about.name}
             </div>
+            {data.totalOrders > 0 && (
+              <div style={{ color: "#e65100", fontSize: "0.85rem", marginTop: "4px", fontWeight: "bold" }}>
+                🔥 {data.totalOrders}+ đơn đã giao
+              </div>
+            )}
           </div>
           <div className={classes.bottom_box_last}>
             <div className={classes.bottom_box_last_star}>

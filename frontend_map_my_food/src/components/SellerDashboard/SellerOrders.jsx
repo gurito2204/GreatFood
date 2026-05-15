@@ -57,6 +57,15 @@ const SellerOrders = () => {
         NotificationHandler("🔔 Có đơn hàng mới!", "Success");
         fetchOrders(); // Refresh list immediately
       });
+
+      socketRef.current.on("order_status_changed", (data) => {
+        const config = STATUS_CONFIG[data.newStatus] || {};
+        NotificationHandler(
+          `${config.icon || "📦"} Đơn #${(data.orderId || "").substring(0, 8)} → ${config.label || data.newStatus}`,
+          data.newStatus === "cancelled" ? "Warn" : "Success"
+        );
+        fetchOrders(); // Refresh list immediately
+      });
     }
 
     // Keep polling as fallback (every 30s)

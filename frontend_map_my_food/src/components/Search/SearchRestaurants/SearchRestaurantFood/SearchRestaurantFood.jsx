@@ -92,6 +92,11 @@ const SearchRestaurantFood = ({ items, veg, data }) => {
                 <div className={classes.item_part3_price}>
                   {formatPrice(each_item.price)}
                 </div>
+                {each_item.soldCount > 0 && (
+                  <div style={{ color: "#757575", fontSize: "0.85rem", marginTop: "4px" }}>
+                    Đã bán: {each_item.soldCount}
+                  </div>
+                )}
                 
                 <FlavorPreviewBar flavors={flavorData[each_item.itemId]} showTop={2} />
 

@@ -45,6 +45,10 @@ export const CartContextProvider = (props) => {
     const existingCartItem = addItems[existingCartItemIndex];
     let updatedItems;
     if (existingCartItem) {
+      if (verifiedData.stock !== -1 && existingCartItem.quantity >= verifiedData.stock) {
+        NotificationHandler(`Rất tiếc, món này chỉ còn ${verifiedData.stock} phần`, "Warn");
+        return;
+      }
       updatedItems = {
         itemId: existingCartItem.itemId,
         quantity: existingCartItem.quantity + 1,
@@ -52,6 +56,10 @@ export const CartContextProvider = (props) => {
         amount: existingCartItem.amount + newItemPrice,
       };
     } else {
+      if (verifiedData.stock !== -1 && verifiedData.stock < 1) {
+        NotificationHandler(`Rất tiếc, món này đã hết hàng`, "Warn");
+        return;
+      }
       updatedItems = {
         itemId: itemId,
         quantity: 1,

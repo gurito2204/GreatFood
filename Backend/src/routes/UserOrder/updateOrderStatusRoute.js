@@ -1,5 +1,5 @@
 const updateOrderStatus = require("../../db/UserOrder/updateOrderStatus");
-const { emitOrderStatusChanged } = require("../../chatHandler");
+const { emitOrderStatusChanged, emitOrderStatusChangedToSeller } = require("../../chatHandler");
 
 module.exports = updateOrderStatusRoute = {
   path: "/api/seller/orders/:orderId/status",
@@ -16,6 +16,15 @@ module.exports = updateOrderStatusRoute = {
       // Thông báo buyer qua socket
       if (result.userId) {
         emitOrderStatusChanged(result.userId, {
+          orderId,
+          newStatus: status,
+          updatedAt: new Date(),
+        });
+      }
+
+      // Thông báo seller (để đồng bộ nhiều thiết bị nếu có)
+      if (result.restaurantId) {
+        emitOrderStatusChangedToSeller(result.restaurantId, {
           orderId,
           newStatus: status,
           updatedAt: new Date(),

@@ -39,7 +39,7 @@ module.exports = updateOrderStatus = async (orderId, newStatus) => {
       await restoreOrderStock(order);
     }
 
-    return { modifiedCount: result.modifiedCount, userId: order.userId };
+    return { modifiedCount: result.modifiedCount, userId: order.userId, restaurantId: order.restaurantId };
   } catch (err) {
     console.log(err.message);
     throw err;
